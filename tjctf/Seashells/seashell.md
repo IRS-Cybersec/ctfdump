@@ -34,16 +34,25 @@ int main() {
 
 This challenge is a classic buffer-overflow challenge. We take a look at `checksec` and gather our options:
 
-[](checksec.png)
+<p align="center">
+<img src="checksec.png">
+</p>
 
 PIE's off, and we can notice this small `shell()` function embedded in the binary:
 
-[](shellfunc.png)
-[](address.png)
+<p align="center">
+<img src="shellfunc.png">
+</p> 
+<p align="center">
+<img src="address.png">
+</p> 
+
 
 Although there are if-checks, we'll just jump over them and head straight for the `system()` call (address shown above):
 
-[](interactive.png)
+<p align="center">
+<img src="interactive.png">
+</p> 
 
 That'll be the challenge.
 
