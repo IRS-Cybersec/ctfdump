@@ -8,6 +8,30 @@ _I heard there's someone selling shells? They seem to be out of stock though..._
 
 ## Beginnings
 
+Starting the program will look like this: 
+```sh
+$ ./seashells
+Welcome to Sally's Seashore Shell Shop
+Would you like a shell?
+yes!!!!!  <-- user input
+why are you even here?
+```
+
+And the associated (stripped) decompiled code:
+```c
+int main() {
+  char s1[0xA];
+  puts("Welcome to Sally's Seashore Shell Shop");
+  puts("Would you like a shell?");
+  gets(s1, 0LL);
+  if ( !strcasecmp(s1, "yes") )
+    puts("sorry, we are out of stock");
+  else
+    puts("why are you even here?");
+  return 0;
+}
+```
+
 
 ## code
 ```python
