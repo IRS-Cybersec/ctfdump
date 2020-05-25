@@ -1,3 +1,3 @@
 # ctfdump
 
-This is a dumping ground for some of the solutions I've made for various CTFs.
+This is a dumping ground for some of the solutions ~~I've~~ we have made for various CTFs.
