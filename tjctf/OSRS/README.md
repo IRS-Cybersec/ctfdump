@@ -39,7 +39,7 @@ int get_tree()
 }
 ```
 
-Now, "_like_ zero security features" is a minor misdirection. ASLR is still enabled, and the stack address is only obtainable via the printf() leak of `s`.
+Now, "_like_ zero security features" is a minor misdirection. ASLR is still enabled, and the stack address is only obtainable via the `printf()` leak of `s`.
 
 The program ends right after that leak, so we'll have to reroute the return pointer towards `get_tree()` again for a 2nd buffer overflow, wherein we can allocate & jump to a `/bin/sh` shellcode.
 
@@ -58,7 +58,7 @@ There are two corollaries to the exploit that may not be immediately apparent wi
 
 Firstly, `printf()` leaks the address of `s[]` with a `%d` format specifier. The negative number that is (likely to be) outputted must be converted to its hex form in accordance with [Two's complement](https://en.wikipedia.org/wiki/Two's_complement).
 
-Secondly, the address of `s[]` is not constant. Because 4 bytes are used in jumping to `get_tree()` again, the correct adress of `s[]` for input 2 will be the leaked address +4. 
+Secondly, the address of `s[]` is not constant. Because 4 bytes are used in jumping to `get_tree()` again, the correct address of `s[]` for input 2 will be the leaked address +4. 
 
 With that in mind, everything will work out fine:
 <p align="center">
