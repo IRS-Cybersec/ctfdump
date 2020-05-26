@@ -55,7 +55,7 @@ Let's start off simple. There is a buffer overflow (of `0x256` on `s1[256]`) wit
 <img src="checksec.png">
 </p>
 
-Since the buffer overflow's at `"Category? "`, we ignore `get_letter()` for now^1^. Taking a look at `get_category()`, there's not much to be done there either — it just gives back a small value within the boundaries of `answers[]`. 
+Since the buffer overflow's at `"Category? "`, we ignore `get_letter()` for now<sup>1</sup>. Taking a look at `get_category()`, there's not much to be done there either — it just gives back a small value within the boundaries of `answers[]`. 
 ```c
 int get_category() {
   int i;
@@ -85,7 +85,7 @@ With that in mind, we've a simple strategy to get through to `/bin/sh`:
 1. overflow to the return pointer
 2. set a ROP chain to rax=59, rdi="/bin/sh", rsi=rdx=0
 3. `syscall` to execve("/bin/sh")
-4. Use `read()` to write extra rop-chains if 326 bytes isn't enough^2^
+4. Use `read()` to write extra rop-chains if 326 bytes isn't enough<sup>2</sup>
 
 (1) is simple enough. Using `pwn.cyclic()`, we can find the offset to the first return pointer in `gdb`: 
 
@@ -102,9 +102,9 @@ Doing (2)? Not as simple.
 <br><i>404</i><br>
 </p>
 
-We've got access to `rdi` and `rsi`, nominally the first two arguments for x64 functions. Unforuntately, there's no immediate gadget that allows us to set the value of `rax` arbitrarily.
+We've got access to `rdi` and `rsi`, nominally the first two arguments for x64 functions. Unfortunately, there's no immediate gadget that allows us to set the value of the other two gadgets — `rax` and `rdx` — arbitrarily.
 
-At first, we considered using `get_letter()` as a gadget, but its `cmp` restrictions are too large for rax=59, and it also was not immediately apparaent that a well-placed `[rbp-4]` would be sufficient to edit rax.
+For `rax`, we first considered using `get_letter()` as a gadget, but its `cmp` restrictions (of `96 < char <= 122`) are too large to immediately set rax=59. Although it is possible to reach arbitrary `rax` using a well-placed `[rbp-4]`, this was not immediately apparent at the time.
 
 Instead, knowing that we had access to rdi and rsi, we dug through the binary for a "string" (sequence of non-'\0' bytes) of length 59, using rdi="[length-59 C-string]" and `printf()` to write the length to rax.
 
@@ -114,8 +114,8 @@ Instead, knowing that we had access to rdi and rsi, we dug through the binary fo
 </p>
 
 <p align="center">
-<img src="manpage.png">
-<br><i>That (other) thing that people demean as obtruse</i><br>
+<img src="hexview.png">
+<br><i>That (other) thing that people demean as obtuse</i><br>
 </p>
 
 At this point, the stack might look something like this:
@@ -128,17 +128,30 @@ At this point, the stack might look something like this:
 
 Tacking on the rsi/rdi edits needed for the syscall, it'll expand to this:
 ```
-+---s[]---+-------------ROP-chain-----------------+------------more-ROP-----------+
-| garbage | pop-rdi | "len59_str" | .plt printf() | pop-rsi | 0 | 0 | pop-rdi | 0 |
-+---272---+----------------3*8--------------------+--------------5*8--------------+
++---s[]---+-------------ROP-chain-----------------+----------------more-ROP---------------+
+| garbage | pop-rdi | "len59_str" | .plt printf() | pop-rsi | 0 | 0 | pop-rdi | "/bin/sh" |
++---272---+----------------3*8--------------------+------------------5*8------------------+
 ```
+
+We're still left with `rdx`, which _may_ already be zero without attacker intervention, but we can apply ret2csu<sup>3</sup> to turn that into a guarantee.
+
 ## Execution
 
--finalising
+The final ROP chain will look like this:
+```
++---s[]---+----------------csu part 1---------------+--------------csu part 2------------->
+| garbage | gadget1 | 0 | 1 | &_DYNAMIC | 0 | 0 | 0 | gadget2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 > 
++---272---+--------------------56-------------------+------------------64----------------->
+<---------------rax=59------------------+---------------rdi=rsi=0---------------+-/bin/sh-+
+< pop-rdi | "len59_str" | .plt printf() | pop-rsi | 0 | 0 | pop-rdi | "/bin/sh" | syscall |
+<----------------3*8--------------------+------------------5*8------------------+----8----+
+```
 
 <p align="center">
 <img src="interactive.png">
 </p>
+
+Works on first try.
 
 ## flag
 
@@ -178,3 +191,4 @@ r.interactive()
 ## footnotes
 1. `get_letter()` could be used as a way to edit rax, but `printf()` felt simpler.
 2. This _was_ a problem, but the solution shown here doesn't deal with this.
+3. https://www.rootnetsec.com/ropemporium-ret2csu/
