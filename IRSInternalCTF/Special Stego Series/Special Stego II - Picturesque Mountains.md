@@ -1,4 +1,4 @@
-# IRS Internal CTF
+# IRS Internal CTF: Steganography
 
 ## Special Stego II - Picturesque Mountains (itszzjj) [50 points]
 

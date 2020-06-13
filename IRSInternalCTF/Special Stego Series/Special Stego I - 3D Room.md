@@ -1,4 +1,4 @@
-# IRS Internal CTF
+# IRS Internal CTF: Steganography
 
 ## Special Stego I - 3D Room (itszzjj) [30 points]
 
