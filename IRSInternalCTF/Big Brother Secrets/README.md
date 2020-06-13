@@ -109,7 +109,7 @@ If you dump Google Chrome's memory and run strings on it, you might be able to s
 
 (*This part is admittedly very tedious and time-consuming*) After some time, you should be able to see this:
 
-![1](D:\Desktop\Cybersecurity\Cybersec Github Repos\ctfdump\IRSInternalCTF\Big Brother Secrets\1.png)
+![](1.png)
 
 Keying in the password to decrypt the PDF, we will still get a **blank pdf**. Oh no! Running binwalk, exiftool etc. on the PDF reveals nothing. But when we take a look at the objects of the PDF using `peepdf`, we will notice a **javascript stream** with the following obfuscated javascript code: (<u>Note:</u> You will still need to decrypt the PDF first using `qpdf` with the password recovered)
 
