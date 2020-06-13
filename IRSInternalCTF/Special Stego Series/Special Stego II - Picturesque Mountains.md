@@ -18,7 +18,7 @@ ______
 
 We are now given this picture.
 
-![NiceMountains](NiceMountains.svg)
+![NiceMountains](images/NiceMountains.svg)
 
 Opening the picture with an editor will give out this:
 
@@ -58,7 +58,7 @@ The way to solve this is to remove the `<g>` elements that describe the mountain
 
 This in return outputs this image.
 
-![NiceMountainsEdited](NiceMountainsEdited.svg)
+![NiceMountainsEdited](images/NiceMountainsEdited.svg)
 
 ### Flag
 

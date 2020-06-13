@@ -16,11 +16,11 @@ ________
 
 We are given this picture:
 
-![SunnyPlains](SunnyPlains.png)
+![SunnyPlains](images/SunnyPlains.png)
 
 The challenge **specifically** requires us to use a scripting method to obtain the flag. What happens if we don't?
 
-![ExposedNew](ExposedNew.png)
+![Exposed](images/Exposed.png)
 
 1. You get the flag!
 3. However, you will not receive any points for this challenge as it is a violation of the rule!
@@ -51,7 +51,7 @@ With a bit of patience, the right picture with the flag can be found.
 
 `output185.png`
 
-![output185](output185.png)
+![output185](images/output185.png)
 
 
 

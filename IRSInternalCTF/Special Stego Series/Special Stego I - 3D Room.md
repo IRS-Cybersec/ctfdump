@@ -39,7 +39,7 @@ _____
 
 We now look at the image given.
 
-![3DRoom](3DRoom.svg)
+![3DRoom](images/3DRoom.svg)
 
 We know that the entire image is just made out of different elements. How can we find the flag if the colours are exactly the same?
 
