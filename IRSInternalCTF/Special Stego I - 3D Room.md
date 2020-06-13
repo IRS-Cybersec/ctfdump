@@ -1,4 +1,4 @@
-# Sieberrsec CTF
+# IRS Internal CTF: Steganography
 
 ## Special Stego I - 3D Room [30 points]
 
