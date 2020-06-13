@@ -1,4 +1,4 @@
-# IRS Internal CTF
+# IRS Internal CTF: Steganography
 
 ## Special Stego III - A Child's Drawing (itszzjj) [100 points]
 
