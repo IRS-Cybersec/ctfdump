@@ -2,11 +2,23 @@
 
 ## TVOIT  (itszzjj) [400 points]
 
-<insert desc here>
+***For the sake of this challenge, imagine you are Nate/Rosa and you are talking to Brendan.***
 
-### Content Outline
+***My friend Ethan had made a bunch of blatantly wrong assumptions when he was younger.***
+***This has resulted in his C++ program files he had written back in Secondary 2 to be full of these nonsense.***
 
-[TOC]
+***In order to hide his embarrassment, he put everything into a thumb drive and forgot about it.***
+
+***That was the case, until his other friend Barry came to his house and purposely stole it away. (nefarious!)***
+
+***Here's where things get really interesting. I received this email from Ethan, stating that Barry had sent him this <a href="http://irscybersec.tk:8798">link</a>.***
+***It seems to be Barry's own server, hosting some random stuff as of now. It feels like a taunt though...***
+
+***Can you make sense of it? Help us recover the C++ source file!"***
+
+***Submission Guideline: Find the correct C++ source file that is the most relatable in this challenge's context, and wrap the md5sum of the file itself in IRS{}. Submit the flag.***
+
+
 
 ### Preface
 
