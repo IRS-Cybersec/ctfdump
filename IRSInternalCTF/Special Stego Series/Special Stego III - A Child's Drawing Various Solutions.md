@@ -107,7 +107,7 @@ for x in range(height):
 img.save("result.png")
 ```
 
-A script that compares each pixel side by side (both directions), and sets the pixels that have a difference in any channel value of 1 to RGB(0, 0, 0) (black). (Awaiting confirmation) What's interesting about this solution is that it outlines the flag text instead of colouring it into a different colour entirely. This method also reveals the Easter egg hidden within the grass patch. Very unique.
+A script that compares each pixel side by side (both directions), and sets the pixels that have a difference in any channel value of 1 to RGB(0, 0, 0) (black). What's interesting about this solution is that it outlines the flag text instead of colouring it into a different colour entirely. This method also reveals the Easter egg hidden within the grass patch.
 
 ![asdiml](images/asdiml.png)
 
