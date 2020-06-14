@@ -764,24 +764,7 @@ This part is actually a double check to ensure that the total number of `"prfska
 
 Overall, the function does something like this:
 
-```
-003addfcsyQWxXrgHaddfcsyepwVWSnaddfcsyWBzvMkNprfskagprfskagprfskag
-							gets broken into
-003		addfcsy		QWxXrgH		addfcsy		epwVWSn		addfcsy		WBzvMkN
-$n_b 	$o_p[0]		chr(104)	$o_p[0]     chr(51)		$o_p[0]		chr(121)
-		checkchr				checkchr				checkchr
-
-
-prfskag		prfskag		prfskag
-$o_p[1]		$o_p[1]		$o_p[1]
-$cp_as++	$cp_as++	$cp_as++
-
-$cp_as is then used to count the number of interpreted characters to add into the $ff.
-
-
-With this, $o_p is actually a ist of 2 opcodes, namely "add" (0: "addfcsy") and "print" (1: "prfskag").
-
-```
+![explanation](images/explanation.png)
 
 The function variables can be renamed to make it simpler to read overall, but that is left as an exercise for the reader.
 
