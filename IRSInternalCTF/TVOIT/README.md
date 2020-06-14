@@ -768,7 +768,9 @@ Overall, the function does something like this:
 003addfcsyQWxXrgHaddfcsyepwVWSnaddfcsyWBzvMkNprfskagprfskagprfskag
 							gets broken into
 003		addfcsy		QWxXrgH		addfcsy		epwVWSn		addfcsy		WBzvMkN		
-$n_b 	$o_p[0]		chr(104)	$o_p[0]     chr(51)		$o_p[0]		chr(121)				checkchr				checkchr				checkchr
+$n_b 	$o_p[0]		chr(104)	$o_p[0]     chr(51)		$o_p[0]		chr(121)				
+
+checkchr	checkchr	checkchr
 
 prfskag		prfskag		prfskag
 $o_p[1]		$o_p[1]		$o_p[1]
