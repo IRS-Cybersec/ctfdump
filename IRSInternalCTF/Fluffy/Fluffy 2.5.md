@@ -2,7 +2,7 @@
 
 An easy way to do this is Metasploit. Create a session as instructed from Fluffy III.md
 
-Some of you solved this challenge by using web request tools like php's curl, or windows curl, but the concept behind this is **proxying**.
+Some of you solved this challenge by using web request tools like php's curl, or windows curl, but the concept behind this is **pivoting**.
 
 The end goal is to be able to use this machine as a staging point to launch attacks against other machines. i.e. attack with the compromised machine.
 
