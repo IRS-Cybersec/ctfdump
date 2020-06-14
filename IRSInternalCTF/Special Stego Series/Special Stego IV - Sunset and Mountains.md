@@ -8,7 +8,7 @@ Due to the heightened security in this company due to the recent exploit leaks, 
 
 Luckily, the data packet he sent was passed by security and reached us.
 
- Uncover what Zhong Yang sent.
+Uncover what Zhong Yang sent.
 
 ### The Packet
 
@@ -33,6 +33,12 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 2930785       0x2CB861        End of Zip archive
 ```
 
+
+
+### The ZIP File
+
+____
+
 In the ZIP file, we are given two things: 
 
 `VirtualRealitySampleScreenshot.png`
@@ -44,6 +50,10 @@ In the ZIP file, we are given two things:
 ![text](images/text.png)
 
 It is evident that Zhong Yang was trying to pass this off as a seemingly normal advertisement. This means that there is something hidden in plain sight.
+
+### Zero-Width Characters
+
+_______
 
 The first clue lies in `CompanyProfileDescription.txt`. Doing a quick `xxd` dump will reveal this.
 
@@ -84,6 +94,12 @@ Using this [website](https://330k.github.io/misc_tools/unicode_steganography.htm
 
 ![zws](images/zws.png)
 
+
+
+### The Encoder Script
+
+_______
+
 ```python
 from PIL import Image
 REDACTED = "REDACTED"
@@ -106,6 +122,10 @@ From the code, it is likely that the original flag data was encoded first to Bas
 
 1. `pixel[n] = pixel[n] & ~1` clears out the least significant bit.
 2. `| int(data[i])` places a `1` when the binary string happens to have a `1` at that position. Otherwise, it remains at `0`.
+
+### Writing a Decoder
+
+_____________
 
 To read a LSB, we can use a bitwise AND `&1`. However, the LSB for this challenge is customised in that the encoder skips every certain step size of pixels before modifying the LSB of a pixel. This value of step size is labelled `REDACTED`. 
 
@@ -141,7 +161,7 @@ with Image.open("VirtualRealitySampleScreenshot.png") as im:
             continue
 ```
 
-Running it with `VirtualRealitySampleScreenshot.png` will yield the flag at step size 85.
+Running it with `VirtualRealitySampleScreenshot.png` will yield the flag at a step size of 85.
 
 ```
 75
