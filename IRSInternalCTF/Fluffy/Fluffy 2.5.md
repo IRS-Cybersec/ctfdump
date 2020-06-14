@@ -24,7 +24,7 @@ So the task is simple (not necessarily easy ;>). We must connect to 172.104.33.5
 
 Once we have a meterpreter session up, let's use the portfwd command
 
-``meterpreter
+``
 meterpreter> portfwd add -l 9999 -p 7200 -r 172.104.33.55
 ``
 
