@@ -8,11 +8,11 @@ _____
 
 As the ultimate goal is to separate different colours from each other, there are actually many ways to achieve this. Below are some of the ways used by the challengers to solve this problem.
 
-### @n00bcak
+### @N00bcak
 
 ___
 
-![incoherency](images/incoherency.png)
+<img src="images/n00bcak.png" alt="n00bcak" style="zoom:150%;" />
 
 Perhaps a loophole, it is nonetheless a legal method, because only LOCAL photo editors are not allowed, while online editors are allowed. This particular solution is unintended as the author did not realise that the [website](https://incoherency.co.uk/image-steganography/) can find the flag.
 
@@ -37,7 +37,7 @@ with Image.open("SunnyPlains.png") as im:
 
 A nice and short script that only allows the sky colour to pass through, while leaving everything else pitch black.
 
-![zq](images/zq.png)
+![w4123suhui](images/w4123suhui.png)
 
 
 
@@ -74,7 +74,7 @@ new.save("new.png", "png")
 
 A script that turns the sky colour from RGB(108, 185, 253) to RGB(108, 0 ,0), while decreasing the green channel for all other colours by 100.
 
-![tk](images/tk.png)
+![tkai](images/tkai.png)
 
 
 
@@ -103,11 +103,13 @@ for x in range(height):
         r,g,b = img.getpixel((y,x))
         if abs(pr-r)==1 or abs(pg-g)==1 or abs(pb-1)==1: img.putpixel((y,x),(0,0,0))
         pr,pg,pb = r,g,b
+
+img.save("result.png")
 ```
 
 A script that compares each pixel side by side (both directions), and sets the pixels that have a difference in any channel value of 1 to black. (Awaiting confirmation)
 
-![as](images/as.png)
+![asdiml](images/asdiml.png)
 
 
 
@@ -126,4 +128,4 @@ im.save('out.png')
 
 A 4 liner that isolates only the sky colour out. The shortest solution submitted by far.
 
-![sk](images/sk.png)
+![skytect](images/skytect.png)
