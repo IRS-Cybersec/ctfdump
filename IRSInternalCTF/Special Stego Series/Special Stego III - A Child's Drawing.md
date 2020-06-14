@@ -76,11 +76,11 @@ IRS{Th3NumB3r"1"mAyB3smALL_bUt1tDo3sMak3aLot0fDiff3RenC3!}
 
 The actual flag will be given by the challenge author after vetting.
 
-### Actual Flag
+### Actual Flag (Partially Redacted)
 
 _________
 
 ```
-IRS{p1llowtr335_m1niscul3chAnG3_c0d1nGscr1pts_r3a11y_cl1ng5!}
+IRS{p1llowtr335_[this part is left as an exercise for readers to try it themselves]_r3a11y_cl1ng5!}
 ```
 
