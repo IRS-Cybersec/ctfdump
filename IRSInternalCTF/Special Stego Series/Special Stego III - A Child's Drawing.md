@@ -55,7 +55,7 @@ With a bit of patience, the right picture with the flag can be found.
 
 
 
-However, if we assume that the flag appears only in the sky background, then given background colour can be found as RGB(108, 184, 253) with an online colour picker (not illegal in this case), we can reduce our brute forcing method into a 4-liner precise solution:
+However, if we assume that the flag appears only in the sky background, then given background colour can be found as RGB(108, 185, 253) with an online colour picker (not illegal in this case), we can reduce our brute forcing method into a 4-liner precise solution:
 
 ```python
 from PIL import Image
@@ -75,3 +75,12 @@ IRS{Th3NumB3r"1"mAyB3smALL_bUt1tDo3sMak3aLot0fDiff3RenC3!}
 ```
 
 The actual flag will be given by the challenge author after vetting.
+
+### Actual Flag
+
+_________
+
+```
+IRS{p1llowtr335_m1niscul3chAnG3_c0d1nGscr1pts_r3a11y_cl1ng5!}
+```
+
