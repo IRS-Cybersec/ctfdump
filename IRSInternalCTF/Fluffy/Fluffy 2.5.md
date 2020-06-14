@@ -30,8 +30,11 @@ meterpreter> portfwd add -l 9999 -p 7200 -r 172.104.33.55
 
 What does this command mean?
 ``-l``  refers to our attacking machine's port 9999
+
 ``-p``  refers to the remote port 7200 on 172.104.33.55
+
 ``-r``  refers to the remote host we want to connect to (this case, 172.104.33.55)
+
 
 Together, it means that if we connect to localhost:9999, it will be connecting to 172.104.33.55:7200 via the compromised machine. 
 
