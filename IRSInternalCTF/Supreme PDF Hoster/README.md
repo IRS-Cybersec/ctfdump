@@ -3,7 +3,7 @@
 ## 200 Points - Web & Forensics
 
 *Greetings Agent*
-*One of our agents, Agent Gayyang managed to infiltrate the servers and obtained sensitive information of Snail Speed Corporation, which we suspect has conducted horrible crimes against humanity. However, their security team was right on his trail, and to prevent himself from being discovered, he quickly dumped the file into a random PDF hosting site controlled by someone who is paranoid about privacy and refuses to cooporate with us. [Site Here](http://ctfx.irscybersec.tk:8838/)*
+*One of our agents, Agent Gayyang managed to infiltrate the servers and obtained sensitive information of Snail Speed Corporation, which we suspect has conducted horrible crimes against humanity. However, their security team was right on his trail, and to prevent himself from being discovered, he quickly dumped the file into a random PDF hosting site controlled by someone who is paranoid about privacy and refuses to cooporate with us. Site Here. (Link has been removed, please access it from the platform)
 
 *Your mission, should you choose to accept, is to infiltrate the PDF Hosting site and retrieve the file that is now held and hidden by the paranoid site owner. We have managed to obtain the PHP source code of the site as the owner bragged at how his site was "impenetrable even if we have the source code".*
 
