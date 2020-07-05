@@ -31,7 +31,7 @@ In conclusion, you cannot use a local photo editor!
 
 _____
 
-We know from the problem description that the colours only differ by 1 in any of the RGB channels. Why not brute force all of the then?
+We know from the problem description that the colours only differ by 1 in any of the RGB channels. Why not brute force all of them then?
 
 ```python
 from PIL import Image
@@ -45,7 +45,7 @@ for x in range(0,256):
 
 This gives us a total of 256 pictures.
 
-![Many](Many.png)
+![Many](images/Many.png)
 
 With a bit of patience, the right picture with the flag can be found.
 
@@ -55,11 +55,11 @@ With a bit of patience, the right picture with the flag can be found.
 
 
 
-However, if we assume that the flag appears only in the sky background, then given background colour can be found as RGB(108, 184, 253) with an online colour picker (not illegal in this case), we can reduce our brute forcing method into a 4-liner precise solution:
+However, if we assume that the flag appears only in the sky background, then given background colour can be found as RGB(108, 185, 253) with an online colour picker (not illegal in this case), we can reduce our brute forcing method into a 4-liner precise solution:
 
 ```python
 from PIL import Image
-im = Image.open('Challenge.png')
+im = Image.open('SunnyPlains.png')
 im = im.point(lambda i: i < 185 and 185)
 im.save("output.png")
 ```
@@ -75,3 +75,12 @@ IRS{Th3NumB3r"1"mAyB3smALL_bUt1tDo3sMak3aLot0fDiff3RenC3!}
 ```
 
 The actual flag will be given by the challenge author after vetting.
+
+### Actual Flag (Partially Redacted)
+
+_________
+
+```
+IRS{p1llowtr335_[this part is left as an exercise for readers to try it themselves]_r3a11y_cl1ng5!}
+```
+

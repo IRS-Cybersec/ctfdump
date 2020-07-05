@@ -8,13 +8,13 @@ _____
 
 As the ultimate goal is to separate different colours from each other, there are actually many ways to achieve this. Below are some of the ways used by the challengers to solve this problem.
 
-### @n00bcak
+### @N00bcak
 
 ___
 
-![incoherency](images/incoherency.png)
+<img src="images/n00bcak.png" alt="n00bcak" style="zoom:150%;" />
 
-Perhaps a loophole, it is nonetheless a legal method, because only LOCAL photo editors are not allowed, while online editors are allowed. This particular solution is unintended as the author did not realise that the [website](https://incoherency.co.uk/image-steganography/) can find the flag.
+Perhaps a loophole, it is nonetheless a legal method, because only LOCAL photo editors are not allowed, while online editors are allowed. This particular solution is unintended as the author did not realise that the [website](https://incoherency.co.uk/image-steganography/) can find the flag. This method also reveals the Easter egg hidden within the grass patch.
 
 
 
@@ -35,9 +35,9 @@ with Image.open("SunnyPlains.png") as im:
     im.save("2.png", "PNG")
 ```
 
-A nice and short script that only allows the sky colour to pass through, while leaving everything else pitch black.
+A nice and short script that only allows the sky colour of RGB(108, 185, 253) (sky blue) to pass through, while leaving everything else pitch black.
 
-![zq](images/zq.png)
+![w4123suhui](images/w4123suhui.png)
 
 
 
@@ -72,9 +72,9 @@ for y in range(0, height, 1):
 new.save("new.png", "png")
 ```
 
-A script that turns the sky colour from RGB(108, 185, 253) to RGB(108, 0 ,0), while decreasing the green channel for all other colours by 100.
+A script that changes the sky colour from RGB(108, 185, 253) (sky blue) to RGB(108, 0 ,0) which is red, while decreasing the green channel for all other colours by 100. This creates a drastic difference between the flag text colour and background, isolating it out. 
 
-![tk](images/tk.png)
+![tkai](images/tkai.png)
 
 
 
@@ -103,11 +103,13 @@ for x in range(height):
         r,g,b = img.getpixel((y,x))
         if abs(pr-r)==1 or abs(pg-g)==1 or abs(pb-1)==1: img.putpixel((y,x),(0,0,0))
         pr,pg,pb = r,g,b
+
+img.save("result.png")
 ```
 
-A script that compares each pixel side by side (both directions), and sets the pixels that have a difference in any channel value of 1 to black. (Awaiting confirmation)
+A script that compares each pixel side by side (both directions), and sets the pixels that have a difference in any channel value of 1 to RGB(0, 0, 0) (black). What's interesting about this solution is that it outlines the flag text instead of colouring it into a different colour entirely. This method also reveals the Easter egg hidden within the grass patch.
 
-![as](images/as.png)
+![asdiml](images/asdiml.png)
 
 
 
@@ -124,6 +126,6 @@ im.putdata([d if d[1] >= 185 and d[1] <= 190 and d[2] == 253 else (0, 0, 0) for 
 im.save('out.png')
 ```
 
-A 4 liner that isolates only the sky colour out. The shortest solution submitted by far.
+A 4 liner that isolates only the sky colour out. This method is similar to @w4123suhui's, but it is the shortest solution submitted by far.
 
-![sk](images/sk.png)
+![skytect](images/skytect.png)
