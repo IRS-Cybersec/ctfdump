@@ -14,7 +14,7 @@ MD5("EncryptSvc2"): `64be4ff56953f0cdf832b91c3b8a56c4`
 <i>A long, long time ago,</i>
 </p>
 
-Team \<my-team\> absolutely failed encryptsvc. Expected, considering we couldn't make heads-or-tails of a Buffer Overflow back then.
+Team \<my-team\> absolutely failed `encryptsvc`. Expected, considering we couldn't make heads-or-tails of a Buffer Overflow back then.
 
 It isn't much too important to dwell on this past, but `encryptsvc2` shares too many similarities with its predecessor to simply ignore it. We'll do a cross-comparison between the two to figure out how to go about the challenge.
 
@@ -204,7 +204,7 @@ That'll be it.
 
 ## Flag
 
-`CDDC20{we_dont_have_it_saved__sorry_lads}
+`CDDC20{we_dont_have_it_saved__sorry_lads}`
 
 ## Code
 
