@@ -81,6 +81,7 @@ case 7u:       // you can write 7 twice to get here
 ```
 
 **Change**: `case 7` didn't exist previously.
+
 **Importance**: Allows the new function `modify_exponent()` to run.
 
 That sums up the dirty work we need for reconnaissance. Now what?
@@ -246,8 +247,6 @@ m = pow(orig_c,x,k.n) * pow(diff_c,y,k.n)
 m %= k.n
 print(m.to_bytes(300,'big').strip(b'\x00')) #<-- this is expected to produce plaintext!
 ```
-
-
 
 ## Footnotes
 
