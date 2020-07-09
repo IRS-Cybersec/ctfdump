@@ -1,6 +1,6 @@
 # CDDC 2020: Warp Gate 4
 
-### How QueeR
+## How QueeR
 
 Something about Unduplicitous Corp using it as their product code, the original description is lost.
 
