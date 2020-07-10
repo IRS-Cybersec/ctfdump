@@ -4,7 +4,7 @@
 
 ------
 
-We are given a `1.img`. Running `file` on it does not give any useful output, only `data`
+We are given a `dump`. Running `file` on it does not give any useful output, only `data`
 
 But if we are to run `strings` on it, we will see messages such as `Windows could not start due to an error while booting from a RAMDISK.`, which suggest that it is a **memory dump**.
 
