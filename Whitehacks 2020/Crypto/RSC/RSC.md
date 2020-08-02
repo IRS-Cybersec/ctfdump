@@ -22,7 +22,7 @@ where `e` is the public exponent, `c` is the encrypted ciphertext, and `n` is a 
 
 ### Thonkeng Teem
 
-#### 1. The meme is very cool. But what does it mean?
+#### 1. The meme is very cool. But what does it meme?
 
 A cursory Google search would bring you to [this page](https://crypto.stackexchange.com/questions/9106/rsa-padding-what-is-it-and-how-does-that-work), where you would see this:
 
@@ -63,16 +63,12 @@ So instead of the correct solution, I'll show my tiny brain so you can learn som
 
 #### 1. Decrypting RSA (monkey-brain)
 
-RSA decrypts by utilising a private exponent `d`, where
-$$
-(c^d)\equiv (m^e)^d\equiv m\pmod n
-$$
+RSA decrypts by utilising a private exponent `d`, where <br>
+![wow](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAexponential.png)<br>
 where `m` is the plain(hex) message.
 
-Because <u>*RSA says so*</u>, `e` and `d` are related by 
-$$
-e*d\equiv 1 \mod \lambda(n)
-$$
+Because <u>*RSA says so*</u>, `e` and `d` are related by <br>
+![again](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAinverseexponential.png)<br>
 where `λ(n)` is the Carmichael totient function of `n`.
 
 You do not need to know what the Carmichael totient function is, but [in case you're curious.](https://en.wikipedia.org/wiki/Carmichael_function)
@@ -86,9 +82,7 @@ Except...
 **The Carmichael totient function has an absolutely HORRIBLE time complexity.**
 
 More specifically, (my code in particular) is <u>at least</u>
-$$
-O((n^2*log(n))
-$$
+![big O](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/On2logn.png)
 Which doesn't sound so bad.
 
 Until you realise that's about **FOREVER** for an n with 100s of digits 
@@ -145,19 +139,13 @@ Let's bring to your attention a few details:
    - Notice that `e` is 5. That's VERY small. We could do something about that
 
 Now that we're on the same page, if
-$$
-m^e\equiv c \pmod n
-$$
-Then it stands to reason that
+ <br>
+![wow1](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAexponential.png)<br>
 
-
-$$
-\root e \of{(k*n+c)} = m
-$$
-where `k` is some constant for which 
-$$
-\root e \of{(k*n+c)}
-$$
+Then it stands to reason that<br>
+![wow2](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAvalueofm.png)<br>
+where `k` is some constant for which <br>
+![wow3](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAethroot.png) <br>
 is an integer.
 
 Hence, we just need to find `k`.
@@ -167,9 +155,7 @@ Hence, we just need to find `k`.
 You **could** do some modular mathemagicks (I guess?), but I opted to brute-force because I AM a <u>monkey-brain</u>.
 
 The time complexity is MUCH better at
-$$
-O(n)
-$$
+![wow4](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/On.png). <br>
 Anyways,
 
 ``````python
