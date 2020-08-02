@@ -22,18 +22,18 @@ First off, we'll have a look at what the `main()` does.
 ```python
 gacha, faker, solves, tries = Gacha(), Faker(), 0, 5000
 while tries:
-	#...
-	correct = gacha.get_next_shipgirl()
-	guess = input()
-	if (guess == correct):
-		solves += 1
-		print("Wow that is correct!")
-	else:
-		solves = 0
-		print("Sorry, that is not correct...")
-	print(f"{name}'s waifu is {correct}")
-	if (solves == 250): #win
-	#...
+    #...
+    correct = gacha.get_next_shipgirl()
+    guess = input()
+    if (guess == correct):
+        solves += 1
+        print("Wow that is correct!")
+    else:
+        solves = 0
+        print("Sorry, that is not correct...")
+    print(f"{name}'s waifu is {correct}")
+    if (solves == 250): #win
+    #...
 ```
 Essentially, the python file needs the remote to correctly guess 250 waifus in succession. 
 
@@ -172,7 +172,7 @@ r.interactive()
 ```
 And with that, we're done!
 ## Flag
-`WH2020{}`
+`WH2020{L1near_C0ngruenCe_Sh1pGirLS}`
 ### Server
 Shortened code for `server.py`
 ```python
