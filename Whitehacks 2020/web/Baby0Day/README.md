@@ -82,7 +82,7 @@ convert sourceFileName -uselessThingBecauseWeDontNeedThis randomFileName; DO EVI
 
 To send the payload, a text input can be created in the website using DevTools (this is how people without Burp Suite roll). Create this structure:
 
-![Create an input field with the name attribute set to convertArgs[adjoin] in the form](https://raw.githubusercontent.com/IRS-Cybersec/ctfdump/master/Whitehacks 2020/web/Baby0Day/devtools.png)
+![Create an input field with the name attribute set to convertArgs[adjoin] in the form](https://raw.githubusercontent.com/IRS-Cybersec/ctfdump/master/Whitehacks%202020/web/Baby0Day/devtools.png)
 
 
 
@@ -175,7 +175,7 @@ Thanks to my teammates for solving less-stupidly-convoluted challs while I was s
 
 Also it's 7 and I still haven't had lunch. No kidding. One more thing: we need more web challs in other ctfs plz @cyberthon @cddc
 
-![My Downloads Folder, 19:00 hours](https://raw.githubusercontent.com/IRS-Cybersec/ctfdump/master/Whitehacks 2020/web/Baby0Day/downloads-folder.png)
+![My Downloads Folder, 19:00 hours](https://raw.githubusercontent.com/IRS-Cybersec/ctfdump/master/Whitehacks%202020/web/Baby0Day/downloads-folder.png)
 
 
 
