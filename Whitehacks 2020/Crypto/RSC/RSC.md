@@ -4,7 +4,7 @@ Made as self-gratification by the unsavory egomaniac that is @N00bcak.
 
 ### Problem Description
 
-<img src="C:\Users\depic\Desktop\programming\CTF write-ups\Images - RSC\dontbelikebill.png" style="zoom: 33%;" />
+<img src="https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/dontbelikebill.png" style="zoom: 20%;" />
 
 Download `vals.txt` and decrypt the value of `c` given all the other parameters.
 
@@ -139,9 +139,9 @@ Anyways,
 
 Let's bring to your attention a few details:
 
-1. [*It is <u>egregiously easy</u> to reverse it*]()
+1. [*It is <u>egregiously easy</u> to reverse it*](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/RSC.md#3-no-i-dont-understand-explain-at-once-or-i-shall-slap-your-pancake-phizog)
    - No padding, remember?
-2. [*It is <u>shockingly simple</u> to do so.*]()
+2. [*It is <u>shockingly simple</u> to do so.*](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/RSC.md#3-no-i-dont-understand-explain-at-once-or-i-shall-slap-your-pancake-phizog)
    - Notice that `e` is 5. That's VERY small. We could do something about that
 
 Now that we're on the same page, if
