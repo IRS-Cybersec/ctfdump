@@ -14,7 +14,7 @@ Attached files: `return-to-whats-revenge` (sha256: 489734ecb8d2595faf11033f34724
 This time I was 4th blood --- things were slowed down a bit because I went to [patch pwnscripts](https://github.com/152334H/pwnscripts/commit/9d3dcd7a4aaf2f10fcf878cd7203a469259d5b58) halfway through.
 
 ## Return-to-what?
-This challenge is a continuation of [Return to what](NOTE: INSERT LINK HERE), and it'll be helpful to see what's changed from that challenge.
+This challenge is a continuation of [Return to what](https://ctftime.org/task/13024), and it'll be helpful to see what's changed from that challenge.
 
 Looking at `main()`, everything looks the same:
 ```c
@@ -37,7 +37,7 @@ Checksec hardly looks different too:
     NX:       NX enabled
     PIE:      No PIE (0x400000)
 ```
-At this point, it's rather tempting to run `return-to-what`'s [exploit code](NOTE: ALSO ADD THIS LINK#Analysis) (with minor edits to match the new binary), and to see if it'll work just-like-that:
+At this point, it's rather tempting to run `return-to-what`'s [exploit code](https://github.com/IRS-Cybersec/ctfdump/blob/master/DownUnderCTF%202020/Return%20to%20what.md#analysis) (with minor edits to match the new binary), and to see if it'll work just-like-that:
 ```python
 from pwnscripts import *
 context.binary = 'return-to-whats-revenge'	# Edited
