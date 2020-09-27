@@ -345,6 +345,7 @@ The instruction that calls `__IO_default_xsgetn` is none other than this:
 ```
 We need `_IO_str_overflow`, but we're getting `_IO_default_xsgetn` instead. The reason for this could not have been more obvious if I had read the blog clearly on the first pass:
 > Now, if I point the vtable to 0x10 bytes before it, fclose will call _IO_str_overflow **(again from gdb)**.
+
 The calculation of `fake_vtable_addr` in the blog is specific to `fwrite()`. To get `puts()` to call the right function, we'll increment the offset to the `fake_vtable` a little bit:
 ```python
 io_str_overflow_ptr_addr = context.libc.symbols['_IO_file_jumps'] + 0xd8
