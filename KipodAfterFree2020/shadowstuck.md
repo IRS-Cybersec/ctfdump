@@ -1,4 +1,4 @@
-# ShadowStuck [495]
+# ShadowStuck [455]
 Ever since PITA™ declared the usage of stack canaries inhumane, we've been working on bringing you the latest and greatest in animal-abuse-free stack protector technology. Can you crack it?
 
 `nc challenges.ctf.kaf.sh 8000`
@@ -76,7 +76,7 @@ This removes a specific employee from any point in the linked list.
   if (manager_remove(name))
     printf("Could not fire employee with name %s. Maybe no such employee exists?\n", name);
   else {
-    printf_("Employee %s removed. Please enter a short note as to why they were fired.\n> ", name);
+    printf("Employee %s removed. Please enter a short note as to why they were fired.\n> ", name);
     char *note = (char *)malloc(NOTESIZE); // Note that this provides the same chunk size as alloc(NAMESIZE).
     fgets(note, NOTESIZE, stdin);
     remove_newlines(note, NOTESIZE);
@@ -224,10 +224,10 @@ This is used to print out employee names and sacking notes.
 ```c
 __int64 manager_log(char *note@<rdx>, int added@<edi>, char *name@<rsi>) {
   if (!name) return 1;
-  if (added) printf_("[LOG]: Added new employee with name %s\n", name);
+  if (added) printf("[LOG]: Added new employee with name %s\n", name);
   else { //employee was removed
     if (!note) return 1;
-    printf_("[LOG]: Removed employee with name %s. Reason: %s\n", name, note);
+    printf("[LOG]: Removed employee with name %s. Reason: %s\n", name, note);
   }
 }
 ```
@@ -346,7 +346,7 @@ int main() {
   setvbuf(stdout, 0, 2, 0);
   puts("Welcome to KEMS, the Kipod Employee Management System!\nWhat would you like to do today?");
   while (1) {
-    printf_("[A]dd a new a employee\n[F]ire an employee\n[C]hange employee name\n[R]ead employee name\n[Q]uit\n> ", 0LL);
+    printf("[A]dd a new a employee\n[F]ire an employee\n[C]hange employee name\n[R]ead employee name\n[Q]uit\n> ", 0LL);
     while ((c = getc(stdin)) != '\n');
     unsigned int action = c-'A'; //eax
     if (action <= 0x11)
@@ -367,7 +367,7 @@ int main() {
         case 17:
           kems_read(); break;
       }
-    puts_("\nInvalid action! Please try again.");
+    puts("\nInvalid action! Please try again.");
   }
 }
 ```
