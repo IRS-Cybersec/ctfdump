@@ -1,4 +1,4 @@
-# Corrupted Hive [3000 Points] 
+# Corrupted Hive [3000 Points]  - 0 Solves (Cat 3)
 
 ### *This challenge was not solved during the competition*
 
@@ -128,7 +128,7 @@ C0 00 --> Spare
 4B 65 79 --> Value name string (length 3: "Key")
 ```
 
-Let's jump to the data at `C20250` (big-endian address), we find another `Raw Value Data`, which looks **oddly like base64**
+Let's jump to the data at `C20250` (`C1F1F0+1000`) (big-endian address), we find another `Raw Value Data`, which looks **oddly like base64**
 
 ```
 B0 FF FF FF --> Size
@@ -148,3 +148,12 @@ govtech-csg{R3g157ry_H1v3}
 ```
 
 (somehow, we still haven't figured out the bifid cipher grid)
+
+
+
+## Addendum
+
+Now you might be wondering, what about the `Parent Key Node offset` in the `covid` Key-Node?
+
+- Well I followed it and it seemed to lead to junk after 1 key node
+
