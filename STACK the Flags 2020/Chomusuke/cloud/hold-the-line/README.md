@@ -151,6 +151,8 @@ Next, we tried to use SSRF to use the [metadata service](https://blog.christophe
 ### Solution
 Finally, it hit us that environment variables existed. **GROUNDBREAKING DISCOVERY**.
 
+(Environment variables are the values of your computer's operating system (environment). They affect how programs run and whether you use "python" or "/usr/bin/python" or what have you.)
+
 This is where Lambda functions commonly store secrets and configuration data:
 
 ![Environment variables used in Lambda](env.png)
