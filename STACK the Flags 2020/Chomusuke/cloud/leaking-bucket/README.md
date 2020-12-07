@@ -1,4 +1,4 @@
-# Leaking Bucket
+# Find the leaking bucket!
 **978 Points // 12 Solves**
 
 It was made known to us that agents of COViD are exfiltrating data to a hidden S3 bucket in AWS! We do not know the bucket name! One tip from our experienced officers is that bucket naming often uses common words related to the company’s business.  
@@ -15,8 +15,7 @@ Opening the company website, we see a word cloud with many keywords that represe
 
 We started writing a script to loop through all of the words in the wordcloud, which can be found [here](script.js). We can just try all the permutations of words possible (the script isn't the most efficient though). A 404 Not Found error will be returned if the bucket is not found, so the script prints any URL that did not result in a 404.
 
-A few possible return values were possible:
-??
+_(in hindsight, a much better solution would have been using a web fuzzer like [ffuf](https://github.com/ffuf/ffuf), which is able to parallelize this type of attack and perform it much faster)_
 
 However, the script did not work and nothing was printed in the end. This led to us believing that it was not possible to simply use a wordlist to find the bucket. Another lead we had was to find the bucket behind CloudFront. The company website was hosted on CloudFront, Amazon's CDN service, and the backend was powered by S3. We knew this because the response headers from the webstie listed S3 as the server:
 
@@ -113,6 +112,8 @@ Method = ZipCrypto Deflate
 $ crc32 "STACK the Flags Consent and Indemnity Form.docx"
 e2275601
 ```
+
+_(we opted not to use `govtech-csg{` as our plaintext, because it seems like the KPA runs faster with a larger plaintext)_
 
 Hence, we could use this file as our known plaintext and perform the attack. A well-known tool to perform such an attack is [`PkCrack`](https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html), but this was the first time we had ever used it. Unfortunately, the executables were waaaaay too old and Windows could not run them:
 
