@@ -18,6 +18,8 @@ So basically, we need to look for the follow information:
 
 
 
+## First Steps
+
 We are given a `.eml` file which when opened, has the following contents:
 
 ```
@@ -91,6 +93,8 @@ python3 sherlock/ lionelcxy
 
 Now only the **Instagram** and **Twitter** accounts seem to be related to the terrorist we are searching for.
 
+## Finding his Phone Number
+
 On the **Twitter** account, we find a **Carousell Post** for a **PS1** (*wowzies, can I actually buy it?*)
 
 ![](2.jpg)
@@ -100,6 +104,8 @@ Following the Carousell link, we find the **9 digit phone number** we are after 
 ![](3.jpg)
 
 
+
+## Finding his Postal Code
 
 Alright! We got 1 piece of the puzzle, let's move on to **Instagram**.
 
@@ -126,6 +132,8 @@ Chotto Matte!!! `Social Space... just at my block`!? I think we just found where
 A quick Google Maps search reveals only **1** `Social Space` cafe that is **located within a few minutes walking distance** of Lau Pa Sat... at **Marina One Residences (Garden Tower)** with the postal code `018935`. Bingo! Just his full name left.
 
 
+
+## Finding his Full Name
 
 We went onto google and googled `lionelcheng@protonmail.com` which gave a LinkedIn page matching the email exactly... and the terrorist's **full name!**
 
