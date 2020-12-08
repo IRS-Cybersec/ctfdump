@@ -312,4 +312,5 @@ print(r.recvuntil("}"))
 ```
 ![](finally.png)
 We get the flag!
+
 `Flag: govtech-csg{c0v1d_5y5tem_d0wn!}`
