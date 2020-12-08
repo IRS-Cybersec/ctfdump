@@ -217,9 +217,9 @@ Piecing it together, we have:
 
 ​																					
 
-Voices in the head -> hallucinations -> mental illness -> "crazy"  |
+Voices in the head -> hallucinations -> mental illness -> "crazy"   |
 
-​																												 |-----> "Siao" -> Xiao Steganography
+--------------------------------------------------------------------------------------------|-----> "Siao" -> Xiao Steganography
 
-Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"   |
+Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"    |
 
