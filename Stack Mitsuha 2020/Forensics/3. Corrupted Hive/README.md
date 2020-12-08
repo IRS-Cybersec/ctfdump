@@ -128,7 +128,14 @@ C0 00 --> Spare
 4B 65 79 --> Value name string (length 3: "Key")
 ```
 
-Let's jump to the data at `C20250` (`C1F1F0+1000`) (big-endian address), we find another `Raw Value Data`, which looks **oddly like base64**
+Let's jump to the data at `C201F0` (`C1F1F0+1000`) (big-endian address), we find another `Raw Value Data` cell,
+
+``` 
+E0 FF FF FF --> Size
+69 00 6D 00 70 00 6F 00 72 00 74 00 61 00 6E 00 74 00 6B 00 65 00 79 --> "importantkey" (cleaned up)
+```
+
+hmmm.... no idea what this is... but hey, the raw value data cell below looks seriously interesting! It looks **oddly like base64**!
 
 ```
 B0 FF FF FF --> Size
@@ -141,13 +148,15 @@ gvnlqop-sot{W3n157uu_U1a3}
 
 Now... that looks really really like the flag! But how do you decode it? After trying several different ciphers, we finally realised there was some white text in the docx from the previous challenge.
 
-It read `The attacker like to use Bifid Cipher`, and hence we end up with:
+It read `The attacker like to use Bifid Cipher`, but..... after bruteforcing for a while, we still couldn't get the flag. 
+
+Chotto Matte... `importantkey` is the keyword for the Bifid Cipher, could it be?
 
 ```
 govtech-csg{R3g157ry_H1v3}
 ```
 
-(somehow, we still haven't figured out the bifid cipher grid)
+Indeed.
 
 
 
