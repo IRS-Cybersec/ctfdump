@@ -189,11 +189,14 @@ Hmmmm nothing out of the ordinary unfortunately... the 2 processes which weren't
 
 I then decided to run various Windows Malware plugins such as `malfind`, `idrmoudles`, `svcscan` and more but to no avail... it almost seems like the malware didn't exist.
 
-Looking back at the challenge description once more, `what did the user do?` made me wonder... maybe the user downloaded something in chrome? Let's run the `chromehistory` plugin to check it out! **Note:** I have removed the last 3 columns for this to fit into the page
+Looking back at the challenge description once more, `what did the user do?` made me wonder... maybe the user downloaded something in chrome? Let's run the `chromehistory` plugin to check it out! (**Note:** I have removed the last 3 columns for this to fit into the page)
 
-```
-Index  URL                                                                              Title                                                                           
------- -------------------------------------------------------------------------------- ---------------------------------------------------------------------------
+*`chromedownloads` and other related plugins did not seem to return any output, so I will not be posting them here*
+
+```bash
+volatility --plugins=volatility-plugins-master -f forensics-challenge-1.mem --profile=Win7SP1x64 chromehistory
+Index  URL                                                                              Title                      
+------ -------------------------------------------------------------------------------- -------------------------------------------------
     14 https://www.google.com/search?q=smart+n...j0l7.3224j0j7&sourceid=chrome&ie=UTF-8 smart nation singapore - Google Search                                                  
     13 https://www.google.com/search?q=stack+g...9i59.5761j0j7&sourceid=chrome&ie=UTF-8 stack govtech 2020 - Google Search                                                       
     12 https://www.channelnewsasia.com/                                                 CNA - Breaking news, latest Singapore, Asia and world news                               
@@ -216,7 +219,7 @@ Index  URL                                                                      
     16 https://www.google.com/search?q=govtech...99j0.1710j0j7&sourceid=chrome&ie=UTF-8 govtech singapore - Google Search                                                 
     15 https://www.google.com/search?ei=sCPHX9...ÿÿH9ÊHCøH…ÿtH9Ç‡  Hý    èoåAë 1ÀHØHøL‰"HØHƒÀH9õ„‡                 
      8 http://www.mediafire.com/view/5wo9db2pa7gdcoc/This_is_a_png_file.png/file        This is a png file.png - MediaFire                                              
-    24 http://www.mediafire.com/view/5wo9db2pa7gdcoc/                                   This is a png file.png - MediaFire                                                
+    24 http://www.mediafire.com/view/5wo9db2pa7gdcoc/  [!!!!]                           This is a png file.png - MediaFire                                                
     23 https://ctf.tech.gov.sg/                                                         STACK the Flags                                                               
     20 https://www.tech.gov.sg/cyber-security-group                                     Cyber Security Group (CSG)                                                      
     19 https://token.gowhere.gov.sg/                                                    Token Go Where                                                                    
@@ -233,7 +236,7 @@ After visiting the site, we get a ... *png* (not to mention how small it is)?
 
 I did not think much about the png at first since I thought we were looking for *real malware*. Hence I went back to the dump and dumped DLLs and more for several more hours with no luck :sweat:.
 
-After a whole 18 hours, I finally decided to relook at everything I have and found the png. I then decided to run some basic steganography decoders such as LSBsteg and zsteg. When running zsteg:
+After a wholesome 18 hours, I finally decided to relook at everything I have and decided to take another shot at the png. I then decided to run some basic steganography decoders such as LSBsteg and zsteg. When running zsteg:
 
 ```bash
  zsteg -a This\ is\ a\ png\ file\ \(2\).png
@@ -266,4 +269,4 @@ govtech-csg{m3m0ry_R3dGr33nBlu3z}
 
 - I shouldn't have left the png alone... Leave no stone unturned!!!
 - I was actually hoping for real malware 
-- What zsteg seems to be doing is that it's extracting the Least Significant Bit (LSB) from the rgb planes... I wonder why my LSB tools didn't work
+- What zsteg seems to be doing is that it's extracting the Least Significant Bit (LSB) from the rgb planes... somehow... I guess you could also script this manually by using the PIL Python library, which is what my friends from other teams did, but I guess I got a lucky break using zsteg :smile:.

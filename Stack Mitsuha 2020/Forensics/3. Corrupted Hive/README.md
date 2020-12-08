@@ -114,7 +114,7 @@ F0 FF FF FF --> Size of cell
 
 
 
-Calculating the offset in big-endian, we have: C09360 + 1000 = **C0A360**, and we end up at a **Key-Value** (*we are close to the data*)! Again, let's analyse the Key-Value:
+Calculating the offset in big-endian, we have: C09360 + 1000 = **C0A360**, and we end up at a **Key-Value** (*we are close to the data*)! Let's analyse the Key-Value (`vk`) with [this format](https://github.com/msuhanov/regf/blob/master/Windows%20registry%20file%20format%20specification.md#key-value):
 
 ```
 E0 FF FF FF --> Size
