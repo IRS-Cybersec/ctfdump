@@ -6,6 +6,10 @@ We are trying to find out how did our machine get infected. What did the user do
 
 We are given a memory dump, and hence the first thing is to pull out the **good ol' volatility**
 
+
+
+## Basic Analysis
+
 Let's first run a basic `imageinfo` to determine the profile.
 
 ```bash
@@ -188,6 +192,10 @@ Offset(P)          Name                    PID pslist psscan thrdproc pspcid csr
 Hmmmm nothing out of the ordinary unfortunately... the 2 processes which weren't listed in pslist were merely because they had exited.
 
 I then decided to run various Windows Malware plugins such as `malfind`, `idrmoudles`, `svcscan` and more but to no avail... it almost seems like the malware didn't exist.
+
+
+
+## The Actual Solution
 
 Looking back at the challenge description once more, `what did the user do?` made me wonder... maybe the user downloaded something in chrome? Let's run the `chromehistory` plugin to check it out! (**Note:** I have removed the last 3 columns for this to fit into the page)
 

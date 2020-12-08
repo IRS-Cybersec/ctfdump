@@ -6,6 +6,10 @@ Our agents discovered COViD's admin panel! They also stole the credentials minio
 Admin Panel (http://yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg:41031/)
 ```
 
+
+
+## First Analysis
+
 When we visit the site, we are greeted a login page. However, when we try to key in the credentials `minion:banana` to login, we get a message `Only admins are allowed into HQ!` 
 
 ![1.jpg](1.jpg)
@@ -56,6 +60,8 @@ So what the page is basically doing is:
 2. Gets the response, and then sends an `accessToken` to another `unlock` endpoint via GET
 3. If the response `data.error` is false, then we will be given the flag (`data.flag`)
 
+
+
 Looking at the response for step 2 in `Network` of Chrome Developer Tools:
 
 ```json
@@ -75,6 +81,10 @@ Let's put it into `jwt.io` to look at its contents:
 ![](2.jpg)
 
 Aha! It seems like in the token, our role is only a `user`, but as we know **only admins can login**.
+
+## 
+
+## Exploiting the JWT
 
 Now we can easily change the role value to "admin", but we will have to **resign the token(AccessCode) with a new signature** if not it will be invalid. *How will we do that?*  
 
