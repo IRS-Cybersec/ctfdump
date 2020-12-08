@@ -8,7 +8,7 @@ _____
 
 ____
 
-### Unorthodox Message within the audio recording
+### Unorthodox Message (Spectrogram Analysis)
 
 _________
 
@@ -18,7 +18,7 @@ To double check, `ExifTool` was used to ensure that there were no information hi
 
 `Warning                         : Error reading RIFF file (corrupted?)`
 
-With this in mind, we move on to the next step of analysis: Waveform Analysis
+With this in mind, we move on to the next step of analysis: Spectrogram Analysis
 
 Information can be hidden in an audio file in quite a handful of ways, one of them being in the spectrogram. 
 
@@ -46,7 +46,7 @@ From these clues, we expected this to be a [Steganography](https://en.wikipedia.
 
 
 
-### Pastebin Madness
+### Pastebin Madness (Esoteric Programming Language)
 
 _______
 
@@ -56,7 +56,7 @@ Going to this Pastebin page leads us to yet another code:
 ++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>>++++++++++++++++.------------.+.++++++++++.----------.++++++++++.-----.+.+++++..------------.---.+.++++++.-----------.++++++.
 ```
 
-As we had prior experience with this language, we immediately identified it as [BrainF[FamilyFriendlyContent]k](https://en.wikipedia.org/wiki/Brainfuck), but for those who may not have seen it before, *Google is your best friend!*
+As we had prior experience with this language, we immediately identified it as [BrainF[FamilyFriendlyContent]k](https://en.wikipedia.org/wiki/Brainfuck), but for those who may not have seen it before, not to worry because Google can aid you in finding out the language. You just have to be specific in what you want to search. Below is an an example of obtaining the language link from a stack overflow website:
 
 ![osintl](osintl.png)
 
@@ -112,7 +112,7 @@ We noticed that the forensics .wav actually had `01` along side `00` within the 
 
 
 
-### The Salvation from Insanity...
+### Solving the challenge with Xiao Steganography
 
 Eventually, the staffs released a free hint for everyone, which was as follows: `Xiao wants to help. Will you let him help you?`
 
