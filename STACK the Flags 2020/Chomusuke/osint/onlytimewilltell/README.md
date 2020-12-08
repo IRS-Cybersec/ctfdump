@@ -116,7 +116,7 @@ Hence, our estimation for the time in which this photo was taken is somewhere be
 However, we have actually **underestimated** the time! \ (oAo) /
 
 Below we offer some explanations why:
-1. It is very likely that, judging by the picture, the Sun's rays are actually collinear with the shadow of the signpost somewhere closer to the position corresponding to the center of the signpost.
+1. It is very likely that, judging by the picture, **☀️☀️☀️THE SUN☀️☀️☀️**'s rays are actually collinear with the shadow of the signpost somewhere closer to the position corresponding to the center of the signpost.
     - In pictures:
     - ![](diagram.png)
 2. Perspective is messing everything up again >:c
