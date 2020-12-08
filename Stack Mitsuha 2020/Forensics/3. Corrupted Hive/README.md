@@ -13,8 +13,6 @@ Afterwards, we tried to repair the registry hive by fixing all the `hbin` header
 
 ## So how do you solve this?
 
-After the CTF, we asked the staff member who made this challenge: `w31q` on how to solve it.
-
 Apparently, the goal was **not to fix the corrupted hive** (since it is probably corrupted beyond imagination - *that English dictionary, gosh*), but rather **scrap the various data fragments out of the hive by understanding the file structure**
 
 ## Let's Dive in!
