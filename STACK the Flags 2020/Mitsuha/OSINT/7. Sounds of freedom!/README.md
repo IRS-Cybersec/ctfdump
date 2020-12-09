@@ -1,6 +1,6 @@
 # Sounds of freedom!
 
-## OSINT
+## OSINT [750] - 31 Solves
 
 ***In a recent raid on a suspected COViD hideout, we found this video in a thumbdrive on-site. We are not sure what this video signifies but we suspect COViD's henchmen might be surveying a potential target site for a biological bomb. We believe that the attack may happen soon. We need your help to identify the water body in this video! This will be a starting point for us to do an area sweep of the vicinity!***
 
