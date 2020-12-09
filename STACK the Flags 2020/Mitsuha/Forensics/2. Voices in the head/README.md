@@ -64,7 +64,7 @@ As we had prior experience with this language, we immediately identified it as [
 
 
 
-Bingo, we can find the language using this way!
+Bingo, we can find the language using this way! 
 
 [BrainF[FamilyFriendlyContent]k](https://en.wikipedia.org/wiki/Brainfuck) is an esoteric programming language that only uses eight commands and an instruction pointer to form the entire code. While understanding it could be interesting, we found an [online compiler](https://www.tutorialspoint.com/execute_brainfk_online.php) that could run the script for us, saving us some time. (Most esoteric languages will have online interpreters.)
 
