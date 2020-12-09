@@ -1,4 +1,4 @@
-# Hunt Him Down [OSINT]
+# Hunt Him Down (OSINT)
 
 **970 Points // 14 Solves**
 
