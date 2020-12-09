@@ -20,13 +20,13 @@ We are given a `.eml` file.
 
  which opens up to give us this:
 
-![Email](Email.png)
+![](1.png)
 
 
 
 Checking the sender, we see this email address:
 
-![Sender's Email Address](Sender's Email.png)
+![](2.png)
 
 
 
@@ -45,7 +45,7 @@ In the first case, we are assuming that `theOne` is the sender's choice of usern
 
 Directly attempting to connect to `c0v1d.cf` gives us an error message:
 
-![c0v1d.cf Error Message](c0v1d.cf Error Message.png)
+![](3.png)
 
 so directly connecting to it is not the solution.
 
@@ -61,13 +61,13 @@ Since know the domain name and want to find information about it, we should perf
 
 The tool we used was [this](https://toolbox.googleapps.com/apps/dig/) by Google Admin Toolbox. Inputting `c0v1d.cf` into the blank, we see this:
 
-![Dig](Dig.png)
+![](4.png)
 
 
 
 The settings basically switches around the [types of DNS Record](https://en.wikipedia.org/wiki/List_of_DNS_record_types). The one we want generally is  `ANY`, because it lists the DNS Records of  `ANY ` type. (It can be incomplete though, so check through the others if  `ANY` yields nothing useful.)
 
-![Dig 2](Dig 2.png)
+![](5.png)
 
 
 
@@ -83,7 +83,7 @@ Since we now have this username `lionelcxy` and email `lionelcheng@protonmail.co
 
 Just a quick google with his email gives us his LinkedIn, which gives us his fullname.
 
-![lionelcxy's Linkedin](lionelcxy's Linkedin.png)
+![](6.png)
 
 (so, his fullname is LionelChengXiangYi, the format is as hinted in the example flag)
 
@@ -116,33 +116,33 @@ The working links are Instagram, Twitter and Telegram. The former 2 are probably
 
 This is his Instagram. 
 
-![lionelcxy's Instagram](lionelcxy's Instagram.png)
+![](7.png)
 
 
 
 The first post tells us he lives near Lau Pa Sat
 
-![lionelcxy's IG Post 1](lionelcxy's IG Post 1.png)
+![](8.png)
 
 
 
 The second is gives us his Strava account.
 
-![lionelcxy's IG Post 2](lionelcxy's IG Post 2.png)
+![](9.png)
 
 
 
 His Strava account doesn't seem to have anything.
 
-![lionelcxy's Strava ](lionelcxy's Strava .png)
+![](10.png)
 
 But it seems rather weird that there is no activities but there are records on Distance and Moving Time, so we decided to follow his account to see if there's any follower-only information.
 
-![lionelcxy's Strava 2](lionelcxy's Strava 2.png)
+![](11.png)
 
 We see 2 entries here and the first seems especially relevant since it's about getting home and we want to find his residential postal code.
 
-![Screenshot 2020-12-09 at 6.07.08 PM](Screenshot 2020-12-09 at 6.07.08 PM.png)
+![](12.png)
 
 *Social Space closes so early. It was just at my block...*
 
@@ -150,7 +150,7 @@ We see 2 entries here and the first seems especially relevant since it's about g
 
 He lives at a block with a 'Social Space', googling which tells us it is a store. 
 
-![Social Space](Social Space.png)
+![](13.png)
 
 
 
@@ -162,7 +162,7 @@ There are 2 outlets there. The phrasing of *Social Space closes so early. It was
 
 Since we've combed through both his Instagram and Strava, we moved on to his other social media account Twitter.
 
-![lionelcxy's Twitter](lionelcxy's Twitter.png)
+![](14.png)
 
 
 
