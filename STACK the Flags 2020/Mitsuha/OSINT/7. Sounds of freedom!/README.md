@@ -150,7 +150,7 @@ Alright, now that we have the relevant information, let's bring up Google Maps/G
 
 
 
-Let's identify the various airbases and airports:
+Let's identify the various air bases and airports:
 
 ![11](11.png)
 
