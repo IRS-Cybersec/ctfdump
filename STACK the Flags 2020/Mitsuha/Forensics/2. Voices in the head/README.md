@@ -1,6 +1,6 @@
 # Voices in the head 
 
-## Forensics 
+## Forensics [1692] - 26 Solves
 
 _____
 
