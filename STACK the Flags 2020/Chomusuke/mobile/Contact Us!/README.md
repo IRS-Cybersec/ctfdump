@@ -18,7 +18,7 @@ After downloading and installing the APK file, we are able to reach the followin
 
 According to the challenge name, we click on the "Contact Us" button and reach the following page.
 
-![Contact Us](contact us.jpg)
+![Contact Us](contact_us.jpg)
 
 
 

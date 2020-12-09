@@ -14,7 +14,7 @@ Korovax would like to keep its users informed about the latest updates of COViD,
 
 The name "Subscribe" leads us to the second part of the "Contact Us" page.
 
-![Contact Us](contact us.jpg)
+![Contact Us](contact_us.jpg)
 
 
 
