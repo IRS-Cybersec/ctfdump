@@ -8,8 +8,6 @@
 
 __________
 
-
-
 ### The Video in Question
 
 ______
