@@ -10,6 +10,8 @@ Example Flag: govtech-csg{JohnLeeHaoHao-123456789-888888}
 
 *Flag Format: govtech-csg{fullname-phone number[9digits]-residential postal code[6digits]}* 
 
+
+
 ## Email
 
 We are given a `.eml` file.
