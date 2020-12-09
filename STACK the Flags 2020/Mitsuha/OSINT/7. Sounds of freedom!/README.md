@@ -22,7 +22,7 @@ After conducting the video, we can then start to identify the relevant landmarks
 
 
 
-**The progress should be as follows:**
+**The progress will be as follows:**
 
 **A. Gather information from the video.**
 
