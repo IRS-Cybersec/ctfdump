@@ -7,16 +7,19 @@
 - Transmission will likely refer to the Beacon Frames sent by routers and Access Points (APs), so we filter the packets by the packet type (Beacon Frames)
 - Scrolling to a random beacon frame packet, we find out that the type of packet is 8.
 - Hence, Filter Command: `wlan.fc.subtype == 8`
+![](image0.png)
 
 ### Large? No its too big
 - Going by instinct, we roughly know that hidden information are usually inside either the largest or the smallest packets.
 - After opening the capture in Wireshark, we sort the packets by the packet length with the largest first.
 - Looking at the top few packets did not seem to reveal anything suspicious and seemed like normal broadcast packets.
+![](image1.png)
 
 ### Small and suspicious
 - So we move on to look at the smaller packets, and we see that the packet do look somewhat "normal" on the outside.
 - However, upon taking a closer look, we see that there is some extra data at the end of the packet that does not seem to be visible in other beacon frames (compared to the ones above).
 - This data is rather suspicious, so we extract them from the packets.
+![](image2.png)
 
 ### Beep-Boop!
 - Copying all the extra information from the packets, we end up with something as follow (in hex):
@@ -39,5 +42,3 @@
 1. Even though we see sooooooo many packets (8000+), we should not be discouraged and instead look for hints in the challenge.
 2. Knowing that the length of a packet will be a great way to find interesting packets for similar challenges like these!
 3. Trial and Error is a great tool to help you find your way through this challenge, I went to try multiple different things such as hidden SSID names and weird SSID names but found that they were not the flag.
-
-// TODO: add images

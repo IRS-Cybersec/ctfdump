@@ -5,17 +5,19 @@
 - In this challenge, we are given a .pcap file for us to analyse. Upon opening the file with Wireshark, we see that there is a bunch of bluetooth packets (bluetooth is 2.4GHz).
 - As we are only interested in what is being sent out by the device, we filter the source address to localhost using the following filter: `bthci_acl.src.bd_addr == 00:00:00:00:00:00`
 - We apply our intuitive concept of sorting by packet length, and we view the packets from the largest first.
+![](image0.png)
 
 ### Secret communications
 - We do see some kind of a chat conversation going on with some messages, especially that one where it originated from the technician's boss!
 - Looking further down the packets, we notice an interesting packet that contained the letters "ELF" (packet #129).
+![](image1.png)
 - For those not well-versed with file signatures, ELF represents an executable file for linux systems.
 - With some clues to know what files to find, we now proceed to extract the file.
 
 ### Very secret file
 - Another interesting thing is to note the size of the packet with the ELF is only 28 bytes, and only 19 bytes are part of the file. This meant that there are many of such packets and extracting them by hand would be rather impossible.
-- To facilitate the process of getting the packets, we first export the packet dissections to a JSON file. Then, we write a simple script to filter the packets to obtain packets that are `Sent Write Request` and with a packet length of 28.
-
+- To facilitate the process of getting the packets, we first export the packet dissections to a JSON file. Then, we write a simple script to filter the packets to obtain packets that are `Sent Write Request` and with a packet length of 28.  
+![](image2.png)  
 ```js
 const fs = require('fs');
 const capture = fs.readFileSync('./iot-chall3.json');
@@ -130,3 +132,8 @@ This Z3 script provides the string `aNtiB!e`.
 
 ## Flag
 `govtech-csg{aNtiB!e}`
+
+### Learning Outcomes
+1. Follow the hints and description given in the challenge description closely, they will be helpful to identify what the challenge is looking for and know what to do (in this case we need to intercept a file)
+2. Teamwork is important when doing a CTF challenge, so that we can delegate certain tasks or challenges that are not within our abilities to those that are more suited for the task (such as the reverse engineering part)
+3. Be meticulous for these kind of forensic-ish challenges, note small details and they will help you to solve the challenge (in this case the last missing smaller packet to complete the file)
