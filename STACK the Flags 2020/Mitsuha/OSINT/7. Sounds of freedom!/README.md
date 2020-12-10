@@ -60,7 +60,7 @@ Let's see what is present in the foreground of the video.
 
 It seems to be reminiscent of a **Housing Development Board (HDB) Flat**. These flats are a form of public housing provided by the Singapore government. An example of a cluster of HDB flats is shown below.
 
-![3](3.jpg)
+![3](3.png)
 
 However, it could also be a **condominium**, so we will keep both of these in mind.
 
