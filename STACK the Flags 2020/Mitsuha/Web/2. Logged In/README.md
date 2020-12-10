@@ -62,13 +62,13 @@ for (String line : response) {
 - It is common knowledge that making a network request over the Internet will lead to packets being sent from the client to server and vice-versa.
 - We will capture the packets sent to the server on Android using a tool called "Packet Capture"
 - After downloading the application, we start listening for packets from the KoroVax application login page.
-![](image3.png)
+![](image3.jpg)
 
 ### Head of headers
 - Upon going to the login page in the mobile application, we see that there are packets successfully captured.  
-![](image4.png)  
+![](image4.jpg)  
 - The flag of our challenge is also found within the packet capture, ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```  
-![](image5.png)  
+![](image5.jpg)  
 - Looking at the request, we see that there are some interesting headers being sent, notably the `username` and `password` header.
 - This likely means that the mobile application is able to pass the authentication through these headers, and we verify our hypothesis by make a similar request with random data.
 - Command: `curl -X POST http://yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg:41061/api/login -H "username: GOVTECH" -H "password: CSG"`
