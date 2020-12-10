@@ -14,7 +14,7 @@ In a recent raid on a suspected COViD hideout, we found this video in a thumbdri
 
 We are provided with this video.
 
-<video src="osint-challenge-7-compressed.mp4"></video>
+<video src="/osint-challenge-7-compressed.mp4"></video>
 
 
 
