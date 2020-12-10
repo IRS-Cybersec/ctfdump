@@ -69,5 +69,6 @@ So we have found the spot, hurray!
 
 Initially we thought we were supposed to find the postal code of the building but it was not the flag and we realised they wanted the postal code of the pond.
 
-However, the pond itself did not have a postal code so we were confused. We decided to just submit the postal code of the park and it was indeed the flag `govtech-csg{538768}` :D
+However, the pond itself did not have a postal code so we were confused. We decided to just submit the postal code of the park and it was indeed the flag:
+`flag: govtech-csg{538768}` :D
 
