@@ -35,6 +35,72 @@
 - Submit the request again using the command: `curl -X POST http://yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg:41061/api/login -H "Content-Type: application/json" -d '{"username": "", "password": ""}'`
 - It works!
 
+**Hmmm... why does it work?**
+
+- Let's look at the source code again, we know that the login endpoint is `/api/login` from above, and it checks for the existence of the `username` and `password` fields in several areas (such as `req.body`, `req.headers`)
+
+- This information is then passed onto many callback functions including a `localAuthenticator` callback function:
+
+- ```javascript
+  //api.js
+  
+  router.post('/login', loginValidator, sendValidationErrors, localAuthenticator, function (req, res) {
+    res.json({ "flagOne": process.env.FLAG_ONE, "encryptedFlagTwo": encryptFlag(process.env.FLAG_TWO) })
+  });
+  ```
+
+- Looking at `localAuthenticator`:
+
+- ```javascript
+  //authenticator.js
+  
+  var passport = require('passport')
+  
+  function localAuthenticator(req, res, next) {
+      passport.authenticate('local', { session: false }, function (err, user, info) {
+          if (err) {
+              return res.status(401).json({
+                  "error": err.message
+              });
+          }
+          next();
+      })(req, res, next)
+  }
+  
+  module.exports = {
+      localAuthenticator,
+  }
+  ```
+
+- It seems like the application is using the `passport` library for authentication. Let's take a look at the **localStrategy (Configuration)** of `passport`, which is used to check whether the credentials are correct:
+
+- ```javascript
+  //initLocalStrategy.js
+  
+      passport.use(new LocalStrategy(
+          async function (username, password, done) {
+              const user = await User.findOne({ where: { username } });
+              if (user !== null && bcrypt.compareSync(password, user.password)) {
+                  if (user.username === 'gru_felonius' && bcrypt.compareSync(password, user.password)) {
+                      return done(null, user);
+                  }
+                  return done(new Error('Only Gru is allowed!'));
+              }
+              return done(new Error('Invalid credentials'));
+          }
+      ));
+  ```
+
+- Now when reading through the documentation for the localStrategy, one particular paragraph caught our attention regarding the `return` statements which tell `authenticate` whether the login was successful:
+
+- ```
+  Note that it is important to distinguish the two failure cases that can occur. The latter is a server exception, in which err is set to a non-null value. Authentication failures are natural conditions, in which the server is operating normally. Ensure that err remains null, and use the final argument to pass additional details.
+  ```
+
+- In this case, `new Error('Invalid credentials')` is clearly a **non-null value**, the correct way to raise an error should have been something like `return done(null, false, { message: 'Invalid credentials' });`
+
+- Hence, since the return is **always a non-null value**, **anything passed as the password and username** (as long as they are set), will always **result in a login and give us the flag**
+
 Flag: ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```
 
 ## Solution 3 (Mobile)
