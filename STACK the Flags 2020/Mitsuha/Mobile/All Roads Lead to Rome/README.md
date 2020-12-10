@@ -210,5 +210,5 @@ print(dUI("8443410818532819843239113959333039368139089308839181213938232000"))
 ```
 This gives us `GOVTECH-CSG-1T5SUP3RC0MPL1CAT3D-EEE`. The EEE at the back is just padding, and as for the rest of the characters, we'll assume lowercase & replace `-` with `{}` appropriately:
 ```
-govtech-csg{1t5sup3rc0mpl1cat3d}
+govtech-csg{1T5SUP3RC0MPL1CAT3D}
 ```
