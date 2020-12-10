@@ -39,7 +39,7 @@ There are 2 ways we could approach this,
 1. Through `theOne` 
 2. Through `c0v1d.cf`
 
-In the first case, we are assuming that `theOne` is the sender's choice of username. In this case it is unlikely however since `theOne` is rather generic. For the second method, we know from the email that `c0v1d.cf` is a domain, since 
+In the first case, we are assuming that `theOne` is the sender's choice of username (but `theOne` is rather generic!). For the second method, we know from the email that `c0v1d.cf` is a domain, since 
 
 > The format of an email address is local-part@domain
 
@@ -49,7 +49,7 @@ Directly attempting to connect to `c0v1d.cf` gives us an error message:
 
 ![](3.png)
 
-so directly connecting to it is not the solution.
+so directly connecting to it is not the solution :(
 
 
 
@@ -67,13 +67,14 @@ The tool we used was [this](https://toolbox.googleapps.com/apps/dig/) by Google 
 
 
 
-The settings basically switches around the [types of DNS Record](https://en.wikipedia.org/wiki/List_of_DNS_record_types). The one we want generally is  `ANY`, because it lists the DNS Records of  `ANY ` type. (It can be incomplete though, so check through the others if  `ANY` yields nothing useful.)
+The settings basically switches around the [types of DNS Record](https://en.wikipedia.org/wiki/List_of_DNS_record_types). The one we want generally is  `ANY`, because it lists the DNS Records of  `ANY ` type. (It can be incomplete though, so check through the others if  `ANY` yields nothing useful :D)
 
 ![](5.png)
 
 
 
-We see "user=lionelcxy contact=lionelcheng@protonmail.com". Evidently we want to OSINT this person.  `lionelcxy` is a username this person uses (since it is given in `user=lionelcxy`) and so is likely to be his preferred username, while `lionelcheng@protonmail.com` is his email.
+We see "user=lionelcxy contact=lionelcheng@protonmail.com" :O
+Let's OSINT this person.  `lionelcxy` is a username this person uses (since it is given in `user=lionelcxy`) and so is likely to be his preferred username, while `lionelcheng@protonmail.com` is his email.
 
 
 
@@ -83,7 +84,7 @@ Since we now have this username `lionelcxy` and email `lionelcheng@protonmail.co
 
 
 
-Just a quick google with his email gives us his LinkedIn, which gives us his fullname.
+Just a quick google with his email gives us his LinkedIn, which gives us his fullname :D
 
 ![](6.png)
 
@@ -93,7 +94,7 @@ Just a quick google with his email gives us his LinkedIn, which gives us his ful
 
 The next part is where [sherlock](https://github.com/sherlock-project/sherlock) comes in. 
 
-Since we have his username, `sherlock` is a good tool to use as it searches a very wide range of social media sites for this handle and outputs the list of profiles with this handle. In this case, `sherlock` wasn't really necessary but it is still rather quick, thus saving time. It is an especially good tool when the social media platform wanted is less obvious, like for a challenge involving Trello we had done recently.
+Since we have his username, `sherlock` is a good tool to use as it searches a very wide range of social media sites for this handle and outputs the list of profiles with this handle. (It's soooo convenient!) In this case, `sherlock` wasn't really necessary but it is still rather quick, thus saving time :D. It is an especially good tool when the social media platform wanted is less obvious and you've no idea where to start searching.
 
 ```
 $ python3 sherlock lionelcxy
@@ -134,11 +135,11 @@ The second is gives us his Strava account.
 
 
 
-His Strava account doesn't seem to have anything.
+His Strava account doesn't seem to have anything :O
 
 ![](10.png)
 
-But it seems rather weird that there is no activities but there are records on Distance and Moving Time, so we decided to follow his account to see if there's any follower-only information.
+But it seems rather weird that there is no activities but there are records on Distance and Moving Time (???), so we decided to follow his account to see if there's any follower-only information.
 
 ![](11.png)
 
@@ -174,5 +175,5 @@ This part was rather straightforward and his phone number is 963672918.
 
 ## Flag
 
-Combining these pieces of information, the flag is `govtech-csg{LionelChengXiangYi_963672918_018935}`.
+Combining these pieces of information, the flag is `govtech-csg{LionelChengXiangYi_963672918_018935}` :D
 
