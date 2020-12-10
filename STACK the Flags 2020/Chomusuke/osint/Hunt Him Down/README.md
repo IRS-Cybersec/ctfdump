@@ -16,7 +16,7 @@ Example Flag: govtech-csg{JohnLeeHaoHao-123456789-888888}
 
 We are given a `.eml` file.
 
-> **EML**, short for electronic mail or email, is a **file** extension for an email message saved to a **file** in the Internet Message Format protocol for electronic mail messages. It is the standard format used by Microsoft Outlook Express as well as some other email programs.
+> EML, short for electronic mail or email, is a file extension for an email message saved to a file in the Internet Message Format protocol for electronic mail messages. It is the standard format used by Microsoft Outlook Express as well as some other email programs.
 
 
 
