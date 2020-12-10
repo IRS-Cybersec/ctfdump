@@ -16,7 +16,7 @@ Let's start off by viewing the video.
 
 ![1](1.png)
 
-After conducting the video, we can then start to identify the relevant landmarks presented in the video, so that it can aid us in finding out where the water body is.
+After watching the video, we can then start to identify the relevant landmarks presented in the video, so that it can aid us in finding out where the water body is.
 
 
 
