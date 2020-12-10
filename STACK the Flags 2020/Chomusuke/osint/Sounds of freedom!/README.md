@@ -12,10 +12,11 @@ In a recent raid on a suspected COViD hideout, we found this video in a thumbdri
 
 ## Video
 
-We are provided with this video.
+We are provided with this [video](https://github.com/IRS-Cybersec/ctfdump/blob/stack-chomusuke/STACK%20the%20Flags%202020/Chomusuke/osint/Sounds%20of%20freedom!/osint-challenge-7-compressed.mp4).
 
-<video src="/osint-challenge-7-compressed.mp4"></video>
-
+The following are 2 screenshots from the video:
+![](5.png)
+![](6.png)
 
 
 We tried our best to focus on distinctive features in the video and there were 3 we thought of:
