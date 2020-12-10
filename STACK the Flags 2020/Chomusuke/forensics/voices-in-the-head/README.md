@@ -63,8 +63,26 @@ Then we had a `B I G  B R I A N` moment (as you do, because the state of forensi
 
 Upon `strings`-ing the zip archive, we get this:
 ![](strings.png)
+
 *Look ok, the flag is not convincing. But I point you to the meme below.*
 
 ![](meme.png)
 
-`flag: govtech-csg{Th1sisn0ty3tthefl@g}`
+`flag?: govtech-csg{Th1sisn0ty3tthefl@g}`
+
+## Just kidding.
+Given GovTech's previous antics, we assumed that the fake flag was the password.
+
+Keying it in we DO indeed get the flag:
+
+```
+govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}
+
+Clue to Forensic-Challenge-3: The registry path contains the words “covid”.
+
+The attacker like to use Bifid Cipher
+```
+
+Also, we didn't see the third line as the teammate who keyed in the password simply copied the flag. :<
+
+`flag:govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}`
