@@ -168,7 +168,7 @@ This is Singapore Tengah Air Base. From this picture, **it is also very secluded
 
 
 
-This leaves us with three possible locations: Seletar Airport, Sembawang Air Base and Payar Lebar Air Base. Given that these airports/airbases are near many HDB flats, we can assume that the flight paths are likely localized around there.
+This leaves us with three possible locations: Seletar Airport, Sembawang Air Base and Payar Lebar Air Base. Given that these airports/air bases are near many HDB flats, we can assume that the flight paths are likely localized around there.
 
 ![14](14.png)
 
