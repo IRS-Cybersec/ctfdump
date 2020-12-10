@@ -238,7 +238,7 @@ We consider three vantage points, namely A, B and C. These vantage points are at
 
 If we look from A, we would realise that the shape of the top left corner of the park would not match the one from the video.
 
-If we look from B, the top left hand corner of the water body is somewhat pointy instead of a curve. Moreover, there is a lake separating the building from the water body.
+If we look from B, the top left hand corner of the water body is somewhat pointy instead of a curve. Moreover, there is a river separating the building from the water body. This is however not present in the video.
 
 If we look from C, the distance between water body and the building would be way too far than the one from the video.
 
@@ -344,7 +344,7 @@ The flag is as follows:
 govtech-csg{538768}
 ```
 
-And there we have it!
+And there we have it! The challenge is solved!
 
 
 
