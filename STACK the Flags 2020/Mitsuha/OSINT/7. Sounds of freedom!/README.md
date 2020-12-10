@@ -284,6 +284,10 @@ Let's turn around the street view camera:
 
 Hmm, seemed like the person **stood on one of the higher floors and took the video.** The **air conditioner exhaust placement**, along with the **presence of the beams in the foreground** as mentioned just now also matches.
 
+![26annotated](images/26annotated.png)
+
+
+
 Are there any more evidence we can find?
 
 Entering the park, we find:
