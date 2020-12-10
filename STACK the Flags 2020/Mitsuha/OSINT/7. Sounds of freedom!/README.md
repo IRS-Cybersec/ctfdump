@@ -160,21 +160,21 @@ Let's proceed on with the process of elimination.
 
 This is Singapore Changi Airport and Changi Air Base. From this satellite image, we **cannot find any nearby HDB flats or condominiums.** Moreover, this area is **not close to any water body** other than the surrounding sea. As such, we reject this location.
 
+
+
 ![13](13.png)
-
-
 
 This is Singapore Tengah Air Base. From this picture, **it is also very secluded from any HDB flats or condominium**, and the surrounding water bodies are **extremely large**. It is likely that this is not the area either.
 
 
 
-This leaves us with three possible locations: Seletar Airport, Sembawang Air Base and Payar Lebar Airbase. Given that these airports/airbases are near many HDB flats, we can assume that the flight paths are likely localized around there.
+This leaves us with three possible locations: Seletar Airport, Sembawang Air Base and Payar Lebar Air Base. Given that these airports/airbases are near many HDB flats, we can assume that the flight paths are likely localized around there.
 
 ![14](14.png)
 
 
 
-The park with the water body is likely in this picture.
+The park with the water body is likely in the picture above.
 
 However, this is still a really large area (approximately 18.95km by 11.33km). How can we start narrowing down our search?
 
@@ -194,23 +194,25 @@ We know from before that our **water body target is not that big**, and it has a
 
 
 
-From here, ignoring all of the rivers, we see four possible water bodies.
+From here, ignoring all of the rivers, we see **four** possible water bodies.
 
 ![18edited](18edited.png)
 
 
 
-Zooming into the two adjacent water bodies below, we see that it is Bedok Reservoir and an unnamed water body.
+Zooming into the **two adjacent water bodies** below, we see that it is Bedok Reservoir and an unnamed water body.
 
 ![19](19.png)
 
-Using street view, we can note that the water body is way too large to fit the one from the video.
+Using street view, we can note that the water body is **way too large to fit the one** from the video.
 
 ![20](20.png)
 
-The other water body is not near any HDB flats, and is thus automatically disqualified.
+The other water body is **not near any HDB flats, and is thus automatically disqualified.**
 
 We can scratch these two water bodies off our list and move on.
+
+The picture below shows Pasir Ris Town Park.
 
 ![21](21.png)
 
@@ -218,19 +220,19 @@ Well, it seems like Pasir Ris Town Park actually ticks a bunch of requirements m
 
 However, we eventually rejected this park
 
-The main reason is: The shape of the park does not fit the one in the video.
+The main reason is: **The shape of the park does not fit the one in the video.**
 
 If we look back at the screenshot from the video:
 
 ![9](9.png)
 
+From this point of view, the water body is **curved along the top left corner.**
 
 
-From this point of view, the water body is curved along the top left corner.
+
+Going back to this image:
 
 ![22](22.png)
-
-
 
 We consider three vantage points, namely A, B and C. These vantage points are at the places with HDB flats (or Condominiums)
 
@@ -244,11 +246,11 @@ If we look from C, the distance between water body and the building would be way
 
 With that, we only have one location left, and that is Punggol Park.
 
-
-
 ![23](23.png)
 
 The good sign is that the water body here looks somewhat curvy, which fits the picture from above. Additionally, the water colour is also a dark yellow green, which matches the water colour from the video.
+
+
 
 
 
@@ -260,7 +262,7 @@ Now, it is just a matter of confirming that this is indeed the water body. This 
 
 ![24edited](24edited.png)
 
-Looking from this angle, we see that the red roof structures are also there, and that the shape of the top left corner of the water body also fits the one from the video.
+Looking from this angle, we see that the **red roof structures** are also there, and that the shape of the **top left corner of the water body also fits the one from the video. (curved)**
 
 Going into street view at the tip of the arrow:
 
@@ -270,13 +272,13 @@ Bingo! We found the bus stop!
 
 ![6](6.png)
 
-Even the lamp to the left of the bus stop fits the one from the video.
+Even the **lamp to the left of the bus stop** fits the one from the video.
 
-Let's turn around:
+Let's turn around the street view camera:
 
 ![26](26.png)
 
-Hmm, seemed like the person stood on one of the higher floors and took the video. The air conditioner exhaust placement, along with the presence of the beams in the foreground as mentioned just now also matches.
+Hmm, seemed like the person **stood on one of the higher floors and took the video.** The **air conditioner exhaust placement**, along with the **presence of the beams in the foreground** as mentioned just now also matches.
 
 Are there any more evidence we can find?
 
@@ -292,11 +294,11 @@ Both staircases seem to coincide with the ones below (green and magenta):
 
 What about the green buildings at the top left corner of the picture above?
 
-Going to the staircase reveals something worrying:
+Going to the staircase reveals something **worrying**:
 
 ![28](28.png)
 
-The buildings are *red* in colour, rather than *green*. We note Block 401 here, and that it seems to have a coffee shop at the ground floor.
+The buildings are ***red*** in colour, rather than ***green***. We note Block 401 here, and that it seems to have a coffee shop at the ground floor.
 
 Going back to satellite view:
 
@@ -308,13 +310,13 @@ Block 401 is still red, even though when viewed from the same vantage point, it 
 
 
 
-The big surprise came when we decided to go into street view right in front of the HDB Block:
+The big surprise came when we decided to go into street view right in front of the HDB Block (Block 401):
 
 ![31](31.png)
 
 It is green here! The coffee shop is also present here as well!
 
-This means that the 3D models that Google Earth/Maps have generated were based off an old model of the block, and it is likely that **these blocks around the estate were repainted a few months ago to green** .
+This means that the 3D models that Google Earth/Maps have generated were based off an **old model** of the block, and it is likely that **these blocks around the estate were repainted a few months ago to green** .
 
 
 
@@ -342,7 +344,7 @@ The flag is as follows:
 govtech-csg{538768}
 ```
 
-There we have it!
+And there we have it!
 
 
 
