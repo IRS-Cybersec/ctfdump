@@ -14,7 +14,7 @@ Example Flag: govtech-csg{JohnLeeHaoHao-123456789-888888}
 
 ## Email
 
-We are given a `.eml` file.
+We are given a `.eml` file. If you're wondering what that is, here's Google's explanation :D
 
 > EML, short for electronic mail or email, is a file extension for an email message saved to a file in the Internet Message Format protocol for electronic mail messages. It is the standard format used by Microsoft Outlook Express as well as some other email programs.
 
@@ -26,7 +26,7 @@ We are given a `.eml` file.
 
 
 
-Checking the sender, we see this email address:
+we see the supposed sender here
 
 ![](2.png)
 
