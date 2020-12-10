@@ -16,9 +16,15 @@ Let's start off by viewing the video.
 
 ![1](1.png)
 
-After watching the video, we can then start to identify the relevant landmarks presented in the video, so that it can aid us in finding out where the water body is.
+After watching the video, we ran `ExifTool` on this video for any potential location information hidden in the metadata. 
 
+`ExifTool` is a command line program which allows for reading, writing and editing meta information present in many types of files. If you are using a Linux terminal, you can simply install it using `sudo apt install libimage-exiftool-perl` on UNIX based system. 
 
+After running the tool, we did not see any location information in there. Either the information had been wiped out by the video taker, or the device used to record the video did not record down the geographical location. 
+
+Therefore, we have to identify the location by the clues present within the video.
+
+We can start by identifying the relevant landmarks presented in the video, so that it can aid us in finding out where the water body is.
 
 **The process will be as follows:**
 

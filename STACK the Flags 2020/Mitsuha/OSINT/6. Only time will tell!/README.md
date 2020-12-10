@@ -225,3 +225,14 @@ The actual time period turned out to be 1500-1700, and thus the flag is as follo
 govtech-csg{1.286647_03.846836_2020:10:25_1500-1700}
 ```
 
+
+
+### Learning Outcomes
+
+______
+
+Things that we can learn from this challenge:
+
+1. Identify the location using the metadata from the image.
+2. Use Google Street View to obtain the direction the photographer was facing, and then use shadow analysis to approximate three possible time periods for when the photograph was taken.
+3. Use every information where possible, such as the barcode from the bottom left of the picture.
