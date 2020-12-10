@@ -98,7 +98,9 @@ We then dumped the SSTV .wav file from the Miscellaneous challenge and the foren
 
 
 
-![forenwav](forenwav.png) Forensics .wav
+![forenwav](forenwav.png)
+
+Forensics .wav
 
 
 
