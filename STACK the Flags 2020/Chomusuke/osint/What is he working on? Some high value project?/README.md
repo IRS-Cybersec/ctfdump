@@ -46,7 +46,7 @@ These are the same headers in the website, seems like we're on the right track! 
 
 ![](5.png)
 
-The 'c' is under Events, which is also where the webpage is categorised under in the website!
+The 'c' is under Events, which is also where the webpage is categorised under in the website! Let's go into that folder
 
 ![](6.png)
 
