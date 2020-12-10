@@ -39,7 +39,7 @@ There are 2 ways we could approach this,
 1. Through `theOne` 
 2. Through `c0v1d.cf`
 
-In the first case, we are assuming that `theOne` is the sender's choice of username (but `theOne` is rather generic!). For the second method, we know from the email that `c0v1d.cf` is a domain, since 
+In the first case, we are assuming that `theOne` is the sender's choice of username (but `theOne` is rather generic .-.). For the second method, we know from the email that `c0v1d.cf` is a domain, since 
 
 > The format of an email address is local-part@domain
 
