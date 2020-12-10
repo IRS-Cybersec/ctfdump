@@ -231,9 +231,9 @@ Piecing it together, we have:
 
 ​																					
 
-Voices in the head -> hallucinations -> mental illness -> "crazy"                   |
+Voices in the head -> hallucinations -> mental illness -> "crazy"                    |
 
-Pastebin Language -> exceed the limits of one's understanding -> "crazy"|-----> "Siao" -> Xiao Steganography
+Pastebin Language -> exceed the limits of one's understanding -> "crazy" |-----> "Siao" -> Xiao Steganography
 
-Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"                   |
+Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"                    |
 
