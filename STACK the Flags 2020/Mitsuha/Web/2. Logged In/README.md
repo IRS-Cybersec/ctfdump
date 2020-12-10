@@ -6,8 +6,11 @@
 ## Solution 1 (Web) (Unintended?)
 ### Analysing the Challenge
 1. We are given the source of the challenge, and unzipping it to take a look we can find that inside contains a partial source for the API Server.
-2. Looking at the handlers and middlewares of the program, we notice that there is validator which checks for the presence of the username and password field.
-3. In helpers, there is a password generator (`generatePassword.js`) and a login checker (`initLocalStrategy`) that checks the password which is stored in a sequalise ORM-wrapped MariaDB server, in which the `username` field is passed in directly (this is crucial to the attack)
+2. Looking at the handlers and middlewares of the program, we notice that there is validator which checks for the presence of the username and password field.  
+![](image0.png)  
+3. In helpers, there is a password generator (`generatePassword.js`) and a login checker (`initLocalStrategy.js`) that checks the password which is stored in a sequalise ORM-wrapped MariaDB server, in which the `username` field is passed in directly (this is crucial to the attack)  
+![](image1.png)
+![](image2.png)  
 4. After inspecting the main program (`app.js`), we do realise that the server accepts JSON data input as a payload.
 5. Hence, we could conclude that the injection vector would be to perform a SQL injection by taking advantage of the JSON payload and parsing by the server.
 
@@ -37,17 +40,35 @@ Flag: ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```
 ## Solution 3 (Mobile)
 ### Interesting mobile challenge
 - After attempting the mobile challenge Network?, we see that there is an interesting part of the decompiled Java source code for that activity.
+```java
+public String f2943e = "yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg";
+
+public String f2944f = "41061";
+
+public String f2945g = ("http://" + this.f2943e + ":" + this.f2944f + "/api/login");
+```
+*(`sg.gov.tech.ctf.mobile.Admin.NetworkActivity.java`)*
 - The decompiled source code indicates that the result of a web request made to the same API server in this challenge is outputted to log.
+```java
+Log.v("rht", "SERVER REPLIED:");
+for (String line : response) {
+  Log.v("rht", "Line : " + line);
+}
+```
+*(`sg.gov.tech.ctf.mobile.Admin.NetworkActivity.java`)*
 - However, instead of listening and getting the information using `logcat` on Android, we decided to take another approach that is more related to web.
 
 ### Packets? Packets!
 - It is common knowledge that making a network request over the Internet will lead to packets being sent from the client to server and vice-versa.
 - We will capture the packets sent to the server on Android using a tool called "Packet Capture"
-- After downloading the application, we start listening for packets from the KoroVax application.
+- After downloading the application, we start listening for packets from the KoroVax application login page.
+![](image3.png)
 
 ### Head of headers
-- Upon going to the login page in the mobile application, we see that there are packets successfully captured. 
-- The flag of our challenge is also found within the packet capture, ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```
+- Upon going to the login page in the mobile application, we see that there are packets successfully captured.  
+![](image4.png)  
+- The flag of our challenge is also found within the packet capture, ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```  
+![](image5.png)  
 - Looking at the request, we see that there are some interesting headers being sent, notably the `username` and `password` header.
 - This likely means that the mobile application is able to pass the authentication through these headers, and we verify our hypothesis by make a similar request with random data.
 - Command: `curl -X POST http://yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg:41061/api/login -H "username: GOVTECH" -H "password: CSG"`
@@ -60,5 +81,3 @@ After this challenge, we have gotten a few learning points:
 - Always look at challenges from different angles, such as this challenge which had multiple solutions and even unintended solutions.
 - Sometimes, the developer might not have noticed that there would be more than one way to gain access to the program
 - Don't be afraid to try multiple different ways, as you might never know which would work!
-
-// TODO: add images
