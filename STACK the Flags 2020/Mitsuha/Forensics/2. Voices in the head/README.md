@@ -22,7 +22,7 @@ With this in mind, we move on to the next step of analysis: Spectrogram Analysis
 
 Information can be hidden in an audio file in quite a handful of ways, one of them being in the spectrogram. 
 
-Putting this audio recording through Sonic Visualiser, and then holding `SHIFT` and `G` to generate a spectrogram view of the audio reveals the following message:
+Putting this audio recording through [Sonic Visualiser](https://www.sonicvisualiser.org/), and then holding `SHIFT` and `G` to generate a spectrogram view of the audio reveals the following message:
 
 ![SV](SV.png)
 
@@ -193,7 +193,19 @@ Whew, what a ride!
 
 
 
-### The Connections... It all makes sense now!
+### Learning Outcomes
+
+________
+
+There are a few things that we can learn from this challenge:
+
+1. There are really many different steganography tools that hide data in different ways. As such, the best way to identify the type of steganography used is to practice as many challenges as possible. Places like [CTFTime](https://ctftime.org/) offer a great place to sign up for cybersecurity competitions which exposes players to many different types of challenges, including steganography!
+2. Never give up, even if there seemed to be no way to figure out what is going on. While we did end up using the free hint to our advantage, the identification of the `00` and `01` could potentially be used for google searching to reveal the tool required.
+3. Sometimes, the name of the challenge and the contents of the audio file could also potentially be a hint to the tool needed. See below for our theory.
+
+
+
+### The Connections... It all makes sense now! (Maybe)
 
 ______
 
@@ -209,6 +221,8 @@ However, there's still more. The audio from the .wav file sounds like birds chir
 
 In Singapore, some of the older people who speak dialects use this term called "鸟话" (niǎo huà) , which is a direct translation of "birds talking", or to be more colloquial, a derogatory term used to describe people who spout nonsensical words. 
 
+Moreover, the pastebin used the language BrainF[FamilyFriendlyContent]k, which according to Wikipedia, means "things so complicated or unusual that they exceed the limits of one's understanding."
+
 There's still one more piece to solving the puzzle. The name of the steganography tool: Xiao Steganography
 
 Xiao is a homophone of "Siao", which is another colloquial term used in Singapore to describe a mad or crazy person.
@@ -217,9 +231,9 @@ Piecing it together, we have:
 
 ​																					
 
-Voices in the head -> hallucinations -> mental illness -> "crazy"   |
+Voices in the head -> hallucinations -> mental illness -> "crazy"                   |
 
---------------------------------------------------------------------------------------------|-----> "Siao" -> Xiao Steganography
+Pastebin Language -> exceed the limits of one's understanding -> "crazy"|-----> "Siao" -> Xiao Steganography
 
-Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"    |
+Audio sounds like birds chirping -> "鸟话" (niǎo huà) -> "crazy"                   |
 
