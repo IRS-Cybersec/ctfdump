@@ -51,7 +51,7 @@ Flag: ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```
 - Looking at the request, we see that there are some interesting headers being sent, notably the `username` and `password` header.
 - This likely means that the mobile application is able to pass the authentication through these headers, and we verify our hypothesis by make a similar request with random data.
 - Command: `curl -X POST http://yhi8bpzolrog3yw17fe0wlwrnwllnhic.alttablabs.sg:41061/api/login -H "username: GOVTECH" -H "password: CSG"`
-- Not to our surpised, it worked!
+- Not to our surpise, it worked!
 
 Flag: ```govtech-csg{m!sS1nG_cR3DeN+!@1s}```
 
