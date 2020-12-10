@@ -92,10 +92,10 @@ print(my_key)
 
 **HAR HAR MONKE BASH KOMPUTER**
 
-*ahem.* So anyways we get the shared Diffie-Hellman key
+*ahem.* So anyways we get the shared Diffie-Hellman key which is also our `flag`.
 
-which is also our `flag`.
 
+`flag: govtech-csg{246544130863363089867058587807471986686}`
 
 
 ## Appendix A
