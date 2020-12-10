@@ -87,4 +87,46 @@ $ file file.out
 file.out: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 2.6.32, BuildID[sha1]=d73f4011dd87812b66a3128e7f0cd1dcd813f543, not stripped
 ```
 
-// TODO: add images and sherman's part
+## Reverse Engineering
+![](IDA.png)
+
+The binary is a simple reverse engineering challenge, with each character of the (inner contents of) the flag as a symbolic constant. Every `if()` statement here has to be true for the 7+1 byte input flag to pass.
+
+I reversed `magic()` as so:
+```python
+def magic4(v): return v-3
+def magic3(v): return magic4(v)+1
+def magic2(v):
+    val = magic3(v)
+    return val+(66 if val==0 else 1)  # == is needed for a Z3 BitVec
+def min(v1,v2):
+    if v1 <= v2: return v2%2 +1
+    return v1-v2
+def magic(v): return 1+magic2(v) # min(3,2) == 1
+```
+And I solved for the flag itself with Z3:
+```python
+from z3 import *
+s = [BitVec('char'+str(i), 8) for i in range(7)]
+S = Solver()
+S.add(s[0] == magic(ord('i')-8))  # strlen() == 8.
+S.add(s[1] == magic(ord('i')^0x27))
+S.add(s[2] == magic(ord('i')+11))
+S.add(s[3] == magic(2*s[1]-51))
+S.add(s[4] == magic(0x42))
+S.add(s[5] == magic(8*(5-1)|1))
+S.add(s[6] == magic(((s[4]+s[5]+s[3])^(s[3]+s[5]+66))+101))
+S.check()
+M = S.model()
+for i in range(7): s[i] = M.evaluate(s[i]).as_long()
+print(''.join(map(chr,s)))
+```
+A few things to note here:
+* Each character of the flag is represented as an 8-bit vector (`BitVec('', 8)`) in `s[]`.
+* A `Solver()` is used to keep a list of mathematical _constraints_ -- each of which are added with `S.add()` -- from which the flag can be derived.
+* After adding all constraints, the value of each character is obtained from a _`model()`_ of the constraints.
+
+This Z3 script provides the string `aNtiB!e`. 
+
+## Flag
+`govtech-csg{aNtiB!e}`
