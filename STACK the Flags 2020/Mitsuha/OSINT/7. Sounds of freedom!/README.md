@@ -20,13 +20,13 @@ After conducting the video, we can then start to identify the relevant landmarks
 
 
 
-**The progress will be as follows:**
+**The process will be as follows:**
 
 **A. Gather information from the video.**
 
-**B. Isolate the correct location and rejecting the wrong locations using online tools.**
+**B. Isolate the correct location and reject the wrong locations using online tools.**
 
-**C. Collect evidence to proof that the location is the same as the one from the video.**
+**C. Collect evidence to prove that the location is the same as the one from the video.**
 
 
 
@@ -138,7 +138,7 @@ Additionally, the name of the challenge is called "Sounds of freedom!" It sounds
 
 
 
-### **B. Isolate the correct location and rejecting the wrong locations using online tools.**
+### **B. Isolate the correct location and reject the wrong locations using online tools.**
 
 ______________
 
@@ -252,7 +252,7 @@ The good sign is that the water body here looks somewhat curvy, which fits the p
 
 
 
-### C. Collect evidence to proof that the location is the same as the one from the video.
+### C. Collect evidence to prove that the location is the same as the one from the video.
 
 ______
 
