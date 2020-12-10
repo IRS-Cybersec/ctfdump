@@ -201,7 +201,7 @@ There are a few things that we can learn from this challenge:
 
 1. There are really many different steganography tools that hide data in different ways. As such, the best way to identify the type of steganography used is to practice as many challenges as possible. Places like [CTFTime](https://ctftime.org/) offer a great place to sign up for cybersecurity competitions which exposes players to many different types of challenges, including steganography!
 2. Never give up, even if there seemed to be no way to figure out what is going on. While we did end up using the free hint to our advantage, the identification of the `00` and `01` could potentially be used for google searching to reveal the tool required.
-3. Sometimes, the name of the challenge and the contents of the audio file could also potentially be a hint to the tool needed. See below for our theory.
+3. Sometimes, the name of the challenge, the contents of the audio file, as well as the various clues throughout the challenge could also potentially be hints pointing towards the tool needed. See below for our theory.
 
 
 
