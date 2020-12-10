@@ -23,9 +23,11 @@ The image in question is this:
 
 ![osint-challenge-6](osint-challenge-6.jpg)
 
+A little bit of Singapore trivia:
+
 Speakers' Corner is an area located within Hong Lim Park. It is an area where citizens and permanent residents can demonstrate, hold exhibitions and performances, as well as freely speaking about issues that would be otherwise restricted in other parts of Singapore. Prior registration with the government is required before such activity may proceed.
 
-Either way, this place is in danger of being bombed, and we need to identify where and when this picture was take.
+Either way, this place is in danger of potentially being bombed, and we need to identify where and when this picture was taken.
 
 
 
@@ -121,7 +123,7 @@ File Access Date/Time           : 2020:12:10 11:59:10+08:00
 File Inode Change Date/Time     : 2020:12:10 11:58:16+08:00
 ```
 
-Note that none of the information here actually accurately identifies the original date and time this photo was taken. The photo was last modified when someone changed something to it, such as adding the barcode.
+**Note that none of the information here actually accurately identifies the original date and time this photo was taken. The photo was last modified when someone changed something to it, such as adding the barcode.**
 
 Speaking of which, we then looked at the barcode found at the bottom left of the image:
 

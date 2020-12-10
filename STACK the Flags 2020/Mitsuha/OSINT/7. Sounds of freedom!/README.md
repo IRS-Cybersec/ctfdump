@@ -362,7 +362,7 @@ ____________
 
 Key takeaways from this challenge:
 
-1. This challenge reveals some limitations that Google Maps/Earth have, such as not updating the 3D models of the HDB blocks. This led to confusion as it was an apparent contradiction to all of the other evidence. It is lucky that Google Street View actually displays the updated block colour so that we can disregard the colour of the 3D models. Therefore, **always** look out for more information just in case the one you found is contradictory
+1. This challenge reveals some limitations that Google Maps/Earth have, such as not updating the 3D models of the HDB blocks. This led to confusion as it was an apparent contradiction to all of the other evidence. It is lucky that Google Street View actually displays the updated block colour so that we can disregard the colour of the 3D models. Therefore, **always** look out for more information just in case the one you found is contradictory.
 
 2. There are many tools available online that can be used to narrow down from over 350 parks to just a few for further investigation.
 3. Analyze all possible clues from the given resource, and make a list to check against the actual location in question!
