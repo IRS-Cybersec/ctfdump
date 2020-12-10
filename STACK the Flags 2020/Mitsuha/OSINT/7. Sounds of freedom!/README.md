@@ -218,7 +218,7 @@ The picture below shows Pasir Ris Town Park.
 
 Well, it seems like Pasir Ris Town Park actually ticks a bunch of requirements mentioned above, such as the red roof structures, as well as the presence of a road beside the park. 
 
-However, we eventually rejected this park
+However, we eventually rejected this park.
 
 The main reason is: **The shape of the park does not fit the one in the video.**
 
@@ -234,7 +234,7 @@ Going back to this image:
 
 ![22](22.png)
 
-We consider three vantage points, namely A, B and C. These vantage points are at the places with HDB flats (or Condominiums)
+We consider three vantage points, namely A, B and C. These vantage points are at the places with HDB flats (or Condominiums) The outlines of the lake is also shown here to indicate what the top left corner of the water body would have looked like when viewing from that vantage point.
 
 If we look from A, we would realise that the shape of the top left corner of the park would not match the one from the video.
 
