@@ -148,13 +148,13 @@ Alright, now that we have the relevant information, let's bring up Google Maps/G
 
 
 
-Let's identify the various air bases and airports:
+Start by identifying the various air bases and airports:
 
 ![11](11.png)
 
 
 
-Let's start with the process of elimination.
+Let's proceed on with the process of elimination.
 
 ![12](12.png)
 
