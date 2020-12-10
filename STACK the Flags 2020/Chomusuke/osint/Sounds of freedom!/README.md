@@ -27,11 +27,11 @@ We tried our best to focus on distinctive features in the video and there were 3
 
 
 
-Our attempt to look through water bodies was not successful as the water body was a pond in a park and having little significance it was tough to find it online through descriptions without knowing its location. The white bus stop did remind us of Punggol but ultimately it was the third point that proved the most important. After all, the title of the challenge is 'Sounds of Freedom!' (*The title is always the best clue*)
+Our attempt to look through water bodies was not successful :(. The white bus stop did remind us of Punggol but ultimately it was the third point that proved the most important. After all, the title of the challenge is 'Sounds of Freedom!' (*The title is always the best clue*)
 
 
 
-It evidently sounded like some sort of aircraft but one of us was rather certain it is probably some sort of military jet, so we started looking around Paya Lebar Air Base. On hindsight, the title was also a hint that the plane was a military plane.
+It evidently sounded like some sort of aircraft but one of us was rather certain it is probably some sort of military jet, so we started looking around Paya Lebar Air Base. On hindsight, the title was also a hint that the plane was military-related!
 
 
 
@@ -47,17 +47,17 @@ Upon zooming in,
 
 ![](2.png)
 
-That bus stop at the bottom right and the shape made it seem especially promising so we decided to use street view and after moving it around a little, we saw this:
+That bus stop at the bottom right and the shape made it seem especially promising (Yay!) so we decided to use street view and after moving it around a little, we saw this:
 
 ![](3.png)
 
-The 3 walkway-like paths straight ahead leading to the pond looks just like the video, as does the shelter on the left of the pond.
+The 3 walkway-like paths straight ahead leading to the pond looks just like the video, as does the shelter on the left of the pond. :D
 
 We also took a look at the bus stop
 
 ![](1.png)
 
- and it looked rather identical to the one in the video.
+and it looked rather identical to the one in the video.
 
 
 
