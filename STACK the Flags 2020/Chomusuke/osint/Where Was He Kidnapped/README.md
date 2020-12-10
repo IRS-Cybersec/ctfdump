@@ -7,17 +7,8 @@ The missing engineer stores his videos from his phone in his private cloud serve
 
 We are presented with 3 videos:
 
-<iframe width="560" height="315"
-src="video-1.mp4" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
-<iframe width="560" height="315"
-src="video-2.mp4" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe><iframe width="560" height="315"
-src="video-3.mp4" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+[![Video1](https://www.youtube.com/embed/J6DYGPkFIP8)](https://www.youtube.com/embed/J6DYGPkFIP8)
+
+[![Video2](https://youtube.com/embed/Eup-9c_UWYU)](https://youtube.com/embed/Eup-9c_UWYU)
+
+[![Video3](https://www.youtube.com/embed/caZgBpfprLQ)](https://www.youtube.com/embed/caZgBpfprLQ)
