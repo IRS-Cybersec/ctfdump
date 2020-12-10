@@ -38,23 +38,23 @@ It evidently sounded like some sort of aircraft but one of us was rather certain
 
 Pulling up Paya Lebar Air Base on Google Maps leads us to this sight:
 
-![Screenshot 2020-12-10 at 12.07.27 PM](/Users/see.min./Desktop/Screenshot 2020-12-10 at 12.07.27 PM.png)
+![](1.png)
 
 So the likely candidates are between Punggol Park, Tampines Quarry and Bedok Reservoir. We started off with the former since the latter 2 are unlikely. One is rather secluded while the other we had already checked when going by the googling water body approach.
 
 Upon zooming in, 
 
-![Screenshot 2020-12-10 at 12.12.28 PM](/Users/see.min./Desktop/Screenshot 2020-12-10 at 12.12.28 PM.png)
+![](2.png)
 
 That bus stop at the bottom right and the shape made it seem especially promising so we decided to use street view and after moving it around a little, we saw this:
 
-![Screenshot 2020-12-10 at 12.14.50 PM](/Users/see.min./Desktop/Screenshot 2020-12-10 at 12.14.50 PM.png)
+![](3.png)
 
 The 3 walkway-like paths straight ahead leading to the pond looks just like the video, as does the shelter on the left of the pond.
 
 We also took a look at the bus stop
 
-![Screenshot 2020-12-10 at 12.18.34 PM](/Users/see.min./Desktop/Screenshot 2020-12-10 at 12.18.34 PM.png)
+![](1.png)
 
  and it looked rather identical to the one in the video.
 
