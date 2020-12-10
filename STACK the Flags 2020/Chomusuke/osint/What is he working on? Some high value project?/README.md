@@ -1,4 +1,4 @@
-# What is he working on? Some high value project?
+# What is he working on? Some high value project? (OSINT)
 
 790 points // 29 solves
 
