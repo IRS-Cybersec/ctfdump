@@ -134,7 +134,7 @@ Interestingly enough, when this video was shot, there was a **very loud and deep
 mmmmmmmmmmmmmmmmmmmmmmmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmmmmm (The audio clips at the large 'M', meaning it is much louder in real life than what the camera could record.)  
 ```
 
-Since there are no specific vehicles on the ground that could make such a loud noise, **it must have been from the air.** 
+Since there are no specific vehicles on the ground that could make such a loud noise, **it must have been from the air.** **The sound likely came from an airplane.**
 
 Additionally, the name of the challenge is called "Sounds of freedom!" It sounds like this park is located in the vicinity of an air flight path, likely to be from the Republic of Singapore Air Force. This indicates a **high likelihood of the presence of a nearby air base or airport.** 
 
