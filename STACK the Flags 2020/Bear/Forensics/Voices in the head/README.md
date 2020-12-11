@@ -13,7 +13,7 @@ Xiao wants to help. Will you let him help you?
 
 ## Understanding the Challenge
 
-A voice recording, a .wav file... Hmm, this could potentially involve SSTV, or steganography.
+A voice recording, a .wav file... Hmm, this could potentially involve SSTV, or steganography, or morse code.
 
 
 
@@ -164,6 +164,17 @@ Selecting the text with a mouse, or CTRL + A to select all, reveals a line of te
 
 
 
+## Trivia
+
+The challenge title "Voices in the head", means someone with issues, and in Hokkien means _siao_, which phonetically sounds the same as Xiao, in a reference to Xiao steganography, which should be used in this challenge.
+
+Probably with the low amount of solves initially and the link is rather difficult to establish, the organisers gave a free hint about "Xiao" wanting to help.
+
+
+
 ## Learning Points
 
-- 
+- 7-Zip is OP!
+- Xiao steganography is a pretty useful tool to hide secret files - it is not very well-known
+- Brainfuck language is an interesting language
+- Any clue can potentially be useful, even if it presents itself otherwise 'thisisnottheflag'
