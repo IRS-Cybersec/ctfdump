@@ -1,8 +1,3 @@
----
-
-typora-copy-images-to: ./
----
-
 # Voices in the head
 
 ### Forensics - 1692 Points - 26 solves
@@ -34,23 +29,27 @@ Since it is a .wav file, we think it could likely be a spectrogram.
 
 Opening the file in Audacity, we get this:
 
-![](/audacity.PNG)
+![](audacity.PNG)
 
 
 
 And we set the mode to Spectrogram...
 
-<img src="/audacitysetting.png" style="zoom: 80%;" />
+
+
+<img src="audacitysetting.PNG" style="zoom:80%;" />
 
 
 
 which yields this...
 
-![](/spectrogram.PNG)
+![](spectrogram.png)
 
 
 
 `aHR0cHM6Ly9wYXN0ZWJpbi5jb20vakVUajJ1VWI=` --> a Base64 text.
+
+
 
 Converting this Base64 to text (using CyberChef),
 we obtain a pastebin link:
@@ -93,7 +92,7 @@ Indeed, there was a .zip file hidden inside, and we extracted it, _unsuccessfull
 
 
 
-![](/hiddenzipfile.png)
+![](hiddenzipfile.png)
 
 
 
@@ -111,7 +110,7 @@ In the zip file lies a .docx file, which required a password to be extracted. Un
 
 
 
-![](/inthezipfile.png)
+![](inthezipfile.png)
 
 
 
@@ -123,7 +122,7 @@ Well, as always, one should always check the zip file or .docx itself for potent
 
 We opened the zip file with 7zip, and then the properties of **This is it.docx**.
 
-<img src="/docxproperties.png" style="zoom:67%;" />
+<img src="docxproperties.png" style="zoom:67%;" />
 
 
 
@@ -137,7 +136,7 @@ Note that under Comment, there is govtech-csg{Th1sisn0ty3tthefl@g}. We thought t
 
 Was this just a troll? No, it ain't. Turns out, this is the password to extracting the .docx file:
 
-<img src="/flag.PNG" style="zoom:67%;" />
+<img src="flag.PNG" style="zoom:67%;" />
 
 
 
@@ -159,9 +158,7 @@ It doesn't end here, there's still something more to this challenge!
 
 <img src="flagclue.png" alt="flagclue" style="zoom:67%;" />
 
-<img src="/flagclue.png" alt="flagclue" style="zoom:67%;" />
 
-test
 
 Selecting the text with a mouse, or CTRL + A to select all, reveals a line of text hidden, in white colour, which wasn't visible in the earlier picture. Putting the text colour to black reveals `"The attacker like[s] to use Bifid Cipher"`, most likely a hint for _forensic-challenge-3_ too.
 
