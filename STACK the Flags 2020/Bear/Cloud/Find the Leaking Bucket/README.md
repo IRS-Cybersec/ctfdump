@@ -1,6 +1,6 @@
 # Find the Leaking Bucket
 
-### Cloud - 1000 Points
+### Cloud - 978 Points - 12 solves
 
 ## Description
 
