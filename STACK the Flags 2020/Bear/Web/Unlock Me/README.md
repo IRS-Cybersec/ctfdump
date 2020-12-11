@@ -70,9 +70,9 @@ We can then use this JWT in our `Authorization: Bearer ...` header when `GET`ing
 ![](new-request.png)
 
 and we should get the flag we worked so hard for:
- 
+
 ![](flag.png)
- 
+
 ## Flag
 
 ```
