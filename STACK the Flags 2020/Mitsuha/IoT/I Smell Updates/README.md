@@ -92,7 +92,7 @@ file.out: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically li
 ## Reverse Engineering
 ![](IDA.png)
 
-The binary is a simple reverse engineering challenge, with each character of the (inner contents of) the flag as a symbolic constant. Every `if()` statement here has to be true for the 7+1 byte input flag to pass.
+The binary is a simple reverse engineering challenge, with each character of the (inner contents of) the flag as a symbolic constant. Every `if()` statement here has to be true for the 7-byte-plus-newline input flag to pass.
 
 I reversed `magic()` as so:
 ```python

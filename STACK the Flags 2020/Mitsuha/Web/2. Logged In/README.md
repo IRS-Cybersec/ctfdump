@@ -51,51 +51,51 @@
 
 - Looking at `localAuthenticator`:
 
-- ```javascript
-  //authenticator.js
-  
-  var passport = require('passport')
-  
-  function localAuthenticator(req, res, next) {
-      passport.authenticate('local', { session: false }, function (err, user, info) {
-          if (err) {
-              return res.status(401).json({
-                  "error": err.message
-              });
-          }
-          next();
-      })(req, res, next)
-  }
-  
-  module.exports = {
-      localAuthenticator,
-  }
-  ```
+```javascript
+//authenticator.js
+
+var passport = require('passport')
+
+function localAuthenticator(req, res, next) {
+    passport.authenticate('local', { session: false }, function (err, user, info) {
+        if (err) {
+            return res.status(401).json({
+                "error": err.message
+            });
+        }
+        next();
+    })(req, res, next)
+}
+
+module.exports = {
+    localAuthenticator,
+}
+```
 
 - It seems like the application is using the `passport` library for authentication. Let's take a look at the **localStrategy (Configuration)** of `passport`, which is used to check whether the credentials are correct:
 
-- ```javascript
-  //initLocalStrategy.js
-  
-      passport.use(new LocalStrategy(
-          async function (username, password, done) {
-              const user = await User.findOne({ where: { username } });
-              if (user !== null && bcrypt.compareSync(password, user.password)) {
-                  if (user.username === 'gru_felonius' && bcrypt.compareSync(password, user.password)) {
-                      return done(null, user);
-                  }
-                  return done(new Error('Only Gru is allowed!'));
-              }
-              return done(new Error('Invalid credentials'));
-          }
-      ));
-  ```
+```javascript
+//initLocalStrategy.js
+
+    passport.use(new LocalStrategy(
+        async function (username, password, done) {
+            const user = await User.findOne({ where: { username } });
+            if (user !== null && bcrypt.compareSync(password, user.password)) {
+                if (user.username === 'gru_felonius' && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                }
+                return done(new Error('Only Gru is allowed!'));
+            }
+            return done(new Error('Invalid credentials'));
+        }
+    ));
+```
 
 - Now when reading through the documentation for the localStrategy, one particular paragraph caught our attention regarding the `return` statements which tell `authenticate` whether the login was successful:
 
-- ```
-  Note that it is important to distinguish the two failure cases that can occur. The latter is a server exception, in which err is set to a non-null value. Authentication failures are natural conditions, in which the server is operating normally. Ensure that err remains null, and use the final argument to pass additional details.
-  ```
+```
+Note that it is important to distinguish the two failure cases that can occur. The latter is a server exception, in which err is set to a non-null value. Authentication failures are natural conditions, in which the server is operating normally. Ensure that err remains null, and use the final argument to pass additional details.
+```
 
 - In this case, `new Error('Invalid credentials')` is clearly a **non-null value**, the correct way to raise an error should have been something like `return done(null, false, { message: 'Invalid credentials' });`
 
