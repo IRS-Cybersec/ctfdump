@@ -74,6 +74,8 @@ However, it could also be a **condominium**, so we will keep both of these in mi
 
 ### 2. What is present in the background?
 
+________
+
 Let's shift our focus to the background.
 
 ![5](images/5.png)
