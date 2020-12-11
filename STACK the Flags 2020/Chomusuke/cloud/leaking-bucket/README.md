@@ -45,7 +45,7 @@ https://intelligent-intelligent-s4fet3ch.s3-ap-southeast-1.amazonaws.com
 https://think-innovation-s4fet3ch.s3-ap-southeast-1.amazonaws.com
 ```
 
-`think-innovation-s4fet3ch` is a new one! We accessed the page and found a listing of buckets not unlike how the challenge files were distributed. So, we downloaded https://think-innovation-s4fet3ch.s3-ap-southeast-1.amazonaws.com/secret-files.zip and found a password proteted zip.
+`think-innovation-s4fet3ch` is a new one! We accessed the page and found a listing of buckets not unlike how the challenge files were distributed. So, we downloaded https://think-innovation-s4fet3ch.s3-ap-southeast-1.amazonaws.com/secret-files.zip and found a password protected zip.
 
 _([skip to solution, part 2](#solution-part-2))_
 

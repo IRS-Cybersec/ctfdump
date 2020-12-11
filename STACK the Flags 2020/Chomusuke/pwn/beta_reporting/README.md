@@ -1,11 +1,9 @@
 # Beta Reporting
 **994 Points // 4 Solves**
 
-## Notice
 
-Before I start this writeup, I would like to apologize to my team for not being able to succeed in this challenge during the CTF itself :<
+The developer working for COViD that we arrested refused to talk, but we found a program that he was working on his laptop. His notes have led us to the server where the beta is currently being hosted. It is likely that there are bugs in it as it is a beta.
 
-This writeup is probably not eligible but I am writing it anyway to document what I have learned.
 
 ## Preliminary Reconnaissance
 Upon receiving the binary, our first instinct should be, as always, to open the binary in GDB and run `checksec`.
