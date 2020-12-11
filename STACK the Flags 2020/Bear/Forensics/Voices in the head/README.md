@@ -37,13 +37,13 @@ And we set the mode to Spectrogram...
 
 
 
-<img src="audacitysetting.PNG" style="zoom:80%;" />
+<img src="audacitysetting.png" style="zoom:80%;" />
 
 
 
 which yields this...
 
-![](spectrogram.png)
+![](spectrogram.PNG)
 
 
 
