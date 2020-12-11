@@ -1,5 +1,5 @@
 ---
-typora-root-url: ./
+
 typora-copy-images-to: ./
 ---
 
@@ -137,8 +137,6 @@ Note that under Comment, there is govtech-csg{Th1sisn0ty3tthefl@g}. We thought t
 
 Was this just a troll? No, it ain't. Turns out, this is the password to extracting the .docx file:
 
-
-
 <img src="/flag.PNG" style="zoom:67%;" />
 
 
@@ -158,6 +156,8 @@ govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}
 ## But Wait!
 
 It doesn't end here, there's still something more to this challenge!
+
+<img src="flagclue.png" alt="flagclue" style="zoom:67%;" />
 
 <img src="/flagclue.png" alt="flagclue" style="zoom:67%;" />
 
