@@ -158,6 +158,8 @@ govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}
 
 It doesn't end here, there's still something more to this challenge!
 
+<img src="/flagclue.png" alt="flagclue" style="zoom:67%;" />
+
 <img src="/flagclue.png" style="zoom:67%;" />
 
 Selecting the text with a mouse, or CTRL + A to select all, reveals a line of text hidden, in white colour, which wasn't visible in the earlier picture. Putting the text colour to black reveals `"The attacker like[s] to use Bifid Cipher"`, most likely a hint for _forensic-challenge-3_ too.
