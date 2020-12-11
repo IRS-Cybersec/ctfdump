@@ -1,3 +1,7 @@
+---
+typora-root-url: ./
+---
+
 # Voices in the head
 
 ### Forensics - 1692 Points - 26 solves
@@ -29,19 +33,19 @@ Since it is a .wav file, we think it could likely be a spectrogram.
 
 Opening the file in Audacity, we get this:
 
-<img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\audacity.PNG" alt="audacity"  />
+![](/audacity.PNG)
 
 
 
 And we set the mode to Spectrogram...
 
-<img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\audacitysetting.png" alt="audacitysetting" style="zoom: 80%;" />
+<img src="/audacitysetting.png" style="zoom: 80%;" />
 
 
 
 which yields this...
 
-<img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\spectrogram.PNG" alt="spectrogram"  />
+![](/spectrogram.PNG)
 
 
 
@@ -52,7 +56,7 @@ we obtain a pastebin link:
 
 https://pastebin.com/jETj2uU
 
-
+---
 
 In the pastebin link, there was this chunk of text:
 
@@ -82,13 +86,13 @@ But at the same time we felt that this was quite a bit of work to do to get this
 
 We pondered for a bit, and went looked at the challenge hint. _Xiao_, hmm...
 
-Then, realising this had to be referring to Xiao steganography, we opened the original .wav file in the program.
+Then, realising this had to be referring to Xiao steganography, we opened the original .wav file in the program Xiao steganography.
 
 Indeed, there was a .zip file hidden inside, and we extracted it, _unsuccessfully_. The extracted .zip file appears to be corrupted when we tried to open it.
 
 
 
-![hiddenzipfile](C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\hiddenzipfile.png)
+![](/hiddenzipfile.png)
 
 
 
@@ -104,7 +108,9 @@ Connecting the dots, we tried '**thisisnottheflag**', obtained from earlier, as 
 
 In the zip file lies a .docx file, which required a password to be extracted. Unfortunately, 'thisisnottheflag' was not the password this time.
 
-![inthezipfile](C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\inthezipfile.png)
+
+
+![](/inthezipfile.png)
 
 
 
@@ -116,7 +122,9 @@ Well, as always, one should always check the zip file or .docx itself for potent
 
 We opened the zip file with 7zip, and then the properties of **This is it.docx**.
 
-<img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\docxproperties.png" alt="docxproperties" style="zoom: 67%;" />
+<img src="/docxproperties.png" style="zoom:67%;" />
+
+
 
 Note that under Comment, there is govtech-csg{Th1sisn0ty3tthefl@g}. We thought this was the flag, because of the govtech-csg{...} format. Yet the text says it is not the flag.
 
@@ -126,9 +134,13 @@ Note that under Comment, there is govtech-csg{Th1sisn0ty3tthefl@g}. We thought t
 
 
 
-Was this just a troll? No, it ain't. Turns out, this is the password to extracting the .docx file.
+Was this just a troll? No, it ain't. Turns out, this is the password to extracting the .docx file:
 
-<img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\flag.PNG" alt="flag" style="zoom: 67%;" />
+
+
+<img src="/flag.PNG" style="zoom:67%;" />
+
+
 
 Here lies the flag! _and a nice clue to forensic-challenge-3 too_.
 
@@ -146,7 +158,7 @@ govtech-csg{3uph0n1ou5_@ud10_ch@ll3ng3}
 
 It doesn't end here, there's still something more to this challenge!
 
-> <img src="C:\Users\HX\Documents\GitHub\ctfdump\STACK the Flags 2020\Bear\Forensics\Voices in the head\flagclue.png" alt="flagclue" style="zoom: 67%;" />
+<img src="/flagclue.png" style="zoom:67%;" />
 
 Selecting the text with a mouse, or CTRL + A to select all, reveals a line of text hidden, in white colour, which wasn't visible in the earlier picture. Putting the text colour to black reveals `"The attacker like[s] to use Bifid Cipher"`, most likely a hint for _forensic-challenge-3_ too.
 
