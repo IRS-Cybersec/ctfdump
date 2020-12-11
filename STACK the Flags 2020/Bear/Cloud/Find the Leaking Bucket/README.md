@@ -26,7 +26,7 @@ _Initially, I did not include the words in the quote in my wordlist, resulting i
 
 ## Testing for Buckets
 
-With ~50 words in hand, we had about 50^2 = 2500 buckets to test for. I thought of three ways to test for the existence of S3 buckets:
+With ~50 words in hand, we had about around 50^2 = 2500 buckets to test for. I thought of three ways to test for the existence of S3 buckets:
 
 1. using the AWS CLI's very aptly-named `s3api wait bucket-not-exists` command <https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/wait/bucket-not-exists.html>
 
@@ -142,7 +142,7 @@ think-innovation        [Status: 200, Size: 465, Words: 4, Lines: 2]       :: Er
 :: Progress: [2401/2401] :: Job [1/1] :: 36 req/sec :: Duration: [0:01:06] :: Errors: 0 ::
 ```
 
-The line of interest of us is:
+The line of interest to us is:
 
 ```
 think-innovation        [Status: 200, Size: 465, Words: 4, Lines: 2]       :: Errors: 0 ::
