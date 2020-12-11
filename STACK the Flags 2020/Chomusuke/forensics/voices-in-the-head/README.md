@@ -57,11 +57,12 @@ Installing Xiao Steganography and opening the file, we get this interface:
 After extracting it to the folder, we get:
 ![](zip.png)
 
-*Warum tust du mir so weh?* (Why do you hurt me like this?)
+### *Warum tust du mir so weh?* (Why do you hurt me like this?)
 
 Then we had a `B I G  B R I A N` moment (as you do, because the state of forensics has devolved into lateral thinking challenges).
 
 Upon `strings`-ing the zip archive, we get this:
+
 ![](strings.png)
 
 *Look ok, the flag is not convincing. But I point you to the meme below.*

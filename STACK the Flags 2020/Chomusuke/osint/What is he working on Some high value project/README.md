@@ -87,5 +87,5 @@ Those are good places to start, and we found what we desired in the second appro
 
 ## Flag
 
-And there we have it, the flag is `govtech-csg{hrs-admin-portal}`
+And there we have it, the flag is `govtech-csg{krs-admin-portal}`
 

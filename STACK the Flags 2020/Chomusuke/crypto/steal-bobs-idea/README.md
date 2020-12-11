@@ -45,12 +45,13 @@ Specifically, it relies on the *infeasibility* to compute the *<u>discrete log</
 ### o.o Can you speak English?
 A finite cyclic group of integers (mod `p`) **(declared "FCIp" henceforth)** is a subset of integers (mod `p`) **(declared "Ip" henceforth)**, all of which can be generated from one single integer (called the generator, `g`).
 
-One such example where `FCIp` can be generated is during modular exponentiation. For some integers `a,b,c` you will eventually get ![](https://render.githubusercontent.com/render/math?math=$(a^b)^c%20\equiv%20a(mod%20p)$), and the cycle of integers begins to repeat itself (because you're going to get the same thing if you compute ![](https://render.githubusercontent.com/render/math?math=$a^b%20(mod%20p)$)). 
+One such example where `FCIp` can be generated is during modular exponentiation. For some integers `a,b,c` you will eventually get ![](https://render.githubusercontent.com/render/math?math=$(a^b)^c%20\equiv%20a(mod%20p)$), and the cycle of integers begins to repeat itself (because you're going to get the same thing if you compute ![](https://render.githubusercontent.com/render/math?math=$a^b%20(mod%20p)$) as if you computed ![](https://render.githubusercontent.com/render/math?math=$(a^b)^{c%2B1}%20\equiv%20a(mod%20p)$)). 
 
 `c`, or the number of elements in this cycle is called "size of `FCIp`" (denoted `size(FCIp)`). 
 
 The size of `FCIp` is dependent on the modulus `p` and the generator `g`.
-- The maximum `size(FCIp)` is always `p-1`. 
+- The maximum theoretical `size(FCIp)` is always `p-1`. 
+    - This is because your cyclic group includes everything but `0`. Poor `0`.
     - Usually, however, it will be much smaller (see [Appendix A](#appendix-a))
     - Exceptions include the `safe primes` (i.e. if ![](https://render.githubusercontent.com/render/math?math=$p=2q%2B+1$), where `q` is a prime)
 - If `p` is small, don't expect `size(FCIp)` to be big.
@@ -73,7 +74,9 @@ The SageMath documentation says [inbuilt log functions of algebraic structures a
 
 Then, we simply compute to get Alice and Bob's shared Diffie-Hellman key.
 
-Thus, it is time I proselytize about the virtues of **RETURN TO MONKE**.
+Amazing. Just like **MONKE**.
+
+And thus, it is time I proselytize about the virtues of **RETURN TO MONKE**.
 ```python
 #again, SageMath, NOT python.
 
