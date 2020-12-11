@@ -180,9 +180,6 @@ function yyy() {
 	})
 };
 yyy();
-
-[...]
-
 function iii(eee) {
 	ttt = eee[0] << 16 | eee[1] << 8 | eee[2];
 	rrr = ooo(ttt);
@@ -200,21 +197,10 @@ function iii(eee) {
 		alert("Thank you for accepting the invite!\n" + hhh + mmm)
 	}
 }
-for (a = 0; a != 1000; a++) {
-	debugger
-}
 $('.custom1').catLED({
-	type: 'custom',
-	color: '#FF0000',
-	background_color: '#e0e0e0',
-	size: 10,
-	rounded: 5,
-	font_type: 4,
+	[...],
 	value: " YOU'RE INVITED! "
 });
-
-[...]
-
 setTimeout(function() {
 	iii(x)
 }, 2000);
@@ -302,7 +288,7 @@ This segment of code checks for certain conditions and modifies the values of th
 
 ## Solution
 
-Moving forward, I just modified the relevant function `iii()` to loop through the values of the array `x` and check if the first character of `mmm` was '{', which would signal that we had come across the right combination, as that is how the flag starts.
+Moving forward, I just modified the relevant function `iii()` to loop through the possible values of the array `x` and check if the first character of `mmm` was '{', which would signal that we had come across the right combination, as that is how the flag starts.
 
 **_A runnable version can be found in 'solve.html'._**
 
