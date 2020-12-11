@@ -116,7 +116,7 @@ We noticed that the forensics .wav actually had `01` along side `00` within the 
 
 ### Solving the challenge with Xiao Steganography
 
-Eventually, the staffs released a free hint for everyone, which was as follows: `Xiao wants to help. Will you let him help you?`
+Eventually, the staff released a free hint for everyone, which was as follows: `Xiao wants to help. Will you let him help you?`
 
 
 
