@@ -264,7 +264,7 @@ The good sign is that the water body here looks somewhat curvy, which fits the p
 
 ______
 
-Now, it is just a matter of confirming that this is indeed the water body. This is important as we only have three attempts, and when conducting real OSINT, dispatching security personnel to the wrong location could be a massive waste of time for everyone involved.
+Now, it is just a matter of confirming that this is indeed the water body. This is important as we only have three attempts, and when conducting real OSINT, dispatching security personnel to the wrong location will result in a massive waste of time for everyone involved.
 
 ![24edited](images/24edited.png)
 
