@@ -138,7 +138,7 @@ mmmmmmmmmmmmmmmmmmmmmmmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmmmmm (The audio clip
 
 Since there are no specific vehicles on the ground that could make such a loud noise, **it must have been from the air.** **The sound likely came from an airplane.**
 
-Additionally, the name of the challenge is called "Sounds of freedom!" It sounds like this park is located in the vicinity of an air flight path, likely to be from the Republic of Singapore Air Force. This indicates a **high likelihood of the presence of a nearby air base or airport.** 
+Additionally, the name of the challenge is called "Sounds of freedom!" It sounds like this park is located in the vicinity of an air flight path, likely to be from the **Republic of Singapore Air Force**. This indicates a **high likelihood of the presence of a nearby air base or airport.** 
 
 **This is an especially important clue, because it essentially rules out all other water bodies in Singapore that are not near any air bases.**
 
@@ -206,7 +206,7 @@ From here, ignoring all of the rivers, we see **four** possible water bodies.
 
 
 
-Zooming into the **two adjacent water bodies** below, we see that it is Bedok Reservoir and an unnamed water body.
+Zooming into the **two adjacent water bodies** below, we see that it is Bedok Reservoir and Tampines Quarry (unnamed water body right beside Bedok Reservoir).
 
 ![19](images/19.png)
 
@@ -214,7 +214,7 @@ Using street view, we can note that the water body is **way too large to fit the
 
 ![20](images/20.png)
 
-The other water body is **not near any HDB flats, and is thus automatically disqualified.**
+Tampines Quarry is **not near any HDB flats, and is thus automatically disqualified.**
 
 We can scratch these two water bodies off our list and move on.
 
@@ -222,11 +222,11 @@ The picture below shows Pasir Ris Town Park.
 
 ![21](images/21.png)
 
-Well, it seems like Pasir Ris Town Park actually ticks a bunch of requirements mentioned above, such as the red roof structures, as well as the presence of a road beside the park. 
+Well, it seems like Pasir Ris Town Park actually ticks a bunch of requirements mentioned above, such as the presence of the red roof structures, as well as a road beside the park. 
 
 However, we eventually rejected this park.
 
-The main reason is: **The shape of the park does not fit the one in the video.**
+The main reason is: **The shape of the water body does not fit the one in the video.**
 
 If we look back at the screenshot from the video:
 
@@ -242,11 +242,11 @@ Going back to this image:
 
 We consider three vantage points, namely A, B and C. These vantage points are at the places with HDB flats (or Condominiums) The outlines of the lake is also shown here to indicate what the top left corner of the water body would have looked like when viewing from that vantage point.
 
-If we look from A, we would realise that the shape of the top left corner of the park would not match the one from the video.
+If we look from A, we will see that the shape of the top left corner of the park does not match the one from the video.
 
 If we look from B, the top left hand corner of the water body is somewhat pointy instead of a curve. Moreover, there is a river separating the building from the water body. This is however not present in the video.
 
-If we look from C, the distance between water body and the building would be way too far than the one from the video.
+If we look from C, the distance between water body and the building is way too far than the one from the video.
 
 
 
@@ -264,7 +264,7 @@ The good sign is that the water body here looks somewhat curvy, which fits the p
 
 ______
 
-Now, it is just a matter of confirming that this is indeed the water body. This is important as we only have three attempts, and when conducting real OSINT, sending dispatchers to the wrong location could be a massive waste of time for everyone involved.
+Now, it is just a matter of confirming that this is indeed the water body. This is important as we only have three attempts, and when conducting real OSINT, dispatching security personnel to the wrong location could be a massive waste of time for everyone involved.
 
 ![24edited](images/24edited.png)
 
@@ -367,5 +367,5 @@ Key takeaways from this challenge:
 1. This challenge reveals some limitations that Google Maps/Earth have, such as not updating the 3D models of the HDB blocks. This led to confusion as it was an apparent contradiction to all of the other evidence. It is lucky that Google Street View actually displays the updated block colour so that we can disregard the colour of the 3D models. Therefore, **always** look out for more information just in case the one you found is contradictory.
 
 2. There are many tools available online that can be used to narrow down from over 350 parks to just a few for further investigation.
-3. Analyze all possible clues from the given resource, and make a list to check against the actual location in question!
+3. Analyse all possible clues from the given resource, and make a list to check against the actual location in question!
 
