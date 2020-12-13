@@ -255,6 +255,8 @@ this.constructor.constructor("return process")().env
 
 For some reason, in a VM, `this.constructor.constructor("<code>")()` runs a function in the scope of the parent function (understanding this would require looking into the source of `vm`/`contextify`/`V8`, and I am lazy and unqualified). This allows the attacker to basically run any Node.js code they would like to.
 
+UPDATE: https://gist.github.com/jcreedcmu/4f6e6d4a649405a9c86bb076905696af
+
 The fix that safe-eval deployed was to delete all functions from the constructor:
 
 ```js
