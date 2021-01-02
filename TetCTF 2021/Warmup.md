@@ -1,5 +1,9 @@
 # Warmup
 
+`nc 192.46.228.70 32337`
+[Download](https://drive.google.com/file/d/193AbQ0KUzbVAOfO0336-D7f8pktHYEgL/view?usp=sharing)
+author: [@chung96vn](https://twitter.com/chung96vn)
+
 ## Decompilation
 
 The usual initialisation functions for a C challenge are here:
@@ -126,7 +130,7 @@ void Game(Player *player) {
 That's long, but there are a few points of obvious interest:
 1. `printf()` occurs with a user-controlled format string (located on the **heap**, not the stack) of 0x80+ bytes. This happens only once, so unless we're willing to dig in with a [one-shot format string exploit](https://ctftime.org/writeup/16081), we'll probably have to do something else here.
 2. There's a big while loop involving the use of `rand()` to modify `*player->money`. The purpose of this is not immediately clear; why would we need to edit `money` anyway?
-  
+
 In any case, the presence of `rand()` in a CTF usually indicates the need to predict its pseudorandom output.
 
 ## Breaking `rand()`
@@ -473,4 +477,5 @@ $ cat /home/warmup/flag
 1. It was big enough to crash my 8GB RAM windows setup, but it ran fine on a beefier linux server.
 2. To speed things up, I'll be implementing a caching system for the `.find_offset` module... soon.
 3. Modify the stack address calculation to `stack_ret := stack_leak-int(argv[1])*context.bytes` (add `from sys import argv` somewhere), and then run `for i in $(seq 1 20); do python3.8 solve.py $i; done`. The offset that succeeds without an `EOFError` is the winner.
+   Bruteforcing is really necessary here. The offset on remote != offset on local, even while running the binary with the given libc version.
 
