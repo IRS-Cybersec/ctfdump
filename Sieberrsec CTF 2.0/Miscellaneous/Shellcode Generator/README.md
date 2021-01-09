@@ -44,7 +44,9 @@ Shellcode Assembly:usage: pwn [-h]
 This looks like the output from a command-line utility, and the [hint](https://github.com/Gallopsled/pwntools/blob/dev/pwnlib/commandline/shellcraft.py) corroborates with this. If you search for the `pwn` command hard enough, you'll figure out that the server is running the command `pwn shellcraft ...` for every request, with the command-line arguments determined by whatever's written in the form.
 
 For example, if you submit a form like this (`shellcode=amd64.crash&address=`):
+
 ![](test.png)
+
 The webpage will return this:
 ```asm
 Your shellcode: 5f5e5d5b5b5a59584831e4ffe4
