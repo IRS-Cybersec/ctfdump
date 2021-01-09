@@ -1,8 +1,12 @@
 # Warmup
 
 `nc 192.46.228.70 32337`
+
 [Download](https://drive.google.com/file/d/193AbQ0KUzbVAOfO0336-D7f8pktHYEgL/view?usp=sharing)
+
 author: [@chung96vn](https://twitter.com/chung96vn)
+
+### The library used here is [`pwnscripts`](https://github.com/152334H/pwnscripts)
 
 ## Decompilation
 
