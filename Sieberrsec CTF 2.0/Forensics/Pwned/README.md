@@ -67,7 +67,7 @@ So we can see that each MFT entry starts with the signature `FILE` as we can see
 46 49 4C 45 #"FILE" signature
 3000 #Fix-up values
 0300 #No. of fix-up values
-81D8A20000000000 #Netadata
+81D8A20000000000 #Metadata
 0300 #Sequence no.
 0100 #Refernece count
 3800 #Attributes offset (0x38 = 56) [!!!]
@@ -266,3 +266,5 @@ IRS{NTF3_Ma3teR_duck_t@ble!!!}
 
 - I took quite some time to make this challenge as it seems like windows actually overwrites deleted file data pretty quickly with temporary files (even so if you have tons of programs) and this PDF file was relatively small.
 - I ended up making a partition to simulate an external HDD/drive, and the files stayed there for quite some time even after being deleted!
+- Interestingly, if you take a look at the MFT entry for `hehehehe-protected`, you will see that it is still marked as **Allocated & In use** :thinking:
+
