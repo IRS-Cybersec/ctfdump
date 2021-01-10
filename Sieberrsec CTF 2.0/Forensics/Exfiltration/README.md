@@ -1,10 +1,4 @@
-# [Exfiltration - (0 Solves) [8 Points]](/* Message types */
-#define MESSAGE_TYPE_SYN    (0x00)
-#define MESSAGE_TYPE_MSG    (0x01)
-#define MESSAGE_TYPE_FIN    (0x02)
-#define MESSAGE_TYPE_ENC    (0x03)
-#define MESSAGE_TYPE_PING   (0xFF))
-
+# Exfiltration - (0 Solves) [8 Points]
 ```
 SieberrHealth seems to have broken into 1 of our servers! Oh no!
 
