@@ -209,7 +209,7 @@ If you search up `hehehe-protected` in a Hex-Editor, you will also realise that 
 
 ![](5.jpg)
 
-There are a few `$DATA` attributes, but it seems like only 1 has a length that is **not 0**. We can employ the same method in analysing $DATA attributes from above, so let's skip directly to the **Data Stream**.
+There are a few `$DATA` attributes, but it seems like only 1 has a length that is **not 0**. We can employ the same method in analysing $DATA attributes from above, so let's skip directly to the **Data Run**.
 
 ```bash
 2 #Size of Starting Cluster Block No.
