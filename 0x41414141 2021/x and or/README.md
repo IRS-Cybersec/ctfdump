@@ -20,11 +20,11 @@ int main(){
 
 There are two global variables here: `_bss_start` and `code`. These are a part of the `.bss` segment:
 
-![image-20210124123335431](C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20210124123335431.png)
+![](image-20210124123335431.png)
 
 `_bss_start` is a `FILE*` that's passed to `fgets()`. It's almost certainly just `stdin`, albeit poorly labelled, so we can put our focus on `code`, which has a few other references in the `init()` function (`init()` itself is called by `__libc_csu_init` before `main()` is ever executed):
 
-![image-20210124123510895](C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20210124123510895.png)
+![](image-20210124123510895.png)
 
 ```c
 __int64 init(){
@@ -252,7 +252,7 @@ gef➤
 ```
 
 Well, that's definitely still wrong. Considering how long it would take for me to parse the full assembly, I decided to just stick the entire thing into IDA, going through some less-obvious features of the software to get a decompiler output:
-![image-20210124132336993](C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20210124132336993.png)
+![](image-20210124132336993.png)
 
 We can further reduce this to simpler pseudocode (note little endian `_QWORD`s for `s[]`!):
 
