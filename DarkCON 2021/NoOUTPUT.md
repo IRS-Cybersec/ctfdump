@@ -123,7 +123,7 @@ As the title states, this challenge provides **no output**: PIE might be disable
 
 I got stuck on this for a bit, up until I found an enlightening piece of metadata within IDA:
 
-![image-20210220212611387](C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20210220212611387.png)
+![image-20210220212611387](image-20210220212611387.png)
 
 _Ah._
 
