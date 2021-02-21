@@ -25,20 +25,15 @@ The code for this challenge is structurally similar to that of [Warmup](Warmup.m
 `init()` does something weird:
 
 ```c
-unsigned __int64 init() {
-  char c; // [rsp+Bh] [rbp-25h]
-  int i; // [rsp+Ch] [rbp-24h]
+void init() {
   char s[24]; // [rsp+10h] [rbp-20h]
-  for ( i = 0; i <= 71; ++i )
-  {
-    c = fgetc(stdin);
+  for (int i = 0; i <= 71; ++i) {
+    char c = fgetc(stdin);
     if ( c == '\n' )
       break;
     s[i] = c;
   }
-  return __readfsqword(0x28u) ^ v4;
 }
-
 ```
 
 This is clearly an overflow, but overflowing here will cause a stack protector failure. We'll probably need to jump back to here later to perform ROP for one reason or another.
