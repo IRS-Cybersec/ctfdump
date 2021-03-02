@@ -3,10 +3,12 @@
 
 ## Reconnaissance
 Doing the things that we should do in Pwn:
+
 ![](Images/checksec.png)
 ![](Images/ida.png)
 
 Also, note that we have a LIBC file:
+
 ![](Images/libc.png)
 ## Vulnerability Analysis
 - `printf()` without *format strings* means a **Format String Exploit.**
@@ -22,6 +24,7 @@ Also, note that we have a LIBC file:
 ret2libc attacks (that I know of) primarily concern themselves with exploiting `one_gadgets`, which spawns a shell so long as the constraints are met.
 
 So we will be looking for `libc offsets` to jump into the `one_gadget`:
+
 ![](Images/libc-offset.png)
 
 And the `one_gadget` itself:
@@ -30,11 +33,13 @@ And the `one_gadget` itself:
 Then, we simply perform your standard ret2libc exploit routine: 
 
 1. Leak `libc base` with a known `libc` function:
+2. 
 ![](Images/libcleak.png)
 
 We are using the **Format String Exploit** from the previous challenge (FSBS).
 
 ![](Images/libc-offset.png)
+
 Then we look up the custom LIBC offset using LIBC-database.
 
 
