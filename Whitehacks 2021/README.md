@@ -39,5 +39,5 @@ By teams from Sieberrsec
 - [ ] Bad Code Practices :(
 ## CRYPTO
 - [x] LENcrypt
-- 🔄 Secure Banking
+- [x] Secure Banking (solve script only)
 - [ ] BasedRSA
