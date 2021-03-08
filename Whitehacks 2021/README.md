@@ -5,8 +5,8 @@ By teams from Sieberrsec
 - [ ] Piggy_Bank
 - [ ] Piggy_Bank_Revenge
 - [ ] Puddi Puddi
-- [ ] Hopscotch
-- [ ] Padoru Padoru
+- [x] Hopscotch
+- [x] Padoru Padoru
 ## OSINT
 - [ ] Birthday Surprise A - Age Unknown
 - [ ] Birthday Surprise B - The Cake Still Tick-Tocking
@@ -15,7 +15,7 @@ By teams from Sieberrsec
 - [ ] infant web
 - [ ] X marks Louis's treasure
 - [ ] BabyPHP
-- [ ] WAF Bypass
+- [x] WAF Bypass
 ## MISCELLANEOUS
 - [ ] Free Door Gift
 - [ ] Feedback Captcha
