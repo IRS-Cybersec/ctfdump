@@ -38,6 +38,6 @@ By teams from Sieberrsec
 - [ ] Sweet Tooth
 - [ ] Bad Code Practices :(
 ## CRYPTO
-- [ ] LENcrypt
-- [ ] Secure Banking
+- [x] LENcrypt
+- 🔄 Secure Banking
 - [ ] BasedRSA
