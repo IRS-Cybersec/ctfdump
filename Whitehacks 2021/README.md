@@ -30,8 +30,8 @@ By teams from Sieberrsec
 - [ ] An unhappy employee
 - [ ] Bug Bug Infestation
 ## CSIT
-- [ ] A Perfectly Normal App (A)
-- [ ] A Perfectly Normal App (B)
+- [X] A Perfectly Normal App (A)
+- [X] A Perfectly Normal App (B)
 - [ ] This requires a very Smart Attack (A)
 - [ ] This requires a very Smart Attack (B)
 ## CSA
