@@ -4,15 +4,15 @@ A overtly detailed writeup on RSA basics and Long Long Encrypt from CTF.SG CTF
 
 
 
-### Some RSA basics you need to know
+## Some RSA basics you need to know
 
-###### What is RSA
+#### What is RSA
 
 RSA is a public-key cryptosystem, which means each RSA key pair has a public key used for encryption (usually denoted with `n`, `e`) and a private key used for decryption (usually denoted as `n`,` d`). The idea is that the private key should be extremely difficult (practically impossible) to attain even with the public key being publicly available. In an RSA challenge, you are usually given the values of `n`, `e` and `c`. 
 
 
 
-###### Some important RSA equations
+#### Some important RSA equations
 
 For any (that I am aware of) RSA, the following equations are true:
 
@@ -26,7 +26,7 @@ where `m` is the plaintext and `c` is the ciphertext, both in Decimal (base 10).
 
 
 
-###### Euler's totient function
+#### Euler's totient function
 
 See that![Math2](Math2.png)?
 
@@ -42,13 +42,13 @@ For standard RSA, ![Math5](Math5.png), thus![Math6](Math6.png) .
 
 
 
-### Long Long Encrypt
+## Long Long Encrypt
 
 A RSA-variant challenge. 
 
 
 
-###### Files given
+#### Files given
 
 The challenge has 2 files attached, `txt.enc`  and `encrypt.py` .
 
@@ -121,7 +121,7 @@ if __name__ == '__main__':
 
 
 
-###### Solving the challenge
+#### Solving the challenge
 
 There are 2 processes here. Firstly, `m`  is derived from the plaintext using a really convulated method through the function `bti`.  `m` is then encrypted using a method which looks extremely like RSA, since `c = pow(m, e, n)` and `n` is derived from 2 primes, `p` and `q`. 
 
@@ -237,9 +237,9 @@ Thus the flag is `CTFSG{mY_fEll0W_s1Ngap0r3aNs}`.
 
 
 
-###### Complete script
+#### Complete script
 
-With SageMath,
+Using SageMath,
 
 ```python
 from Crypto.Util.number import long_to_bytes
@@ -265,7 +265,7 @@ while (m%256) != 0:
 
 
 
-### Other stuff you may want to know
+## Other stuff you may want to know
 
 - To convert from a `string` to `int`, we can use `from Crypto.Util.number import bytes_to_long`. The specifics of this is that the `string` is converted to `hex` and then from `base 16` to `base 10`. For example, 'Crypto' is '`0x43` `0x72` ` 0x79` `0x70` `0x74` ` 0x6f`' which is the same as '`0x43727970746f`'. Converting '`0x43727970746f`' from `base 16` to `base 10`, we get the `int` '74158942745711'.
 - To convert from `int` to `string`,  use `from Crypto.Util.number import long_to_bytes`. 
