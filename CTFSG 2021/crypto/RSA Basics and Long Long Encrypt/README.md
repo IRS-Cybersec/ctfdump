@@ -18,7 +18,7 @@ For any (that I am aware of) RSA, the following equations are true:
 
 
 
-![Math1](/Users/see.min./Desktop/Math1.png)
+![Math1](Math1.png)
 
 
 
@@ -28,17 +28,17 @@ where `m` is the plaintext and `c` is the ciphertext, both in Decimal (base 10).
 
 ###### Euler's totient function
 
-See that![Math2](/Users/see.min./Desktop/Math2.png)?
+See that![Math2](Math2.png)?
 
 That's [Euler's totient function](https://en.wikipedia.org/wiki/Euler%27s_totient_function) and a general formula for it is, 
 
-where![Math3](/Users/see.min./Desktop/Math3.png),
+where![Math3](Math3.png),
 
-![Math4](/Users/see.min./Desktop/Math4.png)
+![Math4](Math4.png)
 
 
 
-For standard RSA, ![Math5](/Users/see.min./Desktop/Math5.png), thus![Math6](/Users/see.min./Desktop/Math6.png) .
+For standard RSA, ![Math5](Math5.png), thus![Math6](Math6.png) .
 
 
 
@@ -147,18 +147,14 @@ which outputs:
 28375637489003756813
 ```
 
- Now that we have `p = 28375637489003756813`, we can easily find $φ(n)$. In this case,
-$$
-φ(n) = n(1 - \frac{1}{p})
-$$
+Now that we have `p = 28375637489003756813`, we can easily find ![Math2](Math2.png). In this case,
+
+![Math7](Math7.png)
+
 Since 
-$$
-d · e = 1 (mod \ φ(n))
-$$
-and 
-$$
-m ≡ c^d (mod \ n)
-$$
+
+![Math8](Math8.png)
+
 Using SageMath, as usual:
 
 ```python
