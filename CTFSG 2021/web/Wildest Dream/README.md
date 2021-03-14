@@ -60,7 +60,7 @@ Initial analysis of ONLY the PHP part of 1989.php yields:
 ?>
 ```
 
-Reading the PHP carefully (and not gloss out that one trap), it requires the following conditions for the two inputs:
+Reading the PHP carefully (and not glossing out that one trap), it requires the following conditions for the two inputs:
 
 1.  `$i1` and `i2` must not be empty.
 2. `$i1` and `$i2` must be 20 characters or more.
