@@ -127,7 +127,7 @@ There are 2 processes here. Firstly, `m`  is derived from the plaintext using a 
 
 
 
-What we have to do it to basically reverse this process, thus we start with the decryption process first. Although `n` is extremely huge ( `len(str(n)` is 33246), which usually is a headache, notice in the code that `n = p**q`. Thus  `p` and `q`  are actually relatively small and can be bruteforced.  Using SageMath,
+What we have to do it to basically reverse this process, thus we start with the decryption process first. Although `n` is extremely huge ( `len(str(n))` is 33246), which usually is a headache, notice in the code that `n = p**q`. Thus  `p` and `q`  are actually relatively small and can be bruteforced.  Using SageMath,
 
 ```python
 n = # can be found in txt.enc file given. Too big so am not including it here.
