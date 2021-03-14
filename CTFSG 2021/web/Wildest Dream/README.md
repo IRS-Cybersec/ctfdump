@@ -69,7 +69,7 @@ Reading the PHP carefully (and not glossing out that one trap), it requires the 
 
 **Note that the `sha1` check from `if(sha1(hex2bin($i1)) === sha1(hex2bin($i2)));` is a red herring because of the semicolon attached to the back making it completely useless. The indentation made did stump the solve for quite awhile.** 
 
-With that, solving the challenge is as easy as going to a well known GitHub repository of PHP magic hashes (https://github.com/spaze/hashes), finding a two hashes with `0e` in front from the `md5` section (`abctvXqR55I` and `abcwmf8Vv7V`), converting it to hex and submitting the query string as:
+With that, solving the challenge is as easy as going to a well known GitHub repository of PHP magic hashes (https://github.com/spaze/hashes), finding two hashes with `0e` in front from the `md5` section (`abctvXqR55I` and `abcwmf8Vv7V`), converting it to hex and submitting the query string as:
 
 ` http://chals.ctf.sg:30501/1989.php?i1=6162637476587152353549&i2=616263776d663856763756`
 
