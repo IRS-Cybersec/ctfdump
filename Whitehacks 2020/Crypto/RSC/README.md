@@ -139,8 +139,8 @@ Let's bring to your attention a few details:
    - Notice that `e` is 5. That's VERY small. We could do something about that
 
 Now that we're on the same page, if
- <br>
-![wow1](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAexponential.png)<br>
+ <br><img src="https://render.githubusercontent.com/render/math?math=$c \equiv m^e \hspace{0.3cm} (mod n)$" style="zoom:120%;" />
+<br>
 
 Then it stands to reason that<br>
 ![wow2](https://github.com/IRS-Cybersec/ctfdump/blob/master/Whitehacks%202020/Crypto/RSC/images/RSAvalueofm.png)<br>
