@@ -88,10 +88,11 @@ The challenge is very simple to understand.
 Unicorn Engine is used to emulate two memory spaces: an executable page (at `CODE == 0xdeadbeef000`) and a read-write page (at `DATA == 0xbabecafe000`). `CODE[:0x2000]` is filled with user-provided shellcode; `CODE[0x2000:0x3000]` is filled with the `hlt` instruction. `DATA[:50]` is filled with 50 random bytes from `os.urandom`.
 
 The shellcode provided to the challenge must terminate without errors with the following conditions:
-0. No `jmps`, `syscalls`, `calls`, etc. occured (i.e. Unicorn did not detect more than one code block)
-1. `rip == CODE+0x2000`
-2. The total number of assembly instructions executed was less than `0x233`.
-3. `*(uint128_t*)(DATA+0x800) == md5sum(DATA[:50])`
+
+1. No `jmps`, `syscalls`, `calls`, etc. occured (i.e. Unicorn did not detect more than one code block)
+2. `rip == CODE+0x2000`
+3. The total number of assembly instructions executed was less than `0x233`.
+4. `*(uint128_t*)(DATA+0x800) == md5sum(DATA[:50])`
 
 The last two parts _seem_ very difficult, but I managed to find a [working md5 assembly implementation from google](https://www.nayuki.io/res/fast-md5-hash-implementation-in-x86-assembly/md5-fast-x8664.S) after some time. You only need a little bit of glue (and -Mintel conversion) in editing the linked implementation to get it to work for this challenge:
 ```python
