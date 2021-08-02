@@ -1,7 +1,8 @@
 # uiuctf
 During uiuctf, I solved
- * [kernel] insecure_seccomp
- * [pwn] should've had a v8
+ * `[kernel] insecure_seccomp`
+ * `[pwn] should've had a v8`
+
 I also tried doing `[pwn] gonnegtions`, but I couldn't get my exploit working on remote.
 
 None of these write-ups are particularly detailed. I didn't try to figure out _why_ the `insecure_seccomp` exploit worked, the v8 challenge wasn't unique enough to justify in-depth elaboration, and `gonnegtions` wasn't even fully solved by me. I'm publishing these write-ups out of habit; they're not my best work.
