@@ -384,4 +384,4 @@ $ echo $?
 1
 ```
 
-I ran it again, and I still got no results. Can't say I know why.
+I ran it again, and I still got no results. After the CTF, I got confirmation from the challenge authors that the heap is rwx on remote. There's a chance I was just really unlucky, but it's also possible that I/O buffering has subtle differences when done with a higher ping.
