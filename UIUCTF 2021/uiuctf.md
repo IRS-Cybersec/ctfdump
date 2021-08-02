@@ -119,7 +119,7 @@ index 0f18222236..0f76ad896e 100644
 
 Bug 2 is a turbofan typer bug. Strings in javascript have an `.indexOf(searchString)` method, and it's supposed to return -1 whenever `searchString` isn't present. This means that a call to `s1.indexOf(s2)` where `s2 not in s1` will be falsely assigned a `Range` of `(0, 0x1fffffe8)` during turbofan optimization:
 
-![image-20210731144011706](C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20210731144011706.png)
+![oops](turbofan.jpg)
 
 If you've never seen a rectangle like the one in the picture before, you might want to see [this in-depth blog](https://doar-e.github.io/blog/2019/01/28/introduction-to-turbofan/) on how turbofan works.
 
