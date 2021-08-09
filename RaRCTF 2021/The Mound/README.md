@@ -73,7 +73,9 @@ mv /pwn/flag.txt /pwn/$(xxd -l 16 -p /dev/urandom).txt
 
 `mount` has a good number of functions: 
 
-![image-20210807091923816](image-20210807091923816.png)
+<p align="center">
+<img src="image-20210807091923816.png">
+</p>
 
 There's a function named `win`; that seems rather important.
 
@@ -85,7 +87,9 @@ ssize_t win() {
 }
 ```
 
-![image-20210807092139558](image-20210807092139558.png)
+<p align="center">
+<img src="image-20210807092139558.png">
+</p>
 
 The binary doesn't have PIE or stack canaries _or RELRO_ enabled, so the bulk of this challenge must be in gaining RIP control via a GOT overwrite.
 
@@ -340,7 +344,9 @@ The most interesting part of each `mchunk` is (in my opinion, anyway) the `id` e
 
 This might make a lot more sense if I give a flowchart of how things work:
 
-![](Diagram.png)
+<p align="center">
+<img src="Diagram.png">
+</p>
 
 Relevant macros:
 
@@ -417,7 +423,9 @@ Or not.
 
 It takes me a while, but I eventually realise that the preceding paragraph is false. Sequential malloc chunks can use the `prev_size` field to store user data:
 
-![](prev_size.png)
+<p align="center">
+<img src="prev_size.png">
+</p>
 
 This means that if I call `strdup("A"*0x17)` twice in succession, the first `strdup()` chunk allocated can be used to overwrite the `prev_size` of the 2nd `strdup()` chunk:
 
@@ -427,7 +435,9 @@ strdup(b''.rjust(0x17,b'a'), 1)
 edit(0, b''.rjust(0x17,b'a'))
 ```
 
-![](prev_size2.png)
+<p align="center">
+<img src="prev_size2.png">
+</p>
 
 Using this method, the interpreted `mchunk->id` for a glibc heap chunk can be modified to any value within `range(0, 1<<56)`.
 
