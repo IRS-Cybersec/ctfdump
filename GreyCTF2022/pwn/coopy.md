@@ -26,7 +26,9 @@ $ checksec coopy
 # TL;DR
 0. you can get a UAF due to `reallocate()` using `memcpy`
 1. to leak libc: add and edit a big string to get a UAF read on an unsorted bin chunk
-2. to spawn shel: edit a UAF tcache chunk to point to `&__free_hook`; write `system()` to it with more allocations and call `/bin/sh`.
+2. to spawn shell: edit a UAF tcache chunk to point to `&__free_hook`; write `system()` to it with more allocations and call `/bin/sh`.
+
+There exists a second bug in `coopy.cpp` that I failed to spot (negative indexing is allowed on the `Vector` class), and my exploit makes no use of it.
 
 # Prelude
 This pwn challenge can be broken down into 3 subproblems:
