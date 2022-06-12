@@ -87,18 +87,22 @@ cin >> str;
 ```
 [As I've written before](https://152334h.github.io/writeup/2021/07/11/redpwn-panda-food.html), cpp `string`s are roughly like this:
 ```c
+/* See the libstdc++ parts of
+ *    https://shaharmike.com/cpp/std-string/
+ * and
+ *    http://web.archive.org/web/20160207055704/http://info.prelert.com/blog/cpp-stdstring-implementations
+ * You can also see lines 211-220 here: https://gcc.gnu.org/onlinedocs/gcc-12.1.0/libstdc++/api/a00362_source.html
+ */
 struct basic_string {
-    union {
-        struct {
-            char *p; // when capacity>0xf, p holds a pointer to the actual bytes of the string data.
-            size_t size; // don't really know what happens to this for capacity < 0x10
-        };
-        char buf[0x10]; // when capacity <0x10, this is used
-    };
-    size_t capacity;
+    char *p;   // points to string data
+    size_t sz; // length of current string data (i.e. strlen(p))
+    union {    // .sz affects whether .buf[] or .capacity are used here
+        char buf[0x10];  // when .sz <= 0xf, .p == .buf[]
+        size_t capacity; // This field is only used when .sz > 0xf.
+    }
 } // sizeof(basic_string) == 0x20
 ```
-`str` itself merely exists in the stack. When `cin` reads into `str`, it will try to fit the input data into the `basic_string` struct without calling `malloc()`, but _if_ the input exceeds `0xf` bytes, the STL will move to allocate buffers for the string data [exponentially](https://blog.mozilla.org/nnethercote/2014/11/04/please-grow-your-buffers-exponentially/) -- starting from `malloc(0x1f)` and increasing from there.
+`str` itself merely exists in the stack. When `cin` reads into `str`, it will try to [fit the input data into the `basic_string` struct without calling `malloc()`](https://stackoverflow.com/a/10319672), but _if_ the input exceeds `0xf` bytes, the STL will move to allocate buffers for the string data [exponentially](https://blog.mozilla.org/nnethercote/2014/11/04/please-grow-your-buffers-exponentially/) -- starting from `malloc(0x1f)` and increasing from there.
 
 So, that incredibly small piece of code is actually **too complex** to classify under "will never allocate" or "will always allocate". How about the next line?
 ```cpp
