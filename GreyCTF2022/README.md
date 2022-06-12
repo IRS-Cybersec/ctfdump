@@ -8,13 +8,15 @@ Writeups courtesy of team `bonked (SG)` for Grey Cat The Flag 2022.
 
 category |  title  | link
 -|-|-
-pwn      | easyoob              | [link](pwn/easyoob.md)
-pwn      | easyoob2             | [link](pwn/easyoob2.md)
-pwn      | easyuaf              | [link](pwn/easyuaf.md)
-pwn      | ALU                  | [link](pwn/ALU.md)
-pwn      | coopy                | [link](pwn/coopy.md)
-web      | Grapache             | [link](web/Grapache.md)
-web      | Quotes               | [link](web/Quotes.md)
-re       | Memory Game (Part 2) | [link](RE/memory_game_p2.md)
+pwn      | easyoob               | [link](pwn/easyoob.md)
+pwn      | easyoob2              | [link](pwn/easyoob2.md)
+pwn      | easyuaf               | [link](pwn/easyuaf.md)
+pwn      | ALU                   | [link](pwn/ALU.md)
+pwn      | coopy                 | [link](pwn/coopy.md)
+web      | Grapache              | [link](web/Grapache.md)
+web      | Quotes                | [link](web/Quotes.md)
+re       | Memory Game (Part 2) 🩸 | [link](RE/memory_game_p2.md)
+crypto   | Entry                 | [link](crypto/Entry.md)
+misc     | Ghost                 | [link](misc/Ghost.md)
 
 There are also some unannotated solution files scattered around in the repo.
