@@ -146,16 +146,16 @@ if __name__ == "__main__":
 
 The other interesting route we see here is the `/auth` route, which seems to give a token cookie that seems to be neccessary to connect to the websocket endpoint `/quote`.
 
-The main problem is that the `/auth` endpoint checks for the remtoe address of the connection, which means we must access the endpoint from the selenium instance.
+The main problem is that the `/auth` endpoint checks for the remote address of the connection, which means we must access the endpoint from the selenium instance.
 
-This likely means we need to bypass the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) restrictions as we will be providing a link that is not the same origin as our attack server. The websocket on the other hand does not require the connecting client to be from the same origin fortunately.
+This likely means we need to bypass the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) restrictions as we will be providing a link that is not the same origin as our attack server. The websocket on the other hand does not require the connecting client to be from the same origin fortunately though.
 
 ## Solution
 To bypass the CORS restrictions in order to access the `/auth` endpoint to obtain the cookie, we can load the address via an `<img src="">` tag that does not require CORS. 
 
 Unfortunately, it did not seem to work as you are still trying to access a resource from a different origin. What was possible was to host an endpoint on the attack server to redirect to the localhost `/auth` endpoint instead, so that it will get pass CORS.
 
-We could have went with [DNS rebinding](https://en.wikipedia.org/wiki/DNS_rebinding) but it was not feasible as the selenium browser was only running for 3 seconds as seen in the script. We will require a minimum of a few minutes for the [DNS TTL](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) to update before the new IP can be exploited (minimum TTL is 1 minute).
+We could have went with [DNS rebinding](https://en.wikipedia.org/wiki/DNS_rebinding) but it was not feasible as the selenium browser was only running for 3 seconds as seen in the script. We will require a minimum of a few minutes for the [DNS TTL](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) to update before the new IP can be exploited (minimum TTL is 1 minute) in order for a successful DNS Rebinding attack.
 
 The port for the localhost instance is `7070`, as noted by the docker files provided:
 
