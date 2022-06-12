@@ -1,6 +1,7 @@
 # Writeups
 
 category |  title  | link
+-|-|-
 pwn      | easyoob | [link](pwn/easyoob.md)
 pwn      | easyoob2| [link](pwn/easyoob2.md)
 pwn      | easyuaf | [link](pwn/easyuaf.md)
