@@ -15,6 +15,6 @@ pwn      | ALU                  | [link](pwn/ALU.md)
 pwn      | coopy                | [link](pwn/coopy.md)
 web      | Grapache             | [link](web/Grapache.md)
 web      | Quotes               | [link](web/Quotes.md)
-re       | Memory Game (Part 2) | [link](re/Memory Game (Part 2).md)
+re       | Memory Game (Part 2) | [link](re/memory_game_p2.md)
 
 There are also some unannotated solution files scattered around in the repo.
