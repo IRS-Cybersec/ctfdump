@@ -1,5 +1,7 @@
 # Writeups
 
+Writeups courtesy of team `bonked (SG)` for Grey Cat The Flag 2022.
+
 category |  title  | link
 -|-|-
 pwn      | easyoob | [link](pwn/easyoob.md)
@@ -8,4 +10,4 @@ pwn      | easyuaf | [link](pwn/easyuaf.md)
 pwn      | ALU     | [link](pwn/ALU.md)
 pwn      | coopy   | [link](pwn/coopy.md)
 
-There are also some unannotated solution files scattered around in the repo
+There are also some unannotated solution files scattered around in the repo.
