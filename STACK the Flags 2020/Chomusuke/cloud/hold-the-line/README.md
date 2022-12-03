@@ -124,7 +124,7 @@ Hence, our payload wrapper would look like this:
 }
 ```
 
-We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871).  (to add: explain how this exploit works)
+We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871).  (to add: explain how this exploit works (edit: 2 years later and this still has not been explained))
 
 We just need to replace `whoami` with our preferred shell command to run arbitrary commands.
 
