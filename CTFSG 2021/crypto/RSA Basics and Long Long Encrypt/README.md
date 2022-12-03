@@ -134,7 +134,7 @@ n = # can be found in txt.enc file given. Too big so am not including it here.
 for k in range(1,10000): # On hindsight, should have just done range(2, 10000)
 	p = n**(1/( k + 1 ))
 	if p.is_integer():
-    q = k + 1
+    		q = k + 1
 		print(q)
 		print(p)
     break
