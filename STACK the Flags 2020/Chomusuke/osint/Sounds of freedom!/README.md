@@ -55,7 +55,7 @@ The 3 walkway-like paths straight ahead leading to the pond looks just like the 
 
 We also took a look at the bus stop
 
-![](1.png)
+![](4.png)
 
 and it looked rather identical to the one in the video.
 
