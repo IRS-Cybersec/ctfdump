@@ -96,7 +96,7 @@ As the application was running on Node.js, we can find the dependencies in `pack
 
 `safe-eval` is the only dependency listed, so we checked out its GitHub and NPM pages.
 
-Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval?)
+Sure enough, `safe-eval 0.3.0` has a [critical vulnerability](https://github.com/hacksparrow/safe-eval/issues/5) to be exploited. (to add: explain what the person is doing. why does this bypass safe-eval? (edit: 2 years later and this still has not been explained))
 
 ## Exploiting the Exploit
 
@@ -124,7 +124,7 @@ Hence, our payload wrapper would look like this:
 }
 ```
 
-We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871).  (to add: explain how this exploit works (edit: 2 years later and this still has not been explained))
+We found an example payload [here](https://snyk.io/vuln/SNYK-JS-SAFEEVAL-608076), but it did not work for AWS's newer version of Node.js (later determined to be Node.js 12.19.0 with `node --version`). We dug a bit deeper in the GitHub issues and found an [updated payload to use](https://github.com/hacksparrow/safe-eval/issues/18#issuecomment-592644871).  (to add: explain how this exploit works)
 
 We just need to replace `whoami` with our preferred shell command to run arbitrary commands.
 
